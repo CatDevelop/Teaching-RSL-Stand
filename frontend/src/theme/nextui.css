@@ -1,0 +1,7 @@
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-danger {
+    background-color: var(--danger-color);
+}

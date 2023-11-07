@@ -1,0 +1,7 @@
+.selectButton {
+    width: 100%;
+}
+
+.selectButton__disabled {
+    color: var(--disabled-button-color);
+}

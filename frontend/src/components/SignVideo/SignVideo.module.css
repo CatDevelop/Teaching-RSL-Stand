@@ -1,0 +1,26 @@
+.signVideo {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.signVideo__video {
+    max-width: 100%;
+    width: auto !important;
+    max-height: 100%;
+    height: auto !important;
+    object-fit: cover;
+    border-radius: var(--border-radius-m);
+}
+
+.signVideo__video_hide {
+    opacity: 0;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

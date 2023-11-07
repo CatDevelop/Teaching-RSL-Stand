@@ -1,0 +1,1 @@
+export { PracticeSelectGIFByWord } from "./PracticeSelectGIFByWord";

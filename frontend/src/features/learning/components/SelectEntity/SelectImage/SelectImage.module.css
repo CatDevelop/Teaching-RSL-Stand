@@ -1,0 +1,8 @@
+.selectImage__altText {
+    width: 315px;
+    height: 225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--font-weight-m);
+}

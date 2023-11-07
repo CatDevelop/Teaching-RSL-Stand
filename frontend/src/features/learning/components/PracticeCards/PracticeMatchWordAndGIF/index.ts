@@ -1,0 +1,1 @@
+export { PracticeMatchWordAndGIF } from "./PracticeMatchWordAndGIF";

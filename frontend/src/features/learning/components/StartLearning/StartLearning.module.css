@@ -1,0 +1,30 @@
+@keyframes showDown {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.startLearning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    animation: showDown 0.5s ease-in;
+}
+
+.startLearning__description {
+    font-family: var(--main-font);
+    font-size: calc(var(--font-size-m) * 0.9);
+    text-align: center;
+    color: var(--disabled-button-color);
+    font-weight: var(--font-weight-s);
+}

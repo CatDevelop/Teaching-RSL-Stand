@@ -1,0 +1,69 @@
+:root{
+    /* Colors */
+    --service-backround-color: rgba(240, 247, 255, 1);
+    --on-surface-color: rgba(255, 255, 255, 1);
+    --on-surface-opacity-color: rgba(255, 255, 255, 0.85);
+    --dark-on-surface-color: rgba(228, 228, 231, 1);
+    --primary-color: rgba(51, 142, 247, 1);
+    --accent-color: rgba(174, 126, 222, 1);
+    --light-primary-color: rgba(82, 133, 242, 0.2);
+    --success-color: rgba(23, 201, 100, 1);
+    --danger-color: rgb(243, 18, 96, 1);
+    --light-danger-color: rgba(242, 82, 82, 0.2);
+    --text-color: rgba(39, 39, 42, 1);
+    --secondary-text-color: rgba(82, 82, 91, 1);
+    --thirdly-text-color: rgba(161, 161, 170, 1);
+    --disabled-button-color: rgb(113, 113, 122, 1);
+    --modal-blur: rgba(0, 0, 0, 0.65);
+
+
+    /* Font */
+    --main-font: OpenSans, serif;
+
+    --font-weight-xl: 700;
+    --font-weight-l: 600;
+    --font-weight-m: 500;
+    --font-weight-s: 400;
+
+    --font-size-m: 20px;
+    --font-size-xs: calc(var(--font-size-m) * 0.6);
+    --font-size-s: calc(var(--font-size-m) * 0.8);
+    --font-size-l: calc(var(--font-size-m) * 1.2);
+    --font-size-xl: calc(var(--font-size-m) * 1.6);
+    --font-size-xxl: calc(var(--font-size-m) * 2.4);
+
+
+    /* Spaces */
+    --space-m: 20px;
+    --space-xs: calc(var(--space-m) * 0.25);
+    --space-s: calc(var(--space-m) * 0.5);
+    --space-l: calc(var(--space-m) * 1.6);
+
+    --space-xl: calc(var(--space-m) * 3);
+
+    --page-padding-m: 50px;
+    --page-padding-l: calc(var(--page-padding-m) * 2);
+
+
+    /* Other */
+    --box-shadow: 0px 2px 10px 0px rgba(51, 142, 247, 0.2);
+
+    --border-radius-xs: calc(var(--border-radius-m) / 2);
+    --border-radius-s: 12px;
+    --border-radius-m: 16px;
+
+    --exit-confirmation-container-index: 10000;
+    --exit-confirmation-blur-index: 9000;
+    --bottom-buttons-index: 2000;
+    --bottom-modal-container-index: 1000;
+    --webcamera-index: 200;
+    --select-entity-number-index: 100;
+
+    --max-theory-card-width: 800px;
+}
+
+@media(max-width: 1300px){
+    :root{
+        --font-size-m: 16px;
+    }
+}

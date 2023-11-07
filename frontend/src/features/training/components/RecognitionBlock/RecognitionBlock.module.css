@@ -1,0 +1,82 @@
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.recognitionBlock {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-m);
+}
+
+.recognitionBlock__titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.recognitionBlock__title {
+    font-weight: var(--font-weight-s);
+    font-size: var(--font-size-m);
+    line-height: var(--font-size-m);
+}
+
+.recognitionBlock__gesture {
+    line-height: var(--font-size-l);
+}
+
+.recognitionBlock__recognizedContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.recognitionBlock__recognized {
+    line-height: var(--font-size-m);
+}
+
+.recognitionBlock__recognizedWords {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 13px
+}
+
+.recognitionBlock__recognizedWord {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-s);
+    line-height: var(--font-size-m);
+
+    animation: show 0.4s ease-in;
+}
+
+.recognitionBlock__rightWord {
+    color: var(--success-color)
+}
+
+
+.recognitionBlock__camera {
+    width: 100%;
+    height: calc( 100% - var(--space-m)*2 - 49px - 50px);
+    position: relative;
+
+    /*display: inline-block;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+.recognitionBlock__cameraLoading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

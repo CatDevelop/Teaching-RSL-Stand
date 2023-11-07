@@ -1,0 +1,40 @@
+.resultCard {
+    --result-border-width: 3px;
+
+    padding: var(--result-border-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--result-border-width);
+    border-radius: var(--border-radius-s);
+}
+
+.resultCard__title {
+    color: var(--on-surface-color);
+    font-size: var(--font-size-s);
+}
+
+.resultCard__result {
+    width: 100%;
+    background: var(--on-surface-color);
+    padding: var(--space-s);
+    border-radius: var(--border-radius-s);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-s);
+    color: inherit;
+}
+
+.resultCard__resultIcon {
+    --icon-size: 28px;
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+.resultCard__resultContent {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-xl);
+    color: inherit;
+}

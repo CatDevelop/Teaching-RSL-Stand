@@ -1,0 +1,71 @@
+{
+  "name": "teaching-rsl",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@mantine/core": "^7.1.0",
+    "@mantine/hooks": "^7.1.0",
+    "@nextui-org/react": "^2.1.10",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/canvas-confetti": "^1.6.1",
+    "@types/jest": "^29.5.4",
+    "@types/node": "^20.6.0",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "axios": "^1.5.1",
+    "canvas-confetti": "^1.8.0",
+    "classnames": "^2.3.2",
+    "clsx": "^2.0.0",
+    "core-decorators": "^0.20.0",
+    "cross-env": "^7.0.3",
+    "framer-motion": "^10.16.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "react-redux": "^8.1.0",
+    "react-router-dom": "^6.13.0",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.3",
+    "react-tooltip": "^5.21.4",
+    "reactflow": "^11.7.4",
+    "socket.io-client": "^4.7.2",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "start": "cross-env BROWSER=none react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/css-modules": "^1.0.3",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.30",
+    "postcss-preset-mantine": "^1.7.0",
+    "postcss-simple-vars": "^7.0.1",
+    "tailwindcss": "^3.3.3"
+  },
+  "overrides": {
+    "react-scripts": {
+      "typescript": "^5"
+    }
+  }
+}

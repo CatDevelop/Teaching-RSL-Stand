@@ -1,0 +1,1 @@
+export { WidthContent } from "./WidthContent";

@@ -1,0 +1,54 @@
+.theoryCard {
+    width: 100%;
+    max-width: var(--max-theory-card-width);
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.theoryCard__contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    height: 100%;
+    padding-top: var(--space-m);
+    box-sizing: border-box;
+}
+
+.theoryCard__images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-m);
+    height: calc(100vh - 155px - var(--space-s) - var(--page-padding-m)*2*2 - var(--space-m)*2*2);
+}
+
+.theoryCard__gif video,
+.theoryCard__gif {
+    grid-area: gif;
+    width: 100%;
+    height: 100%;
+}
+
+.theoryCard__image {
+    grid-area: image;
+    border: 3px var(--dark-on-surface-color) solid;
+    border-radius: var(--border-radius-s);
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.theoryCard__word {
+    grid-area: word;
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-s);
+    font-size: var(--font-size-xl);
+    text-align: center;
+    line-height: var(--font-size-xl);
+}
+
+@media(max-width: 1300px){
+    .theoryCard__images {
+        height: calc(100vh - 180px - var(--space-s) - var(--page-padding-m)*2*2 - var(--space-m)*2*2);
+    }
+}

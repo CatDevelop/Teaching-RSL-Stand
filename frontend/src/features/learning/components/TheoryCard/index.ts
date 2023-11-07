@@ -1,0 +1,1 @@
+export { TheoryCard } from "./TheoryCard";

@@ -1,0 +1,63 @@
+@keyframes showDown {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.practiceMatchWordAndGIF {
+    width: 100%;
+    box-sizing: border-box;
+    animation: showDown 0.5s ease-in;
+}
+
+.practiceMatchWordAndGIF__card {
+    max-width: 100%;
+}
+
+.practiceMatchWordAndGIF__contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    height: 100%;
+    width: 100%;
+}
+
+.practiceMatchWordAndGIF__titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-xs);
+}
+
+.practiceMatchWordAndGIF__title {
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-xl);
+    font-size: var(--font-size-s);
+    text-align: center;
+}
+
+.practiceMatchWordAndGIF__titleSignText {
+   color: var(--primary-color);
+}
+
+.practiceMatchWordAndGIF__taskContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    margin-top: var(--space-m);
+    align-items: center;
+    height: 100%;
+}
+
+.practiceMatchWordAndGIF__taskContainer_buttons,
+.practiceMatchWordAndGIF__taskContainer_gifs {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-m);
+    width: 100%;
+}

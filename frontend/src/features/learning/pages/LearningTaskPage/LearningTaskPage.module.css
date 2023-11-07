@@ -1,0 +1,198 @@
+@keyframes showUp {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes showDown {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes showFade {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+.learningTask {
+    display: grid !important;
+    grid-template-columns: 230px 1fr 230px;
+    grid-template-rows: 70px calc(100vh - 140px - var(--page-padding-m) * 2 - var(--space-m) * 2) 70px;
+    grid-template-areas:
+            "header header header"
+            "b task c"
+            "d buttons e";
+    align-items: center !important;
+    justify-items: center;
+    gap: var(--space-m);
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.learningTaskPage__header {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: var(--space-m);
+    grid-area: header;
+    grid-template-columns: 230px 1fr 230px;
+    width: 100%
+}
+
+.learningTask__logoContainer {
+    cursor: pointer;
+}
+
+.learningTask__exitButtonContainer {
+    grid-column: 3;
+}
+
+.learningTask__progressBarContainer {
+    min-width: 678px;
+    max-width: var(--max-theory-card-width);
+    animation: showUp 0.5s ease-in;
+    width: 100%;
+}
+
+.learningTask__taskContainer {
+    grid-area: task;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.learningTask__buttonsContainer {
+    grid-area: buttons;
+    display: flex;
+    flex-direction: row;
+    max-width: 500px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: var(--bottom-buttons-index);
+}
+
+.learningTask__startCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    width: 700px;
+}
+
+.learningTask__startCardDescription {
+    font-family: var(--main-font);
+    font-size: var(--font-size-m);
+    text-align: center;
+}
+
+.learningTask__theory {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.learningTask__taskContinueContainer {
+    height: 100px;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: var(--bottom-modal-container-index);
+}
+
+.learningTask__startAnimation {
+    animation: showDown 0.5s ease-in;
+}
+
+.learningTask__toPractice {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-l);
+    gap: var(--space-xl);
+    background-color: var(--light-primary-color);
+    animation: showFade 0.3s ease-in;
+}
+
+.learningTask__result {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-m);
+}
+
+.learningTask__resultTitle {
+    color: var(--primary-color);
+}
+
+.learningTask__resultDescription {
+    font-family: var(--main-font);
+    font-size: var(--font-size-m);
+    text-align: center;
+}
+
+.learningTask__resultImage {
+    max-height: 100%;
+    max-width: 100%;
+    animation: showDown 0.5s ease-in;
+}
+
+@media(max-width:1300px){
+    .learningTask{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "task"
+            "buttons";
+        grid-template-rows: 95px calc(100vh - 165px - var(--page-padding-m) * 2 - var(--space-m) * 2) 70px;
+    }
+
+    .learningTaskPage__header {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: dense;
+        gap: var(--space-l) var(--space-m);
+        width: 100%;
+    }
+
+    .learningTask__logoContainer {
+        justify-self: start;
+    }
+
+    .learningTask__exitButtonContainer {
+        grid-column: auto;
+    }
+
+    .learningTask__exitButtonContainer {
+        justify-self: end;
+    }
+
+    .learningTask__progressBarContainer {
+        grid-column: 1 / span 2;
+        max-width: var(--max-theory-card-width);
+        min-width: 0;
+    }
+}

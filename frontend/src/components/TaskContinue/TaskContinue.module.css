@@ -1,0 +1,34 @@
+@keyframes showFade {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+.taskContinue {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-l);
+    gap: var(--space-xl);
+    background-color: var(--light-primary-color);
+    animation: showFade 0.3s ease-in;
+}
+
+.taskContinue_incorrectly {
+    background-color: var(--light-danger-color);
+}
+
+.taskContinue__result {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+}
+
+.taskContinue__textBlock {
+    color: var(--primary-color);
+}
+
+.taskContinue_incorrectly .taskContinue__textBlock{
+    color: var(--danger-color);
+}

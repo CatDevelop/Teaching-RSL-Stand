@@ -1,0 +1,9 @@
+.pageContent {
+    flex: 1;
+    padding: var(--page-padding-m);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--space-m);
+}

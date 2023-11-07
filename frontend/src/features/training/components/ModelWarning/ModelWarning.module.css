@@ -1,0 +1,36 @@
+.modelWarning__container {
+    outline: 3px var(--danger-color) solid;
+    height: 140px;
+    width: 570px;
+    z-index: var(--bottom-modal-container-index);
+    animation: showFade 1s ease-in;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: var(--space-s) var(--space-m);
+    line-height: 1.65;
+    text-align: justify;
+}
+
+.modelWarning__title {
+    text-align: center;
+}
+
+.modelWarning__gitLink {
+    display: inline-flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+    padding: 0 5px;
+    border-radius: 5px;
+    transition: all 0.1s ease-in;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    font-size: var(--font-size-s);
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.modelWarning__gitLink:hover {
+    background: var(--dark-on-surface-color);
+}

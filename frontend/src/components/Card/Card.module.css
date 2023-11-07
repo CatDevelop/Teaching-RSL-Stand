@@ -1,0 +1,10 @@
+.card {
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--on-surface-color);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-m);
+    padding: calc(2 * var(--space-m));
+}
