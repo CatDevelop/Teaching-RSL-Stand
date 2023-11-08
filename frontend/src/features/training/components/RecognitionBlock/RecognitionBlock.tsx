@@ -1,6 +1,6 @@
 import {Card} from "../../../../components/Card";
 import {typedMemo} from "../../../../core/utils/typedMemo";
-import React, {Dispatch, FC, SetStateAction, useCallback, useEffect} from "react";
+import React, {Dispatch, FC, SetStateAction, useCallback, useEffect, useState} from "react";
 import styles from "./RecognitionBlock.module.css";
 import {Typography} from "../../../../components/Typography";
 import {ComponentProps} from "../../../../core/models/ComponentProps";
@@ -22,6 +22,7 @@ type Props = ComponentProps & Readonly<{
 }>
 
 export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(props) {
+    const [loading, setLoading] = useState(1)
     let videoElement: any;
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -45,7 +46,6 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
             socket.off("send_not_normalize_text", onReceiveText)
         }
     }, [onReceiveText]);
-
 
     const startWebcam = useCallback(async (addFrameSender: () => void) => {
         try {
@@ -116,6 +116,14 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
             props.onSuccess()
     }, [props.signRecognizeText])
 
+
+    useEffect(() => {
+        let interval = setInterval(() => setLoading((loading + 1) % 3 + 1), 500)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [setLoading, loading]);
+
     if (!props)
         return;
 
@@ -140,6 +148,15 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                     Распознанные жесты
                 </Typography>
                 <div className={clsx(styles.recognitionBlock__recognizedWords)}>
+                    {
+                        props.signRecognizeText.length === 0 &&
+                        <Typography
+                            variant="span"
+                            className={clsx(styles.recognitionBlock__recognizedWord__loading)}
+                        >
+                            Распознаю{".".repeat(loading)}
+                        </Typography>
+                    }
                     {
                         props.signRecognizeText.slice(-6).map(word => {
                             return (

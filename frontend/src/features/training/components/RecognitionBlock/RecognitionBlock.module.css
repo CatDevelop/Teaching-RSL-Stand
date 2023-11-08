@@ -59,6 +59,13 @@
     animation: show 0.4s ease-in;
 }
 
+.recognitionBlock__recognizedWord__loading {
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-s);
+    line-height: var(--font-size-m);
+    color: var(--thirdly-text-color);
+}
+
 .recognitionBlock__rightWord {
     color: var(--success-color)
 }
