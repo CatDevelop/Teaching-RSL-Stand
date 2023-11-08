@@ -42,6 +42,7 @@
 
 .recognitionBlock__recognized {
     line-height: var(--font-size-m);
+    font-size: var(--font-size-l);
 }
 
 .recognitionBlock__recognizedWords {
@@ -52,7 +53,7 @@
 }
 
 .recognitionBlock__recognizedWord {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-l);
     font-weight: var(--font-weight-s);
     line-height: var(--font-size-m);
 
@@ -60,7 +61,7 @@
 }
 
 .recognitionBlock__recognizedWord__loading {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-m);
     font-weight: var(--font-weight-s);
     line-height: var(--font-size-m);
     color: var(--secondary-text-color);
