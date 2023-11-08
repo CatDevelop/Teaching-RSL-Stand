@@ -88,13 +88,16 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                     }
 
                     <div className={styles.learningTask__exitButtonContainer}>
-                        <Button
-                            variant="faded"
-                            color="default"
-                            onClick={openExitModal}
-                        >
-                            В главное меню
-                        </Button>
+                        {
+                            currentStep !== theoryCount + practiceCount &&
+                            <Button
+                                variant="faded"
+                                color="default"
+                                onClick={openExitModal}
+                            >
+                                В главное меню
+                            </Button>
+                        }
                     </div>
                 </div>
 
@@ -212,10 +215,10 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                         currentStep === theoryCount + practiceCount &&
                         <div className={styles.learningTask__toPractice}>
                             <Button variant="faded" onClick={toMainPage}>
-                                В главное меню
+                                В меню
                             </Button>
                             <Button color="primary" onClick={toTrainingPage}>
-                                Попробовать свои знания
+                                Перейти к практике
                             </Button>
                         </div>
                     }

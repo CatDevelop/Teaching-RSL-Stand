@@ -18,7 +18,7 @@ export const StartLearning: FC<Props> = typedMemo(function StartLearning(props) 
                 className={styles.startLearning__description}
             >
                 Сначала вы ознакомитесь с теорией, затем пройдёте 3 интерактивных задания,
-                чтобы закрепить материал.<br/>
+                чтобы закрепить материал.
                 Постарайтесь запомнить все жесты, чтобы успешно пройти практику.
             </Typography>
 
