@@ -26,12 +26,12 @@ export const HomePage: FC = typedMemo(function HomePage() {
     return (
         <div className={styles.homePage}>
             {/*<PreloadGIFs/>*/}
-            <img src={Logo} alt={"Логотип сервиса \"Изучение русского жестового языка\""} width={400}/>
+            <img className={styles.homePage__logo} src={Logo} alt={"Логотип сервиса \"Изучение русского жестового языка\""}/>
             <div className={styles.homePage__links}>
                 <div onClick={toLearning}>
                     <Card className={styles.homePage__buttonContainer}>
                         <div className={styles.homePage__button__imageContainer}>
-                            <img src={startLearningSVG} rel="preload" alt="Перейти к обучению" width={495} height={372}/>
+                            <img className={styles.homePage__logo} src={startLearningSVG} rel="preload" alt="Перейти к обучению" width={495} height={372}/>
                         </div>
                         <div className={styles.homePage__button__typographyContainer}>
                             <Typography variant="h2" className={styles.homePage__button__title}>
