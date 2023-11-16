@@ -1,19 +1,27 @@
-import React, {FC, useCallback} from "react";
+import React, {FC, useCallback, useEffect} from "react";
 import styles from "./HomePage.module.css";
 import {useNavigate} from "react-router-dom";
-import Logo from "../../assets/images/Logo.svg";
-import startLearningSVG from '../../assets/images/StartLearning.svg'
-import startTrainingSVG from '../../assets/images/StartTraining.svg'
+import Logo from "../../assets/images/LogoStand.svg";
+import startLearningSVG from '../../assets/images/StartLearning.png'
+import startTrainingSVG from '../../assets/images/StartTraining.png'
 import {Typography} from "../../components/Typography";
 import {Card} from "../../components/Card";
 import {typedMemo} from "../../core/utils/typedMemo";
-import {PreloadGIFs} from "../../components/PreloadGIFs";
+import {useIdle} from '@mantine/hooks';
 
 export const HomePage: FC = typedMemo(function HomePage() {
     const navigate = useNavigate();
 
-    const toLearning = useCallback(() => navigate("learning"), [navigate])
-    const toTraining = useCallback(() => navigate("training"), [navigate])
+    const toLearning = useCallback(() => navigate("/learning"), [navigate])
+    const toAFK = useCallback(() => navigate("/"), [navigate])
+    const toTraining = useCallback(() => navigate("/training"), [navigate])
+
+    const idle = useIdle(120000, {initialState: false});
+
+    useEffect(() => {
+        if(idle)
+            toAFK()
+    }, [idle, toAFK]);
 
     return (
         <div className={styles.homePage}>
@@ -23,7 +31,7 @@ export const HomePage: FC = typedMemo(function HomePage() {
                 <div onClick={toLearning}>
                     <Card className={styles.homePage__buttonContainer}>
                         <div className={styles.homePage__button__imageContainer}>
-                            <img src={startLearningSVG} rel="preload" alt="Перейти к обучению"/>
+                            <img src={startLearningSVG} rel="preload" alt="Перейти к обучению" width={495} height={372}/>
                         </div>
                         <div className={styles.homePage__button__typographyContainer}>
                             <Typography variant="h2" className={styles.homePage__button__title}>
@@ -40,7 +48,7 @@ export const HomePage: FC = typedMemo(function HomePage() {
                 <div onClick={toTraining}>
                     <Card className={styles.homePage__buttonContainer}>
                         <div className={styles.homePage__button__imageContainer}>
-                            <img src={startTrainingSVG} rel="preload" alt="Перейти к тренировкам"/>
+                            <img src={startTrainingSVG} rel="preload" alt="Перейти к тренировкам" width={495} height={372}/>
                         </div>
                         <div className={styles.homePage__button__typographyContainer}>
                             <Typography variant="h2" className={styles.homePage__button__title}>

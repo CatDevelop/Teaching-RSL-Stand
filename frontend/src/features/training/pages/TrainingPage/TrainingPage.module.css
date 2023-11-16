@@ -100,16 +100,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-m);
-    max-width: 500px;
+    gap: var(--space-l);
+    max-width: 800px;
     width: 100%;
     height: auto;
 }
 
+.trainingTask__startCardTitle {
+    font-family: var(--main-font);
+    font-size: var(--font-size-xl);
+    text-align: center;
+    line-height: var(--font-size-xl);
+}
+
 .trainingTask__startCardDescription {
     font-family: var(--main-font);
-    font-size: сalc(var(--font-size-m) * 0.9);
-    text-align: center;;
+    font-size: var(--font-size-l);
+    text-align: center;
     color: var(--disabled-button-color);
     font-weight: var(--font-weight-s);
 }

@@ -2,7 +2,7 @@ import {typedMemo} from "../../../../core/utils/typedMemo";
 import React, {FC, useCallback, useEffect, useState} from "react";
 import styles from "./TrainingPage.module.css";
 import {Page} from "../../../../components/Page";
-import Logo from "../../../../assets/images/Logo.svg"
+import Logo from "../../../../assets/images/LogoStand.svg"
 import {Button} from "../../../../components/Button";
 import {Typography} from "../../../../components/Typography";
 import {useNavigate} from "react-router-dom";
@@ -19,6 +19,7 @@ import {StartTraining} from "../../components/StartTraining/StartTraining";
 import {ModelWarning} from "../../components/ModelWarning/ModelWarning";
 import {socket} from "../../../../core/utils/connectToModal";
 import {BySberAI} from "../../../../components/BySberAI";
+import {useIdle} from "@mantine/hooks";
 
 export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const navigate = useNavigate()
@@ -38,6 +39,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
     const toMainPage = useCallback(() => navigate("/"), [navigate])
+    const toAFK = useCallback(() => navigate("/"), [navigate])
 
     const skip = useCallback(() => {
         setCurrentStep(currentStep => currentStep + 1)
@@ -62,13 +64,20 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
         socket.on('connect', () => setIsNotStartModel(false))
     }, []);
 
+    const idle = useIdle(180000, {initialState: false});
+
+    useEffect(() => {
+        if(idle)
+            toAFK()
+    }, [idle, toAFK]);
+
     return (
         <Page>
             <ExitConfirmation isOpen={exitModalIsOpen} setIsOpen={setExitModalIsOpen}/>
             <PageContent className={styles.trainingTask}>
                 <div className={styles.trainingTask__header}>
                     <div className={styles.trainingTask__logoContainer} onClick={openExitModal}>
-                        <img src={Logo} rel="preload" alt={"Логотип"} width={230}/>
+                        <img src={Logo} rel="preload" alt={"Логотип"} width={300}/>
                         {/*<BySberAI/>*/}
                     </div>
                     {

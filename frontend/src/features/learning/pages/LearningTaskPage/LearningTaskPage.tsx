@@ -2,7 +2,7 @@ import {typedMemo} from "../../../../core/utils/typedMemo";
 import React, {FC, useCallback, useEffect, useState} from "react";
 import styles from "./LearningTaskPage.module.css";
 import {Page} from "../../../../components/Page";
-import Logo from "../../../../assets/images/Logo.svg"
+import Logo from "../../../../assets/images/LogoStand.svg"
 import {shuffleArray} from "../../../../core/utils/shuffleArray";
 import {StartThemeTasks, StartThemeWords} from "../../../../core/data";
 import {Button} from "../../../../components/Button";
@@ -19,6 +19,7 @@ import {ExitConfirmation} from "../../../../components/ExitConfirmation";
 import {PracticeCards} from "../../components/PracticeCards/PracticeCards";
 import {StartLearning} from "../../components/StartLearning/StartLearning";
 import {generateTasks} from "../../../../core/utils/generateTasks";
+import {useIdle} from "@mantine/hooks";
 
 // TODO написать нормальные типы
 type task = {
@@ -68,8 +69,16 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     }, [currentStep, setCurrentStep])
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
-    const toMainPage = useCallback(() => navigate("/"), [navigate])
+    const toMainPage = useCallback(() => navigate("/home"), [navigate])
     const toTrainingPage = useCallback(() => navigate("/training"), [navigate])
+    const toAFK = useCallback(() => navigate("/"), [navigate])
+
+    const idle = useIdle(120000, {initialState: false});
+
+    useEffect(() => {
+        if(idle)
+            toAFK()
+    }, [idle, toAFK]);
 
     return (
         <Page>
@@ -77,7 +86,7 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
             <PageContent className={styles.learningTask}>
                 <div className={styles.learningTaskPage__header}>
                     <div className={styles.learningTask__logoContainer} onClick={openExitModal}>
-                        <img src={Logo} rel="preload" alt="Логотип" width={230}/>
+                        <img src={Logo} rel="preload" alt="Логотип" width={300}/>
                     </div>
 
                     {

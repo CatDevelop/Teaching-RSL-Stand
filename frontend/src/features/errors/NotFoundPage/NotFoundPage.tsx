@@ -1,7 +1,7 @@
 import React, {FC, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
 import styles from "./NotFoundPage.module.css";
-import Logo from "../../../assets/images/Logo.svg";
+import Logo from "../../../assets/images/LogoStand.svg";
 import {Typography} from "../../../components/Typography";
 import {Button} from "../../../components/Button";
 import {typedMemo} from "../../../core/utils/typedMemo";

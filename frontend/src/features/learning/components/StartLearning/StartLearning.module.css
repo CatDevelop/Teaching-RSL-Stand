@@ -14,16 +14,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-m);
-    max-width: 500px;
+    gap: var(--space-l);
+    max-width: 800px;
     width: 100%;
     height: auto;
     animation: showDown 0.5s ease-in;
 }
 
+.startLearning__title {
+    font-family: var(--main-font);
+    font-size: var(--font-size-xl);
+    text-align: center;
+    line-height: var(--font-size-xl);
+}
+
 .startLearning__description {
     font-family: var(--main-font);
-    font-size: calc(var(--font-size-m) * 0.9);
+    font-size: var(--font-size-l);
     text-align: center;
     color: var(--disabled-button-color);
     font-weight: var(--font-weight-s);

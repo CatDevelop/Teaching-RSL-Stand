@@ -13,7 +13,7 @@ type Props = {
 export const StartTraining: FC<Props> = typedMemo(function StartTraining(props) {
     return (
         <Card className={clsx(styles.trainingTask__startCard, styles.trainingTask__startAnimation)}>
-            <Typography variant={"h2"}>
+            <Typography variant={"h2"} className={styles.trainingTask__startCardTitle}>
                 Начало тренировки
             </Typography>
             <Typography variant={"p"} className={styles.trainingTask__startCardDescription}>

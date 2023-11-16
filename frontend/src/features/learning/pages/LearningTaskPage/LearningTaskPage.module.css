@@ -27,7 +27,7 @@
 
 .learningTask {
     display: grid !important;
-    grid-template-columns: 230px 1fr 230px;
+    grid-template-columns: 300px 1fr 300px;
     grid-template-rows: 70px calc(100vh - 140px - var(--page-padding-m) * 2 - var(--space-m) * 2) 70px;
     grid-template-areas:
             "header header header"
@@ -46,7 +46,7 @@
     justify-items: center;
     gap: var(--space-m);
     grid-area: header;
-    grid-template-columns: 230px 1fr 230px;
+    grid-template-columns: 300px 1fr 300px;
     width: 100%
 }
 

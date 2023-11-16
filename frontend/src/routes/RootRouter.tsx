@@ -5,19 +5,23 @@ import {HomePage} from '../features/HomePage/HomePage';
 import {learningRoutes} from '../features/learning/routes';
 import {trainingRoutes} from '../features/training/routes';
 import {errorsRouts} from "../features/errors/routes";
+import {AFKPage} from "../features/AFKPage/AFKPage";
 
 const routes: RouteObject[] = [
     {
         path: '/',
         element: <HomeLayout/>,
         children: [
-           {
-            path: '',
-            element: <HomePage/>
-           } ,
-
-           ...learningRoutes,
-           ...trainingRoutes,
+            {
+                path: '',
+                element: <AFKPage/>
+            },
+            {
+                path: 'home',
+                element: <HomePage/>
+            },
+            ...learningRoutes,
+            ...trainingRoutes,
         ]
     },
     ...errorsRouts
