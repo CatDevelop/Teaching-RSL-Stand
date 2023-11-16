@@ -138,7 +138,10 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                             {/*    alt="Иконка результата"*/}
                             {/*/>*/}
                             <Typography variant="h2" className={styles.trainingTask__resultTitle}>
-                                Поздравляем, вы освоили несколько новых жестов!<br/>Благодарим за участие!
+                                Поздравляем!
+                            </Typography>
+                            <Typography variant="p" className={styles.trainingTask__resultDescription}>
+                                Вы освоили 5 жестов.<br/>Благодарим за участие!
                             </Typography>
                             <div className={styles.trainingTask__result__container}>
                                 <BySberAI/>

@@ -170,14 +170,14 @@
 }
 
 .trainingTask__resultTitle {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
+    font-size: var(--font-size-xxl) !important;
     text-align: center;
-    font-size: var(--font-size-xl);
 }
 
 .trainingTask__resultDescription {
-    font-family: var(--main-font);
-    font-size: var(--font-size-m);
+    font-family: var(--main-font) !important;
+    font-size: var(--font-size-l) !important;
     text-align: center;
 }
 

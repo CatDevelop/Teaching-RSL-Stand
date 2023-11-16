@@ -57,7 +57,7 @@ export const facts: factsType = [
     },
     {
         title: "Каждый 9",
-        description: "житель Земли имеет те или иные нарушения слуха",
+        description: "житель Земли имеет те \nили иные нарушения слуха",
         variant: "grape"
     },
 ]

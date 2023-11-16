@@ -31,7 +31,7 @@ export const HomePage: FC = typedMemo(function HomePage() {
                 <div onClick={toLearning}>
                     <Card className={styles.homePage__buttonContainer}>
                         <div className={styles.homePage__button__imageContainer}>
-                            <img className={styles.homePage__logo} src={startLearningSVG} rel="preload" alt="Перейти к обучению" width={495} height={372}/>
+                            <img className={styles.homePage__logo} src={startLearningSVG} rel="preload" alt="Перейти к обучению"/>
                         </div>
                         <div className={styles.homePage__button__typographyContainer}>
                             <Typography variant="h2" className={styles.homePage__button__title}>
@@ -48,7 +48,7 @@ export const HomePage: FC = typedMemo(function HomePage() {
                 <div onClick={toTraining}>
                     <Card className={styles.homePage__buttonContainer}>
                         <div className={styles.homePage__button__imageContainer}>
-                            <img src={startTrainingSVG} rel="preload" alt="Перейти к тренировкам" width={495} height={372}/>
+                            <img src={startTrainingSVG} rel="preload" alt="Перейти к тренировкам"/>
                         </div>
                         <div className={styles.homePage__button__typographyContainer}>
                             <Typography variant="h2" className={styles.homePage__button__title}>
