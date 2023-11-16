@@ -19,6 +19,9 @@ export const TheoryCard: FC<Props> = typedMemo(function TheoryCard(props) {
         <div className={clsx(styles.theoryCard)}>
             <LearningBlock iconUrl={TheoryIconSVG} title={"Теория"}>
                 <div className={styles.theoryCard__contentContainer}>
+                    <Typography variant="h1" className={styles.theoryCard__word}>
+                        {props.wordObject.text}
+                    </Typography>
                     <div className={styles.theoryCard__images}>
                         <SignVideo
                             src={props.wordObject.gifSource}
@@ -36,9 +39,7 @@ export const TheoryCard: FC<Props> = typedMemo(function TheoryCard(props) {
                         }
                     </div>
 
-                    <Typography variant="h1" className={styles.theoryCard__word}>
-                        {props.wordObject.text}
-                    </Typography>
+
                 </div>
             </LearningBlock>
         </div>

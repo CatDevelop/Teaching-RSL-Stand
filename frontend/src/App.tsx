@@ -4,6 +4,7 @@ import {BrowserRouter} from "react-router-dom";
 import {RootRouter} from "./routes/RootRouter";
 import {MantineProvider} from "@mantine/core";
 import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 
 export default function MyApp() {
     return (

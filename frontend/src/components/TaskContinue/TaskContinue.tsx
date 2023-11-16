@@ -10,6 +10,7 @@ import { ComponentProps } from "../../core/models/ComponentProps";
 
 type Props = ComponentProps & Readonly<{
     next: () => void;
+    retry?: () => void;
     isRightAnswer: boolean;
     rightAnswer?: string;
 }>
@@ -37,12 +38,14 @@ export const TaskContinue: FC<Props> = typedMemo(function TaskContinue(props){
                 <>
                     <div className={styles.taskContinue__result}>
                         <img src={CloseCircle} rel="preload" alt="Иконка крестика" className={styles.taskContinue__icon} />
-                        <div className={styles.taskContinue__textBlock}>
-                            <Typography variant="h3">Правильный ответ: </Typography>
-                            <Typography className={styles.taskContinue__description}>{props.rightAnswer}</Typography>
-                        </div>
+                        <Typography
+                            variant="h3"
+                            className={styles.taskContinue__textBlock}>
+                            Неверный ответ
+                        </Typography>
                     </div>
-                    <Button color="danger" onClick={props.next}>Далее</Button>
+                    <Button variant="faded" onClick={props.retry}>Повторить</Button>
+                    <Button color="danger" onClick={props.next}>Пропустить</Button>
                 </>
         }
         </div>

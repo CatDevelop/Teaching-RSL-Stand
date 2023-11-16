@@ -8,9 +8,8 @@
 .theoryCard__contentContainer {
     display: flex;
     flex-direction: column;
-    gap: var(--space-m);
+    gap: var(--space-s);
     height: 100%;
-    padding-top: var(--space-m);
     box-sizing: border-box;
 }
 

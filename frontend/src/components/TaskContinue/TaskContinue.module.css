@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--space-l);
-    gap: var(--space-xl);
+    gap: var(--space-m);
     background-color: var(--light-primary-color);
     animation: showFade 0.3s ease-in;
 }

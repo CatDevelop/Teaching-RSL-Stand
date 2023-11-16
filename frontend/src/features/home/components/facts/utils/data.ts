@@ -53,11 +53,11 @@ export const facts: factsType = [
     {
         title: "3%",
         description: "людей не слышат\nсовсем ничего",
-        variant: "green"
+        variant: "blue"
     },
     {
         title: "Каждый 9",
         description: "житель Земли имеет те или иные нарушения слуха",
-        variant: "green"
+        variant: "grape"
     },
 ]

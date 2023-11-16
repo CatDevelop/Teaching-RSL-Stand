@@ -23,7 +23,10 @@ export const AFKFactsPage: FC = typedMemo(function AFKFactsPage() {
             />
 
             <img className={styles.afkPage__logo} src={LogoStand} alt="Логотип"/>
-            <Facts/>
+            <div className={styles.afkPage__factsContainer}>
+                <Facts className={styles.afkPage__facts}/>
+            </div>
+
             <Typography
                 variant="p"
                 className={styles.afkPage__tap}

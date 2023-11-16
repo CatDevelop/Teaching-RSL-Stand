@@ -1,16 +1,27 @@
 @keyframes moving {
-    0%   { transform: translate(100%, 0); }
-    100% { transform: translate(-100%, 0); }
+    /*0%   { transform: translate(100%, 0); }*/
+    /*100% { transform: translate(-100%, 0); }*/
+    from   { left: 0; }
+    to { left: -100% }
 }
-
-
+@keyframes moving2 {
+    /*0%   { transform: translate(100%, 0); }*/
+    /*100% { transform: translate(-100%, 0); }*/
+    from   { left: 100% }
+    to { left: 0; }
+}
+.facts__shadow {
+    width: 100vw;
+    height: 100%;
+}
 .facts {
-    max-width: 1300px;
-    height: 400px;
+    width: 100%;
+    height: 250px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .facts__contentContainer {
@@ -19,5 +30,22 @@
     gap: var(--space-m);
     align-items: center;
     justify-content: center;
-    animation: moving 25s linear infinite;
+
+    position: absolute;
+    left: 0%;
+    top: 0%;
+
+    width: 4290px;
+    height: 100%;
+}
+
+.facts__firstContent {
+    animation: moving 35s linear infinite;
+}
+
+.facts__secondContent {
+    animation: moving2 35s linear infinite;
+}
+.facts__slide {
+    width: 350px;
 }

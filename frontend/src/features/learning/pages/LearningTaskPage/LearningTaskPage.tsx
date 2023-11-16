@@ -73,6 +73,12 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     const toTrainingPage = useCallback(() => navigate("/training"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
 
+    const retry = useCallback(() => {
+        setCurrentStepStatus({status: "default"})
+        setTaskChecked(false)
+        setTaskCompleted(true)
+    }, [setCurrentStepStatus, setTaskChecked, setTaskCompleted])
+
     const idle = useIdle(120000, {initialState: false});
 
     useEffect(() => {
@@ -141,7 +147,7 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                                 Конец обучения!
                             </Typography>
                             <Typography variant="p" className={styles.learningTask__resultDescription}>
-                                Вы выучили несколько жестов.<br/>Теперь можете перейти к следующему этапу<br/>
+                                Вы выучили 5 жестов.<br/>Теперь можете перейти к следующему этапу<br/>
                                 и на практике попробовать эти жесты!
                             </Typography>
                         </div>
@@ -216,6 +222,7 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                                 setTaskCompleted(false)
                             }}
                             isRightAnswer={false}
+                            retry={retry}
                             rightAnswer={currentStepStatus.message}
                         />
                     }
