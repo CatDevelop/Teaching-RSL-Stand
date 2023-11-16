@@ -19,6 +19,7 @@
 .fact__description {
     text-align: center;
     font-size: var(--font-size-m);
+    white-space: pre-line;
 }
 
 .fact__blue {

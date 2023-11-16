@@ -5,7 +5,7 @@
 
 
 .facts {
-    max-width: 1000px;
+    max-width: 1300px;
     height: 400px;
     display: flex;
     flex-direction: row;
@@ -19,5 +19,5 @@
     gap: var(--space-m);
     align-items: center;
     justify-content: center;
-    animation: moving 10s linear infinite;
+    animation: moving 25s linear infinite;
 }
