@@ -1,0 +1,1 @@
+export { AFKPage } from "./AFKPage";

@@ -1,0 +1,23 @@
+@keyframes moving {
+    0%   { transform: translate(100%, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+
+.facts {
+    max-width: 1000px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.facts__contentContainer {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-m);
+    align-items: center;
+    justify-content: center;
+    animation: moving 10s linear infinite;
+}

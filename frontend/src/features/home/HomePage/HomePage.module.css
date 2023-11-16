@@ -12,12 +12,9 @@
 .homePage {
     background: var(--service-backround-color);
     height: 100vh;
-    /*display: flex;*/
-    /*flex-direction: column;*/
     gap: var(--space-l);
     padding: var(--space-xl);
     align-items: center;
-
     display: grid;
     grid-template-rows: 90px 1fr 90px;
     justify-content: center;

@@ -1,0 +1,49 @@
+.fact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-l);
+    width: 370px;
+    height: 200px;
+    min-width: 370px;
+    border-radius: var(--border-radius-m);
+    box-sizing: border-box;
+}
+
+.fact__title {
+    text-align: center;
+    font-size: calc(var(--font-size-xl) * 1.1);
+}
+
+.fact__description {
+    text-align: center;
+    font-size: var(--font-size-m);
+}
+
+.fact__blue {
+    background: #e8edf9;
+}
+
+.fact__blue .fact__title,
+.fact__blue .fact__description {
+    color: #232966;
+}
+
+.fact__grape {
+    background: #eddce4;
+}
+
+.fact__grape .fact__title,
+.fact__grape .fact__description {
+    color: #8c135e;
+}
+
+.fact__green {
+    background: #d7ede8;
+}
+
+.fact__green .fact__title,
+.fact__green .fact__description {
+    color: #004436;
+}

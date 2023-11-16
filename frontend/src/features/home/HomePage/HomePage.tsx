@@ -1,12 +1,12 @@
 import React, {FC, useCallback, useEffect} from "react";
 import styles from "./HomePage.module.css";
 import {useNavigate} from "react-router-dom";
-import Logo from "../../assets/images/LogoStand.svg";
-import startLearningSVG from '../../assets/images/StartLearning.png'
-import startTrainingSVG from '../../assets/images/StartTraining.png'
-import {Typography} from "../../components/Typography";
-import {Card} from "../../components/Card";
-import {typedMemo} from "../../core/utils/typedMemo";
+import Logo from "../../../assets/images/LogoStand.svg";
+import startLearningSVG from '../../../assets/images/StartLearning.png'
+import startTrainingSVG from '../../../assets/images/StartTraining.png'
+import {Typography} from "../../../components/Typography";
+import {Card} from "../../../components/Card";
+import {typedMemo} from "../../../core/utils/typedMemo";
 import {useIdle} from '@mantine/hooks';
 
 export const HomePage: FC = typedMemo(function HomePage() {

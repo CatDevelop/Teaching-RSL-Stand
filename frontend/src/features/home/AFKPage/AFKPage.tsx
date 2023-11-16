@@ -1,10 +1,10 @@
 import React, {FC, useCallback} from "react";
 import styles from "./AFKPage.module.css";
 import {useNavigate} from "react-router-dom";
-import {Typography} from "../../components/Typography";
-import {typedMemo} from "../../core/utils/typedMemo";
-import Gradient from '../../assets/video/gradient.mp4'
-import LogoStand from '../../assets/images/LogoStandMonochrome.svg'
+import {Typography} from "../../../components/Typography";
+import {typedMemo} from "../../../core/utils/typedMemo";
+import Gradient from '../../../assets/video/gradient.mp4'
+import LogoStand from '../../../assets/images/LogoStandMonochrome.svg'
 
 export const AFKPage: FC = typedMemo(function AFKPage() {
     const navigate = useNavigate();

@@ -1,0 +1,1 @@
+export { AFKFactsPage } from "./AFKFactsPage";
