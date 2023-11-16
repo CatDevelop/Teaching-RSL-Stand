@@ -38,7 +38,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const clearRecognizeText = () => setSignRecognizeText([])
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
-    const toMainPage = useCallback(() => navigate("/"), [navigate])
+    const toMainPage = useCallback(() => navigate("/home"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
 
     const skip = useCallback(() => {

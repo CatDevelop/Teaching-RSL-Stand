@@ -11,7 +11,7 @@ import {Facts} from "../components/facts";
 export const AFKFactsPage: FC = typedMemo(function AFKFactsPage() {
     const navigate = useNavigate();
 
-    const toHome = useCallback(() => navigate("home"), [navigate])
+    const toHome = useCallback(() => navigate("/home"), [navigate])
 
     return (
         <div className={styles.afkPage} onClick={toHome}>
@@ -23,17 +23,14 @@ export const AFKFactsPage: FC = typedMemo(function AFKFactsPage() {
                 muted
             />
 
-            {/*<div className={styles.afkPage__contentContainer}>*/}
-                <img className={styles.afkPage__logo} src={LogoStand} alt="Логотип" width={1200}/>
-                {/* eslint-disable-next-line react/jsx-no-undef */}
-                <Facts/>
-                <Typography
-                    variant="p"
-                    className={styles.afkPage__tap}
-                >
-                    Нажмите на экран, чтобы продолжить
-                </Typography>
-            {/*</div>*/}
+            <img className={styles.afkPage__logo} src={LogoStand} alt="Логотип" width={1200}/>
+            <Facts/>
+            <Typography
+                variant="p"
+                className={styles.afkPage__tap}
+            >
+                Нажмите на экран, чтобы продолжить
+            </Typography>
         </div>
     )
 })
