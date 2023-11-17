@@ -55,7 +55,7 @@ export const HomePage: FC = typedMemo(function HomePage() {
                                 Проверить свои знания
                             </Typography>
                             <Typography variant="p" className={styles.homePage__button__description}>
-                                Проверьте своё умение общаться на РЖЯ с нашей моделью распознавания
+                                Проверьте своё умение общаться на РЖЯ<br/> с нашей моделью распознавания
                             </Typography>
                         </div>
                     </Card>

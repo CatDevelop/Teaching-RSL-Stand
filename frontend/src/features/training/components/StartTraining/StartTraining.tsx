@@ -18,7 +18,7 @@ export const StartTraining: FC<Props> = typedMemo(function StartTraining(props) 
             </Typography>
             <Typography variant={"p"} className={styles.trainingTask__startCardDescription}>
                 Вам будут предложены слова, которые вы должны показать в камеру.
-                Система распознает ваш жест и отобразит слово зелёным цветом.
+                Система распознает ваш жест<br/> и отобразит слово зелёным цветом.
                 После успешного выполнения перейдите к следующему слову.
             </Typography>
             <Button
