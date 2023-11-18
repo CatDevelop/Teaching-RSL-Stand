@@ -20,6 +20,7 @@ import {PracticeCards} from "../../components/PracticeCards/PracticeCards";
 import {StartLearning} from "../../components/StartLearning/StartLearning";
 import {generateTasks} from "../../../../core/utils/generateTasks";
 import {useIdle} from "@mantine/hooks";
+import ResultLearning from "../../../../assets/images/ResultLearning.png"
 
 // TODO написать нормальные типы
 type task = {
@@ -143,9 +144,10 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                     {
                         currentStep === theoryCount + practiceCount &&
                         <div className={styles.learningTask__result}>
-                            <Typography variant="h2" className={styles.learningTask__resultTitle}>
-                                Конец обучения!
-                            </Typography>
+                            <img src={ResultLearning} alt={"Конец обучения!"} className={styles.learningTask__result__image}/>
+                            {/*<Typography variant="h2" className={styles.learningTask__resultTitle}>*/}
+                            {/*    Конец обучения!*/}
+                            {/*</Typography>*/}
                             <Typography variant="p" className={styles.learningTask__resultDescription}>
                                 Вы выучили 5 жестов.<br/>Теперь можете перейти к следующему этапу<br/>
                                 и на практике попробовать эти жесты!

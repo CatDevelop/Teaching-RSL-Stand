@@ -35,16 +35,16 @@
     left: 0%;
     top: 0%;
 
-    width: 4290px;
+    width: 4510px;
     height: 100%;
 }
 
 .facts__firstContent {
-    animation: moving 35s linear infinite;
+    animation: moving 70s linear infinite;
 }
 
 .facts__secondContent {
-    animation: moving2 35s linear infinite;
+    animation: moving2 70s linear infinite;
 }
 .facts__slide {
     width: 350px;
