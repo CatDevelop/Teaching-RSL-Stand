@@ -1,19 +1,7 @@
-#gradient-canvas {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-    --gradient-color-1: #525CAC;
-    --gradient-color-2: #69C2E0;
-    --gradient-color-3: #7B50A4;
-    --gradient-color-4: #FBFEFE;
-}
-
 .afkPage {
     display: grid;
     grid-template-rows: 1fr 250px 80px;
+    grid-template-columns: calc(100vw - 2*var(--page-padding-m));
     gap: calc(var(--space-xl)*1.1);
     color: #fff;
     background: #69BBEC;
@@ -47,7 +35,6 @@
     position: relative;
     width: 100vw;
     height: 250px;
-    transform: translateX(calc(-1 * var(--page-padding-m)));
 }
 
 .afkPage__facts {

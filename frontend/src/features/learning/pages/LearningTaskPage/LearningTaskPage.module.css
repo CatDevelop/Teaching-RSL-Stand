@@ -136,13 +136,19 @@
 }
 
 .learningTask__result {
-    height: 75%;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: var(--space-m);
+}
+
+.learningTask__result__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .learningTask__resultTitle {

@@ -6,12 +6,12 @@ type factsType = {
 
 export const facts: factsType = [
     {
-        title: "360 млн.",
+        title: "360 млн",
         description: "населения земного шара имеют нарушение со слухом",
         variant: "blue"
     },
     {
-        title: "150-300 тыс.",
+        title: "150-300 тыс",
         description: "глухих и слабослышащих людей проживают в России",
         variant: "grape"
     },
@@ -31,12 +31,12 @@ export const facts: factsType = [
         variant: "grape"
     },
     {
-        title: "10 часов/день",
+        title: "10 часов в день",
         description: "онлайн-сурдопереводчики не всегда доступны\n для слабослышащих \nиз отдаленных регионов",
         variant: "green"
     },
     {
-        title: "4 тыс.",
+        title: "4 тыс",
         description: "сурдопереводчиков\nне хватает в России",
         variant: "blue"
     },
