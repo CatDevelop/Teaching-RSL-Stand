@@ -20,7 +20,7 @@ import {ModelWarning} from "../../components/ModelWarning/ModelWarning";
 import {socket} from "../../../../core/utils/connectToModal";
 import {BySberAI} from "../../../../components/BySberAI";
 import {useIdle} from "@mantine/hooks";
-import ResultTraining from '../../../../assets/images/ResiltTraining.png'
+import ResultTraining from '../../../../assets/images/ResultTraining.png'
 
 export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const navigate = useNavigate()
@@ -132,12 +132,12 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                     {
                         currentStep === data.length &&
                         <div className={styles.trainingTask__result}>
-                            {/*<img src={ResultTraining} alt={"Конец тренировки!"} className={styles.trainingTask__result__image}/>*/}
+                            <img src={ResultTraining} alt={"Конец тренировки!"} className={styles.trainingTask__result__image}/>
                             <Typography variant="h2" className={styles.trainingTask__resultTitle}>
                                 Поздравляем!
                             </Typography>
                             <Typography variant="p" className={styles.trainingTask__resultDescription}>
-                                Поздравляем! Вы освоили 5 жестов.<br/>Благодарим за участие!
+                                Вы освоили 5 жестов.<br/>Благодарим за участие!
                             </Typography>
                             <div className={styles.trainingTask__result__container}>
                                 <BySberAI/>
