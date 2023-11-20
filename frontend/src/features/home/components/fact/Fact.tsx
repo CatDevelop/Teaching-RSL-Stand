@@ -42,7 +42,7 @@ export const Fact: FC<Props> = typedMemo(function Fact(props) {
                 variant='p'
                 className={styles.fact__source}
             >
-                © {props.source}
+                Источник: {props.source}
             </Typography>
         </div>
     );
