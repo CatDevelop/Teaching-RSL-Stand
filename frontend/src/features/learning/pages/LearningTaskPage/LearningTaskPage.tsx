@@ -149,8 +149,8 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                             {/*    Конец обучения!*/}
                             {/*</Typography>*/}
                             <Typography variant="p" className={styles.learningTask__resultDescription}>
-                                Вы выучили 5 жестов.<br/>Теперь можете перейти к следующему этапу<br/>
-                                и на практике попробовать эти жесты!
+                                Вы выучили 5 жестов.<br/>Теперь можно перейти к следующему этапу<br/>
+                                и попробовать их на практике.
                             </Typography>
                         </div>
                     }

@@ -23,28 +23,28 @@
 }
 
 .fact__blue {
-    background: #e8edf9;
+    background: rgba(0, 177, 255, 0.7);
 }
 
 .fact__blue .fact__title,
 .fact__blue .fact__description {
-    color: #232966;
+    color: white;
 }
 
 .fact__grape {
-    background: #eddce4;
+    background: rgba(145, 82, 173, 0.7);
 }
 
 .fact__grape .fact__title,
 .fact__grape .fact__description {
-    color: #8c135e;
+    color: white;
 }
 
 .fact__green {
-    background: #d7ede8;
+    background: rgba(0, 236, 200, 0.7);
 }
 
 .fact__green .fact__title,
 .fact__green .fact__description {
-    color: #004436;
+    color: white;
 }
