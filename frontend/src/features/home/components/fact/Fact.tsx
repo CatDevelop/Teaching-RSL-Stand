@@ -8,6 +8,7 @@ import clsx from "clsx";
 type Props = ComponentProps & Readonly<{
     title: string;
     description: string;
+    source: string;
     variant: 'blue' | 'grape' | 'green'
 }>
 
@@ -23,17 +24,25 @@ export const Fact: FC<Props> = typedMemo(function Fact(props) {
             props.variant === 'green' && styles.fact__green
         )}
         >
-            <Typography
-                variant='h1'
-                className={styles.fact__title}
-            >
-                {props.title}
-            </Typography>
+            <div className={styles.fact__factContainer}>
+                <Typography
+                    variant='h1'
+                    className={styles.fact__title}
+                >
+                    {props.title}
+                </Typography>
+                <Typography
+                    variant='p'
+                    className={styles.fact__description}
+                >
+                    {props.description}
+                </Typography>
+            </div>
             <Typography
                 variant='p'
-                className={styles.fact__description}
+                className={styles.fact__source}
             >
-                {props.description}
+                © {props.source}
             </Typography>
         </div>
     );

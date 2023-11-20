@@ -21,6 +21,7 @@ export const Facts: FC<ComponentProps> = typedMemo(function Facts(props) {
                                 return <Fact
                                     title={fact.title}
                                     description={fact.description}
+                                    source={fact.source}
                                     variant={fact.variant}
                                 />
                             })
@@ -32,6 +33,7 @@ export const Facts: FC<ComponentProps> = typedMemo(function Facts(props) {
                                 return <Fact
                                     title={fact.title}
                                     description={fact.description}
+                                    source={fact.source}
                                     variant={fact.variant}
                                 />
                             })
