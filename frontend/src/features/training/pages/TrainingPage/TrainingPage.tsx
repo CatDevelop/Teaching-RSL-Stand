@@ -134,11 +134,11 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                         <div className={styles.trainingTask__result}>
                             <img src={ResultTraining} alt={"Конец тренировки!"} className={styles.trainingTask__result__image}/>
                             <Typography variant="h2" className={styles.trainingTask__resultTitle}>
-                                Поздравляем!
-                            </Typography>
-                            <Typography variant="p" className={styles.trainingTask__resultDescription}>
                                 Благодарим за участие!
                             </Typography>
+                            {/*<Typography variant="p" className={styles.trainingTask__resultDescription}>*/}
+                            {/*    */}
+                            {/*</Typography>*/}
                             <div className={styles.trainingTask__result__container}>
                                 <BySberAI/>
                                 {/*<ResultCard*/}
