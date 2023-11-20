@@ -21,7 +21,7 @@
 
 .fact__source {
     width: 100%;
-    font-size: calc(var(--font-size-s)*0.8);
+    font-size: calc(var(--font-size-s)*0.65);
     font-weight: var(--font-weight-xl);
     color: var(--on-surface-opacity-color);
     /*margin-top: var(--space-m)*/
