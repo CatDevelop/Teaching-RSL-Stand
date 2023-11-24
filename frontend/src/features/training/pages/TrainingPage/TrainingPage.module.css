@@ -31,7 +31,7 @@
     grid-template-rows: 70px calc(100vh - 140px - var(--page-padding-m) * 2 - var(--space-m) * 2) 70px;
     grid-template-areas:
             "header header header"
-            "b task c"
+            "git task habr"
             "sber buttons e";
     align-items: center ;
     justify-content: center;
@@ -49,6 +49,21 @@
     align-items: center;
     justify-items: center;
     gap: var(--space-m);
+}
+
+.trainingPage__leftInfoContainer {
+    grid-area: git;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.trainingPage__habrQR {
+    grid-area: habr;
+    display: flex;
+    height: 100%;
+    align-items: end;
 }
 
 .trainingTask__logoContainer {
@@ -167,6 +182,12 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-s);
+}
+
+.trainingTask__result__qrContainer {
+    display: flex;
+    gap: var(--space-m);
+    height: 250px;
 }
 
 .trainingTask__result__image {
