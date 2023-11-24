@@ -145,18 +145,9 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                     {
                         currentStep === data.length &&
                         <div className={styles.trainingTask__result}>
-                            <div className={styles.trainingTask__result__qrContainer}>
-                                <QRCode type="git"/>
-                                <QRCode type="habr"/>
-                            </div>
-                            {/*<img src={ResultTraining} alt={"Конец тренировки!"}*/}
-                            {/*     className={styles.trainingTask__result__image}/>*/}
                             <Typography variant="h2" className={styles.trainingTask__resultTitle}>
                                 Благодарим за участие!
                             </Typography>
-                            {/*<Typography variant="p" className={styles.trainingTask__resultDescription}>*/}
-                            {/*    */}
-                            {/*</Typography>*/}
                             <div className={styles.trainingTask__result__container}>
                                 <BySberAI/>
                                 {/*<ResultCard*/}
@@ -165,6 +156,17 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                                 {/*    content={`${getTaskResult()}%`}*/}
                                 {/*    className={styles.trainingTask__resultCard}/>*/}
                             </div>
+                            <div className={styles.trainingTask__result__qrContainer}>
+                                <QRCode type="git"/>
+                                <QRCode type="habr"/>
+                            </div>
+                            {/*<img src={ResultTraining} alt={"Конец тренировки!"}*/}
+                            {/*     className={styles.trainingTask__result__image}/>*/}
+
+                            {/*<Typography variant="p" className={styles.trainingTask__resultDescription}>*/}
+                            {/*    */}
+                            {/*</Typography>*/}
+
                         </div>
                     }
                 </div>
