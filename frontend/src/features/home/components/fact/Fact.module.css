@@ -39,7 +39,7 @@
 }
 
 .fact__blue {
-    background: rgba(0, 177, 255, 0.7);
+    background: rgba(0, 177, 255, 1);
 }
 
 .fact__blue .fact__title,
@@ -48,7 +48,7 @@
 }
 
 .fact__grape {
-    background: rgba(145, 82, 173, 0.7);
+    background: rgba(145, 82, 173, 1);
 }
 
 .fact__grape .fact__title,
@@ -57,7 +57,7 @@
 }
 
 .fact__green {
-    background: rgba(0, 236, 200, 0.7);
+    background: rgba(0, 236, 200, 1);
 }
 
 .fact__green .fact__title,
