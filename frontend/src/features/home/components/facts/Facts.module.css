@@ -4,12 +4,14 @@
     from   { left: 0; }
     to { left: -100% }
 }
+
 @keyframes moving2 {
     /*0%   { transform: translate(100%, 0); }*/
     /*100% { transform: translate(-100%, 0); }*/
     from   { left: 100% }
     to { left: 0; }
 }
+
 .facts__shadow {
     width: 100vw;
     height: 100%;
