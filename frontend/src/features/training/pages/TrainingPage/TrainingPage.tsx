@@ -21,6 +21,7 @@ import {socket} from "../../../../core/utils/connectToModal";
 import {BySberAI} from "../../../../components/BySberAI";
 import {useIdle} from "@mantine/hooks";
 import ResultTraining from '../../../../assets/images/ResultTraining.png'
+import {QRCode} from "../../../../components/QR-code";
 
 export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const navigate = useNavigate()
@@ -68,7 +69,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const idle = useIdle(180000, {initialState: false});
 
     useEffect(() => {
-        if(idle)
+        if (idle)
             toAFK()
     }, [idle, toAFK]);
 
@@ -102,7 +103,19 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                     </div>
                 </div>
 
-                {currentStep !== data.length && <BySberAI className={styles.trainingTask__bySberAI}/>}
+                {
+                    currentStep !== data.length &&
+                    <>
+                        <div  className={styles.trainingPage__leftInfoContainer}>
+                            <BySberAI className={styles.trainingTask__bySberAI}/>
+                            <QRCode type="git"/>
+                        </div>
+                        <div className={styles.trainingPage__habrQR}>
+
+                        <QRCode type="habr"/>
+                        </div>
+                    </>
+                }
 
 
                 <div className={styles.trainingTask__taskContainer}>
@@ -132,7 +145,12 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                     {
                         currentStep === data.length &&
                         <div className={styles.trainingTask__result}>
-                            <img src={ResultTraining} alt={"Конец тренировки!"} className={styles.trainingTask__result__image}/>
+                            <div className={styles.trainingTask__result__qrContainer}>
+                                <QRCode type="git"/>
+                                <QRCode type="habr"/>
+                            </div>
+                            {/*<img src={ResultTraining} alt={"Конец тренировки!"}*/}
+                            {/*     className={styles.trainingTask__result__image}/>*/}
                             <Typography variant="h2" className={styles.trainingTask__resultTitle}>
                                 Благодарим за участие!
                             </Typography>
@@ -153,11 +171,11 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
                 <div className={styles.trainingTask__buttonsContainer}>
                     {
-                         //currentStep <= data.length - 1 && !isDoneTask &&
-                         //<div className={styles.trainingTask__bySberAI}>
-                             //<BySberAI/>
-                         //</div>
-                     }
+                        //currentStep <= data.length - 1 && !isDoneTask &&
+                        //<div className={styles.trainingTask__bySberAI}>
+                        //<BySberAI/>
+                        //</div>
+                    }
                     {
                         currentStep >= 0 && currentStep <= data.length - 1 && !isDoneTask && !isNotStartModel &&
                         <Button
