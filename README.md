@@ -32,4 +32,4 @@ npm run start
 ![Theory](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/kmu/frontend/src/assets/images/Demo2.png "Teaching-RSL")
 ![Practice](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/kmu/frontend/src/assets/images/Demo3.png "Teaching-RSL")
 ![Result](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/kmu/frontend/src/assets/images/Demo4.png "Teaching-RSL")
-![Training](https://github.com/CatDevelop/Teaching-RSL/blob/kmu/src/assets/images/Demo5.png "Teaching-RSL")
+![Training](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/kmu/src/assets/images/Demo5.png "Teaching-RSL")
