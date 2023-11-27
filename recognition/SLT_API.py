@@ -110,7 +110,7 @@ def inference(model, frame_queue, result_queue, sid):
                     sio.emit("send_not_normalize_text", json.dumps(results['labels']), room=sid)
                 elif sign_res[-1] != label:
                     sio.emit("send_not_normalize_text", json.dumps(results['labels']), room=sid)
-                    
+
         model_fps = 1 / (time.time() - cur_fps_time)
 
 
@@ -161,10 +161,10 @@ def data(sid, data):
     frame = np.frombuffer(image_bytes, dtype=np.uint8)
     image = cv2.imdecode(frame, -1)
     users[sid][0].append(np.array(image[:, :, ::-1]))
-    
-    
+
+
 def create_server():
-    webbrowser.open("https://pincode-project-localhost.netlify.app")
+#     webbrowser.open("https://pincode-project-localhost.netlify.app")
     app.run(host="0.0.0.0")
 
 

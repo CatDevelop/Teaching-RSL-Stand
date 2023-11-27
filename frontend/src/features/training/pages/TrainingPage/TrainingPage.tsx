@@ -191,7 +191,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                             <Button
                                 size={'lg'}
                                 color="primary"
-                                onClick={toMainPage}
+                                onClick={toAFK}
                             >
                                 В главное меню
                             </Button>
