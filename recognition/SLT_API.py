@@ -1,6 +1,6 @@
-import argparse
 import base64
 import json
+import logging
 import os
 import time
 from collections import deque
@@ -16,27 +16,33 @@ from model import Predictor
 import gevent
 from engineio.async_drivers import gevent
 from engineio.async_drivers import threading
-
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
-
-# Setting up the WebSocket server using Socket.IO
-sio = socketio.Server(cors_allowed_origins="*", async_mode='threading')
+import webbrowser
+sio = socketio.Server(cors_allowed_origins="*", async_mode="threading")
 app = Flask(__name__)
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 app.wsgi_app = socketio.WSGIApp(sio, app.wsgi_app)
 
 args = {
-    "config_path": "static/config.json",
-    "device": "cpu",
+    "config_path": "config.json",
     "camera_id": 0,
     "sample_length": 32,
     "drawing_fps": 20,
     "inference_fps": 4,
-    "openvino": False
+    "openvino": True,
+    "topk": 3,
+    "device": "CPU",
+    "provider": "OpenVINOExecutionProvider",
 }
 
-
+frame_queue = deque(maxlen=32)
 sign_res = []
+
+room_id = 0
+
 users = {}
+
 model = ""
 
 
@@ -48,14 +54,17 @@ def init_model(config_path):
         raise FileNotFoundError(f"Configuration file not found at path: {config_path}")
     except json.JSONDecodeError:
         raise ValueError(f"Error decoding the configuration file: {config_path}")
-
     try:
         cfg = OmegaConf.create(
             {
-                "path_to_model": 'S3D.onnx',
-                "path_to_class_list": 'RSL_class_list.txt',
-                "threshold": 0.7,
-                "topk": 1,
+                "openvino": True,
+                "threshold": 0.8,
+                "topk": 3,
+                "path_to_class_list": "RSL_class_list.txt",
+                "sample-length": 32,
+                "device": "CPU",
+                "provider": "OpenVINOExecutionProvider",
+                "path_to_model": "S3D.onnx"
             }
         )
         model = Predictor(cfg)
@@ -78,13 +87,6 @@ def inference(model, frame_queue, result_queue, sid):
 
         cur_fps_time = time.time()
 
-        if (time.time() - last_sign_time > 3 and len(sign_res) > 1) or len(sign_res) > 10:
-            not_normalize_text = ' '.join(sign_res)
-
-            print(not_normalize_text, sid)
-            last_sign_time = time.time()
-            sign_res.clear()
-
         if len(frame_queue) >= args["sample_length"]:
             cur_windows = list(frame_queue)
         else:
@@ -95,34 +97,27 @@ def inference(model, frame_queue, result_queue, sid):
         if results:
             result_queue.put(results)
             print(results)
-            label = results['labels'][0]
-            if label == 'он/она/оно/они':
-                label = 'он'
-            if label == 'вы/твой/ваш':
-                label = 'вы'
-            if label == 'ты':
-                label = 'ты/тебя'
-            print(label)
+            for i in range(len(results['labels'])):
+                if results['labels'][i] == 'он/она/оно/они':
+                    results['labels'][i] = 'он'
+                if results['labels'][i] == 'вы/твой/ваш':
+                    results['labels'][i] = 'вы'
+                if results['labels'][i] == 'ты':
+                    results['labels'][i] = 'ты/тебя'
 
-            if label != 'нет жеста':
+            if results['labels'][0] != 'нет жеста':
                 if len(sign_res) == 0:
-                    sign_res.append(label)
-                    last_sign_time = time.time()
-                    sio.emit("send_not_normalize_text", label, room=sid)
+                    sio.emit("send_not_normalize_text", json.dumps(results['labels']), room=sid)
                 elif sign_res[-1] != label:
-                    sign_res.append(label)
-                    last_sign_time = time.time()
-                    sio.emit("send_not_normalize_text", label, room=sid)
-
-            # last_sign_time = time.time()
+                    sio.emit("send_not_normalize_text", json.dumps(results['labels']), room=sid)
+                    
         model_fps = 1 / (time.time() - cur_fps_time)
 
 
 def main():
-    global model
+    global frame_queue, model
     model = init_model('config.json')
     cam_disp = {'cam': None}
-
     with ThreadPoolExecutor(max_workers=2) as executor:
         executor.submit(create_server)
 
@@ -133,11 +128,12 @@ def main():
         if cv2.waitKey(1) == ord('q'):
             break
 
-
 @sio.event
 def connect(sid, environ):
-    global users, model
+    global room_id, users, model
     print("Client connected:", sid)
+
+    room_id = sid
 
     if sid not in users.keys():
         users[sid] = []
@@ -146,16 +142,14 @@ def connect(sid, environ):
         users[sid].append(Thread(target=inference, args=(model, users[sid][0], users[sid][1], sid), daemon=True))
         users[sid].append(False)
         users[sid][2].start()
-    print(users)
 
 
 @sio.event
 def disconnect(sid):
-    global users, model
-    print("Disconnected:", sid)
+    global room_id, users, model
+    print("Client disconnected:", sid)
     users[sid][0].clear()
     users[sid][3] = True
-    print(users)
 
 
 # Socket.IO event handler: Received video frame data from the client
@@ -167,12 +161,11 @@ def data(sid, data):
     frame = np.frombuffer(image_bytes, dtype=np.uint8)
     image = cv2.imdecode(frame, -1)
     users[sid][0].append(np.array(image[:, :, ::-1]))
-    print(sid)
-
-
-# Function to create the WebSocket server
+    
+    
 def create_server():
-    app.run()
+    webbrowser.open("https://pincode-project-localhost.netlify.app")
+    app.run(host="0.0.0.0")
 
 
 if __name__ == '__main__':

@@ -46,14 +46,10 @@
 
 .afkPage__tap {
     font-family: var(--main-font);
-    font-weight: var(--font-weight-xl);
-    /*padding: calc(var(--space-m) * 0.75) var(--space-xl);*/
+    font-weight: var(--font-weight-l);
     height: auto;
     line-height: 1.5;
-    /*background-color: var(--on-surface-color);*/
     color: var(--on-surface-color);
-    /*border-color:var(--primary-color) solid 2px;*/
-    border-radius: calc(var(--border-radius-m)*2);
     font-size: 32px;
     z-index: 100;
 }

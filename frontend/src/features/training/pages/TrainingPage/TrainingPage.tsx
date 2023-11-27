@@ -29,6 +29,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const [data] = useState(shuffleArray(StartThemeWords));
     const [signRecognizeText, setSignRecognizeText] = useState<string[]>([]);
+    const [signRecognizeResult, setSignRecognizeResult] = useState<number>(0);
     const [exitModalIsOpen, setExitModalIsOpen] = useState(false);
     const [countSkippedWords, setCountSkippedWords] = useState(0);
     const [isDoneTask, setIsDoneTask] = useState(false);
@@ -38,6 +39,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const getTaskResult = () => 100 - Math.floor((countSkippedWords) / data.length * 100)
     const clearRecognizeText = () => setSignRecognizeText([])
+    const clearRecognizeResult = useCallback(() => setSignRecognizeResult(0),[setSignRecognizeResult])
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
     const toMainPage = useCallback(() => navigate("/home"), [navigate])
@@ -46,14 +48,16 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const skip = useCallback(() => {
         setCurrentStep(currentStep => currentStep + 1)
         setCountSkippedWords(count => count + 1);
+        clearRecognizeResult()
         clearRecognizeText()
-    }, [setCountSkippedWords, setCurrentStep]);
+    }, [setCountSkippedWords, setCurrentStep, clearRecognizeResult]);
 
     const next = useCallback(() => {
         setCurrentStep(currentStep => currentStep + 1)
         setIsDoneTask(false);
+        clearRecognizeResult()
         clearRecognizeText()
-    }, [setCurrentStep, setIsDoneTask])
+    }, [setCurrentStep, setIsDoneTask, clearRecognizeResult])
 
     useEffect(() => {
         if (currentStep === data.length && countSkippedWords !== data.length)
@@ -131,6 +135,10 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                             onSuccess={() => setIsDoneTask(true)}
                             setIntervalID={setIntervalID}
                             intervalID={intervalID}
+
+                            signRecognizeResult={signRecognizeResult}
+                            setSignRecognizeResult={setSignRecognizeResult}
+
                             signRecognizeText={signRecognizeText}
                             setSignRecognizeText={setSignRecognizeText}
                         />
@@ -150,34 +158,16 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                             </Typography>
                             <div className={styles.trainingTask__result__container}>
                                 <BySberAI/>
-                                {/*<ResultCard*/}
-                                {/*    title="Результат"*/}
-                                {/*    iconUrl={Result}*/}
-                                {/*    content={`${getTaskResult()}%`}*/}
-                                {/*    className={styles.trainingTask__resultCard}/>*/}
                             </div>
                             <div className={styles.trainingTask__result__qrContainer}>
                                 <QRCode type="git"/>
                                 <QRCode type="habr"/>
                             </div>
-                            {/*<img src={ResultTraining} alt={"Конец тренировки!"}*/}
-                            {/*     className={styles.trainingTask__result__image}/>*/}
-
-                            {/*<Typography variant="p" className={styles.trainingTask__resultDescription}>*/}
-                            {/*    */}
-                            {/*</Typography>*/}
-
                         </div>
                     }
                 </div>
 
                 <div className={styles.trainingTask__buttonsContainer}>
-                    {
-                        //currentStep <= data.length - 1 && !isDoneTask &&
-                        //<div className={styles.trainingTask__bySberAI}>
-                        //<BySberAI/>
-                        //</div>
-                    }
                     {
                         currentStep >= 0 && currentStep <= data.length - 1 && !isDoneTask && !isNotStartModel &&
                         <Button

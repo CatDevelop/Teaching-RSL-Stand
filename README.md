@@ -1,6 +1,8 @@
-# Сервис для изучения русской жестовой речи (Демонстрационный вариант)
+# Демонстрационный вариант cервиса для изучения русской жестовой речи
 Проект выполнен в рамках дисциплины "Проектный практикум" студентов 2-3 курсов Уральского федерального 
 университета имени первого Президента России Б. Н. Ельцина.
+
+Специально для III Конгресса молодых учённых 2023
 
 ## Возможности стенда:
 1. Изучение жестов: теория + закрепление практическими заданиями
@@ -26,8 +28,8 @@ npm run start
 ```
 
 ## Иллюстрации
-![Home](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/main/frontend/src/assets/images/Demo1.png "Teaching-RSL")
-![Theory](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/main/frontend/src/assets/images/Demo2.png "Teaching-RSL")
-![Practice](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/main/frontend/src/assets/images/Demo3.png "Teaching-RSL")
-![Result](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/main/frontend/src/assets/images/Demo4.png "Teaching-RSL")
-![Training](https://github.com/CatDevelop/Teaching-RSL/blob/stand/src/assets/images/Demo5.png "Teaching-RSL")
+![Home](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/kmu/frontend/src/assets/images/Demo1.png "Teaching-RSL")
+![Theory](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/kmu/frontend/src/assets/images/Demo2.png "Teaching-RSL")
+![Practice](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/kmu/frontend/src/assets/images/Demo3.png "Teaching-RSL")
+![Result](https://github.com/CatDevelop/Teaching-RSL-Stand/blob/kmu/frontend/src/assets/images/Demo4.png "Teaching-RSL")
+![Training](https://github.com/CatDevelop/Teaching-RSL/blob/kmu/src/assets/images/Demo5.png "Teaching-RSL")

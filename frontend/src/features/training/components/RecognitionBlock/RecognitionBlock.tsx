@@ -17,6 +17,10 @@ type Props = ComponentProps & Readonly<{
     onSuccess: () => void;
     intervalID: TimeoutId | undefined;
     setIntervalID: Dispatch<SetStateAction<TimeoutId | undefined>>;
+
+    signRecognizeResult: number
+    setSignRecognizeResult: Dispatch<SetStateAction<number>>
+
     signRecognizeText: string[]
     setSignRecognizeText: Dispatch<SetStateAction<string[]>>
 }>
@@ -36,9 +40,25 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
     }, [])
 
     const onReceiveText = useCallback((text: string) => {
-        console.log(text)
-        props.setSignRecognizeText([...props.signRecognizeText, text.toLowerCase()])
-    }, [props.setSignRecognizeText, props.signRecognizeText, props])
+        let results: string[] = Object.values(JSON.parse(text))
+        console.log(results)
+        if (props.signRecognizeResult === 1)
+            return;
+
+        if(results[1].toLowerCase() === props.word.recognitionText.toLowerCase())
+            props.setSignRecognizeResult(2)
+        else if(results[0].toLowerCase() === props.word.recognitionText.toLowerCase())
+            props.setSignRecognizeResult(1)
+        else
+            props.setSignRecognizeResult(3)
+
+        // let word = results.includes(props.word.text) ? props.word.text.toLowerCase() : results[0].toLowerCase()
+        // if(props.signRecognizeText.at(-1) !== word)
+        // props.setSignRecognizeText([
+        //     ...props.signRecognizeText,
+        //     word
+        // ])
+    }, [props])
 
     useEffect(() => {
         socket.on("send_not_normalize_text", onReceiveText);
@@ -88,10 +108,8 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
 
     useEffect(() => {
         socket.connect()
-
         socket.on("connect", onConnectToModal);
         socket.on("disconnect", onDisconnectFromModal);
-        // socket.on("send_not_normalize_text", onReceiveText);
 
         videoElement = document.getElementById('webcam');
         if (videoElement)
@@ -100,7 +118,6 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
         return () => {
             socket.off("connect", onConnectToModal);
             socket.off("disconnect", onDisconnectFromModal);
-            // socket.off("send_not_normalize_text", onReceiveText);
             socket.disconnect();
             videoElement.removeEventListener('play', addFrameSender);
             stopAllTracks(videoElement.srcObject)
@@ -112,9 +129,17 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
     }, [props.intervalID])
 
     useEffect(() => {
-        if (props.signRecognizeText.includes(props.word.recognitionText.toLowerCase()))
+        if (props.signRecognizeResult === 1)
             props.onSuccess()
-    }, [props.signRecognizeText])
+    }, [props])
+
+    useEffect(() => {
+        if (props.signRecognizeResult === 2 || props.signRecognizeResult === 3)
+            setTimeout(() => {
+                props.setSignRecognizeResult(0)
+            }, 3000)
+    }, [props])
+
 
 
     useEffect(() => {
@@ -145,11 +170,11 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
 
             <div className={styles.recognitionBlock__recognizedContainer}>
                 <Typography variant="h3" className={styles.recognitionBlock__recognized}>
-                    Распознанные жесты
+                    Ваш результат
                 </Typography>
                 <div className={clsx(styles.recognitionBlock__recognizedWords)}>
                     {
-                        props.signRecognizeText.length === 0 &&
+                        props.signRecognizeResult === 0 &&
                         <Typography
                             variant="span"
                             className={clsx(styles.recognitionBlock__recognizedWord__loading)}
@@ -157,21 +182,60 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                             Распознаю{".".repeat(loading)}
                         </Typography>
                     }
+
                     {
-                        props.signRecognizeText.slice(-6).map(word => {
-                            return (
-                                <Typography
-                                    variant="span"
-                                    className={clsx(
-                                        styles.recognitionBlock__recognizedWord,
-                                        word.toLowerCase() === props.word.recognitionText.toLowerCase() && styles.recognitionBlock__rightWord
-                                    )}
-                                >
-                                    {word}
-                                </Typography>
-                            )
-                        })
+                        props.signRecognizeResult === 1 &&
+                        <Typography
+                            variant="span"
+                            className={clsx(
+                                styles.recognitionBlock__resultWord,
+                                styles.recognitionBlock__resultWord_right
+                            )}
+                        >
+                            Вы верно показали жест!
+                        </Typography>
                     }
+
+                    {
+                        props.signRecognizeResult === 2 &&
+                        <Typography
+                            variant="span"
+                            className={clsx(
+                                styles.recognitionBlock__resultWord,
+                                styles.recognitionBlock__resultWord_someRight
+                            )}
+                        >
+                            Почти получилось, попробуйте ещё раз
+                        </Typography>
+                    }
+
+                    {
+                        props.signRecognizeResult > 2 &&
+                        <Typography
+                            variant="span"
+                            className={clsx(
+                                styles.recognitionBlock__resultWord,
+                                styles.recognitionBlock__resultWord_wrong
+                            )}
+                        >
+                            Неверный жест! Попробуйте ещё раз
+                        </Typography>
+                    }
+                    {/*{*/}
+                    {/*    props.signRecognizeText.slice(-6).map(word => {*/}
+                    {/*        return (*/}
+                    {/*            <Typography*/}
+                    {/*                variant="span"*/}
+                    {/*                className={clsx(*/}
+                    {/*                    styles.recognitionBlock__recognizedWord,*/}
+                    {/*                    word.toLowerCase() === props.word.recognitionText.toLowerCase() && styles.recognitionBlock__rightWord*/}
+                    {/*                )}*/}
+                    {/*            >*/}
+                    {/*                {word}*/}
+                    {/*            </Typography>*/}
+                    {/*        )*/}
+                    {/*    })*/}
+                    {/*}*/}
                 </div>
             </div>
         </Card>

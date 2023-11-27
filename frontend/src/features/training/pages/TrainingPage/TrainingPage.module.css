@@ -200,7 +200,7 @@
     color: var(--primary-color) !important;
     font-size: var(--font-size-xxl) !important;
     text-align: center;
-    font-weight: var(--font-weight-xl);
+    font-weight: var(--font-weight-l);
 }
 
 .trainingTask__resultDescription {

@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: var(--space-m);
 }
 
 .qrcode__image {
@@ -12,5 +13,6 @@
 .qrcode__description {
     font-size: var(--font-size-xs);
     line-height: var(--font-size-xs);
+    font-weight: var(--font-weight-m);
     text-align: center;
 }

@@ -51,6 +51,6 @@
     border-radius: 100%;
     background: var(--dark-on-surface-color);
     font-family: var(--main-font);
-    font-weight: var(--font-weight-xl);
+    font-weight: var(--font-weight-l);
     color: var(--text-color);
 }

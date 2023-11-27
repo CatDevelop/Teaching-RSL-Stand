@@ -9,7 +9,7 @@
     }
 }
 
-.startLearning {
+.startTraining {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,14 +21,14 @@
     animation: showDown 0.5s ease-in;
 }
 
-.startLearning__title {
+.startTraining__title {
     font-family: var(--main-font);
     font-size: var(--font-size-xl);
     text-align: center;
     line-height: var(--font-size-xl);
 }
 
-.startLearning__description {
+.startTraining__description {
     font-family: var(--main-font);
     font-size: var(--font-size-l);
     text-align: center;
