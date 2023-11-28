@@ -25,7 +25,7 @@ app.wsgi_app = socketio.WSGIApp(sio, app.wsgi_app)
 
 CONFIG_PATH = "config.json"
 SAMPLE_LENGTH = 32
-ROTATE_180_FLAG = False
+ROTATE_180_FLAG = True
 
 frame_queue = deque(maxlen=32)
 sign_res = []
@@ -113,17 +113,14 @@ def disconnect(sid):
 # Socket.IO event handler: Received video frame data from the client
 @sio.on("data")
 def data(sid, data):
-    global users
+    global users, ROTATE_180_FLAG
     image_data = data.split(",")[1]
     image_bytes = base64.b64decode(image_data)
     frame = np.frombuffer(image_bytes, dtype=np.uint8)
     image = cv2.imdecode(frame, -1)
     # if camera rotated to 180 degrees
     if ROTATE_180_FLAG:
-        try:
-            image = cv2.rotate(image, 180)
-        except:
-            print("egog")
+        image = cv2.rotate(image, cv2.ROTATE_180)
     users[sid][0].append(np.array(image[:, :, ::-1]))
 
 
