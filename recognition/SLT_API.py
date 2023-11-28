@@ -25,7 +25,7 @@ app.wsgi_app = socketio.WSGIApp(sio, app.wsgi_app)
 
 CONFIG_PATH = "config.json"
 SAMPLE_LENGTH = 32
-ROTATE_180 = False
+ROTATE_180_FLAG = True
 
 frame_queue = deque(maxlen=32)
 sign_res = []
@@ -119,8 +119,11 @@ def data(sid, data):
     frame = np.frombuffer(image_bytes, dtype=np.uint8)
     image = cv2.imdecode(frame, -1)
     # if camera rotated to 180 degrees
-    if ROTATE_180:
-        image = cv2.rotate(image, cv2.ROTATE_180)
+    if ROTATE_180_FLAG:
+        try:
+            image = cv2.rotate(image, 180)
+        except:
+            print("egog")
     users[sid][0].append(np.array(image[:, :, ::-1]))
 
 
