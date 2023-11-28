@@ -25,7 +25,7 @@ app.wsgi_app = socketio.WSGIApp(sio, app.wsgi_app)
 
 CONFIG_PATH = "config.json"
 SAMPLE_LENGTH = 32
-ROTATE_180_FLAG = True
+ROTATE_180_FLAG = False
 
 frame_queue = deque(maxlen=32)
 sign_res = []
