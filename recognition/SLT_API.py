@@ -36,7 +36,7 @@ model = None
 
 def init_model(config_path):
     try:
-        with open(CONFIG_PATH, "r") as read_content:
+        with open(config_path, "r") as read_content:
             config = json.load(read_content)
     except FileNotFoundError:
         raise FileNotFoundError(f"Configuration file not found at path: {config_path}")
