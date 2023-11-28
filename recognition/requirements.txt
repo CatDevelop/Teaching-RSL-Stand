@@ -1,7 +1,12 @@
 onnx==1.14.0
-onnxruntime==1.15.1
+onnxruntime==1.16.0
+einops==0.6.1
 omegaconf==2.3.0
 opencv-python==4.8.0.74
 tqdm==4.65.0
-numpy==1.25.1
-einops==0.6.1
+flask~=3.0.0
+python-socketio==5.9.0
+cv==1.0.0
+onnxruntime-openvino==1.16.0
+gevent==23.9.1
+openvino==2023.1
