@@ -52,14 +52,14 @@ def init_model(config_path):
 
 
 def inference(model, frame_queue, result_queue, sid):
-    global args, users
+    global users
 
     while True:
         if users[sid][3]:
             users.pop(sid, None)
             break
 
-        if len(frame_queue) >= args["sample_length"]:
+        if len(frame_queue) >= SAMPLE_LENGTH:
             cur_windows = list(frame_queue)
         else:
             continue
@@ -74,7 +74,7 @@ def inference(model, frame_queue, result_queue, sid):
 
 def main():
     global frame_queue, model
-    model = init_model('config.json')
+    model = init_model(CONFIG_PATH)
     cam_disp = {'cam': None}
     with ThreadPoolExecutor(max_workers=2) as executor:
         executor.submit(create_server)
