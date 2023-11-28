@@ -1,4 +1,5 @@
 import base64
+import datetime
 import json
 import logging
 import os
@@ -57,14 +58,14 @@ def init_model(config_path):
     try:
         cfg = OmegaConf.create(
             {
-                "openvino": True,
-                "threshold": 0.8,
-                "topk": 3,
-                "path_to_class_list": "RSL_class_list.txt",
-                "sample-length": 32,
-                "device": "CPU",
-                "provider": "OpenVINOExecutionProvider",
-                "path_to_model": "S3D.onnx"
+                "openvino": config['openvino'],
+                "threshold": config['threshold'],
+                "topk": config['topk'],
+                "path_to_class_list": config['class_list'],
+                "sample-length": config['sample-length'],
+                "device": config['device'],
+                "provider": config['provider'],
+                "path_to_model": config['model']
             }
         )
         model = Predictor(cfg)
@@ -96,7 +97,7 @@ def inference(model, frame_queue, result_queue, sid):
         results = model.predict(cur_windows)
         if results:
             result_queue.put(results)
-            print(results)
+            print(datetime.datetime.now(), results)
             for i in range(len(results['labels'])):
                 if results['labels'][i] == 'он/она/оно/они':
                     results['labels'][i] = 'он'
@@ -106,11 +107,8 @@ def inference(model, frame_queue, result_queue, sid):
                     results['labels'][i] = 'ты/тебя'
 
             if results['labels'][0] != 'нет жеста':
-                if len(sign_res) == 0:
-                    sio.emit("send_not_normalize_text", json.dumps(results['labels']), room=sid)
-                elif sign_res[-1] != label:
-                    sio.emit("send_not_normalize_text", json.dumps(results['labels']), room=sid)
-
+            	sio.emit("send_not_normalize_text", json.dumps(results['labels']), room=sid)
+            	
         model_fps = 1 / (time.time() - cur_fps_time)
 
 
