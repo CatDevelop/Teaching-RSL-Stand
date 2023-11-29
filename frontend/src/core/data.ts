@@ -44,6 +44,30 @@ export const StartThemeWords: Word[] = [
     },
 ]
 
+export const StartThemeWordsRestricted: Word[] = [
+    {
+        id: 0,
+        text: "Привет",
+        recognitionText: 'привет',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/Hi.mp4",
+        gifSource: HelloSignVideo,
+    },
+    {
+        id: 1,
+        text: "Друг",
+        recognitionText: 'друг',
+        gifSource: FriendSignVideo,
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/Friend.mp4",
+    },
+    {
+        id: 2,
+        text: "Любить",
+        recognitionText: 'любовь',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/Love.mp4",
+        gifSource: LoveSignVideo,
+    }
+]
+
 export const StartThemeTasks: taskType[] = [
     "SelectWord",
     "SelectGIFByWord",

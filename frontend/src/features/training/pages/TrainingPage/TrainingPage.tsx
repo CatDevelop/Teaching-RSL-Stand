@@ -12,7 +12,7 @@ import {PageContent} from "../../../../components/PageContent";
 import {RecognitionBlock} from "../../components/RecognitionBlock";
 import {getFireworks} from "../../../../core/utils/explodeFireworks";
 import {ExitConfirmation} from "../../../../components/ExitConfirmation";
-import {StartThemeWords} from "../../../../core/data";
+import {StartThemeWords, StartThemeWordsRestricted} from "../../../../core/data";
 import {shuffleArray} from "../../../../core/utils/shuffleArray";
 import {TimeoutId} from "@reduxjs/toolkit/dist/query/core/buildMiddleware/types";
 import {StartTraining} from "../../components/StartTraining/StartTraining";
@@ -20,14 +20,14 @@ import {ModelWarning} from "../../components/ModelWarning/ModelWarning";
 import {socket} from "../../../../core/utils/connectToModal";
 import {BySberAI} from "../../../../components/BySberAI";
 import {useIdle} from "@mantine/hooks";
-import ResultTraining from '../../../../assets/images/ResultTraining.png'
 import {QRCode} from "../../../../components/QR-code";
+import {IS_RESTRICT_MODE} from "../../../../core/config";
 
 export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const navigate = useNavigate()
     const fireworks = getFireworks(3000)
 
-    const [data] = useState(shuffleArray(StartThemeWords));
+    const [data] = useState(shuffleArray(IS_RESTRICT_MODE ? StartThemeWordsRestricted : StartThemeWords));
     const [signRecognizeText, setSignRecognizeText] = useState<string[]>([]);
     const [signRecognizeResult, setSignRecognizeResult] = useState<number>(0);
     const [exitModalIsOpen, setExitModalIsOpen] = useState(false);
