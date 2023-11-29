@@ -84,7 +84,6 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                 <div className={styles.trainingTask__header}>
                     <div className={styles.trainingTask__logoContainer} onClick={openExitModal}>
                         <img src={Logo} rel="preload" alt={"Логотип"} width={300}/>
-                        {/*<BySberAI/>*/}
                     </div>
                     {
                         currentStep !== -1 && currentStep !== data.length && !isNotStartModel &&
@@ -106,22 +105,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                         }
                     </div>
                 </div>
-
-                {
-                    currentStep !== data.length &&
-                    <>
-                        <div  className={styles.trainingPage__leftInfoContainer}>
-                            <BySberAI className={styles.trainingTask__bySberAI}/>
-                            <QRCode type="git"/>
-                        </div>
-                        <div className={styles.trainingPage__habrQR}>
-
-                        <QRCode type="habr"/>
-                        </div>
-                    </>
-                }
-
-
+                
                 <div className={styles.trainingTask__taskContainer}>
                     {
                         currentStep === -1 &&

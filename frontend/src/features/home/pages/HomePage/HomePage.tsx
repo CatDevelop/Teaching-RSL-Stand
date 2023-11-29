@@ -1,37 +1,27 @@
-import React, {FC, useCallback, useEffect} from "react";
+import React, {FC, useCallback} from "react";
 import styles from "./HomePage.module.css";
 import {useNavigate} from "react-router-dom";
 import Logo from "../../../../assets/images/LogoStand.svg";
-import startLearningSVG from '../../../../assets/images/StartLearning.png'
-import startTrainingSVG from '../../../../assets/images/StartTraining.png'
+import startLearningSVG from '../../../../assets/images/StartLearning.svg'
+import startTrainingSVG from '../../../../assets/images/StartTraining.svg'
 import {Typography} from "../../../../components/Typography";
 import {Card} from "../../../../components/Card";
 import {typedMemo} from "../../../../core/utils/typedMemo";
-import {useIdle} from '@mantine/hooks';
 
 export const HomePage: FC = typedMemo(function HomePage() {
     const navigate = useNavigate();
 
     const toLearning = useCallback(() => navigate("/learning"), [navigate])
-    const toAFK = useCallback(() => navigate("/"), [navigate])
     const toTraining = useCallback(() => navigate("/training"), [navigate])
-
-    const idle = useIdle(120000, {initialState: false});
-
-    useEffect(() => {
-        if(idle)
-            toAFK()
-    }, [idle, toAFK]);
 
     return (
         <div className={styles.homePage}>
-            {/*<PreloadGIFs/>*/}
-            <img className={styles.homePage__logo} src={Logo} alt={"Логотип сервиса \"Изучение русского жестового языка\""}/>
+            <img src={Logo} alt={"Логотип сервиса \"Изучение русского жестового языка\""} width={400}/>
             <div className={styles.homePage__links}>
                 <div onClick={toLearning}>
                     <Card className={styles.homePage__buttonContainer}>
                         <div className={styles.homePage__button__imageContainer}>
-                            <img className={styles.homePage__logo} src={startLearningSVG} rel="preload" alt="Перейти к обучению"/>
+                            <img src={startLearningSVG} rel="preload" alt="Перейти к обучению"/>
                         </div>
                         <div className={styles.homePage__button__typographyContainer}>
                             <Typography variant="h2" className={styles.homePage__button__title}>
@@ -55,7 +45,7 @@ export const HomePage: FC = typedMemo(function HomePage() {
                                 Проверить свои знания
                             </Typography>
                             <Typography variant="p" className={styles.homePage__button__description}>
-                                Проверьте своё умение общаться на РЖЯ с нашей моделью распознавания
+                                Проверьте своё умение общаться на РЖЯ<br/> с нашей моделью распознавания
                             </Typography>
                         </div>
                     </Card>

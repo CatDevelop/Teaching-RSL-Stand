@@ -12,18 +12,12 @@
 .homePage {
     background: var(--service-backround-color);
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     gap: var(--space-l);
-    padding: var(--space-xl);
-    align-items: center;
-    display: grid;
-    grid-template-rows: 90px 1fr 90px;
+    padding: var(--space-m) var(--space-xl);
     justify-content: center;
-}
-
-.homePage__logo {
-    justify-self: center;
-    align-self: center;
-    width: 400px;
+    align-items: center;
 }
 
 .homePage__buttons {
@@ -48,11 +42,11 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-s);
-    padding: var(--space-l) !important; /* Переопределяю отступы компонента BySberAI */
+    padding: var(--space-l) !important; /* Переопределяю отступы компонента Card */
     height: 100%;
     width: 100%;
-    max-width: 550px !important; /* Переопределяю размер компонента BySberAI */
-    max-height: 525px !important; /* Переопределяю размер компонента BySberAI */
+    max-width: 550px !important; /* Переопределяю размер компонента Card */
+    max-height: 525px !important; /* Переопределяю размер компонента Card */
     box-sizing: border-box;
     transition: all 0.2s ease-in;
     cursor: pointer;
@@ -99,7 +93,6 @@
     max-height: 100px;
     width: 100%;
     box-sizing: border-box;
-
 }
 
 .homePage__logos {
@@ -108,7 +101,7 @@
     justify-content: space-around;
     align-items: center;
     max-width: 1080px;
-    max-height: 85px !important; /* Переопределяю размер компонента BySberAI */
+    max-height: 85px !important; /* Переопределяю размер компонента Card */
     width: 100%;
     box-sizing: border-box;
 }
@@ -121,17 +114,18 @@
 
 @media (max-height: 800px)  {
     .homePage__buttonContainer {
-        max-width: 550px !important; /* Переопределяю размер компонента BySberAI */
-        max-height: 450px !important; /* Переопределяю размер компонента BySberAI */
+        max-width: 550px !important; /* Переопределяю размер компонента Card */
+        max-height: 450px !important; /* Переопределяю размер компонента Card */
     }
 
     .homePage__button__imageContainer {
         display: flex;
         justify-content: center;
-        /*max-height: 280px;*/
+        max-height: 280px;
     }
 
     .homePage__logosContainer {
         max-width: 930px;
     }
 }
+

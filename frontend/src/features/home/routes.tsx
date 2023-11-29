@@ -1,12 +1,12 @@
 import React from 'react';
 import {RouteObject} from "react-router-dom";
-import {AFKFactsPage} from "./pages/AFKFactsPage";
+import {AFKPage} from "./pages/AFKPage";
 import {HomePage} from "./pages/HomePage";
 
 export const homeRoutes: RouteObject[] = [
     {
         path: '',
-        element: <AFKFactsPage/>
+        element: <AFKPage/>
     },
     {
         path: 'home',

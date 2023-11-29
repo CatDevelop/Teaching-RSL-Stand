@@ -37,29 +37,30 @@
     white-space: pre-line;
 }
 
+
 .fact__blue {
-    background: rgba(0, 177, 255, 0.6);
+    background: rgba(169, 222, 249, 1);
 }
 
 .fact__blue .fact__title,
 .fact__blue .fact__description {
-    color: white;
+    color: black;
 }
 
 .fact__grape {
-    background: rgba(145, 82, 173, 0.6);
+    background: rgba(228, 193, 249, 1);
 }
 
 .fact__grape .fact__title,
 .fact__grape .fact__description {
-    color: white;
+    color: black;
 }
 
 .fact__green {
-    background: rgba(0, 236, 200, 0.4);
+    background: rgba(208, 244, 222, 1);
 }
 
 .fact__green .fact__title,
 .fact__green .fact__description {
-    color: white;
+    color: black;
 }
