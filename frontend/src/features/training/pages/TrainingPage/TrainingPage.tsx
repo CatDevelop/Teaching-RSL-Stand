@@ -20,8 +20,10 @@ import {ModelWarning} from "../../components/ModelWarning/ModelWarning";
 import {socket} from "../../../../core/utils/connectToModal";
 import {BySberAI} from "../../../../components/BySberAI";
 import {useIdle} from "@mantine/hooks";
-import ResultTraining from '../../../../assets/images/ResultTraining.png'
 import {QRCode} from "../../../../components/QR-code";
+import ResultImage from "../../../../assets/images/ResultTrainingImage.svg";
+import Result from "../../../../assets/images/Result.svg";
+import {ResultCard} from "../../components/ResultCard";
 
 export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const navigate = useNavigate()
@@ -29,7 +31,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const [data] = useState(shuffleArray(StartThemeWords));
     const [signRecognizeText, setSignRecognizeText] = useState<string[]>([]);
-    const [signRecognizeResult, setSignRecognizeResult] = useState<number>(0);
+    const [signRecognizeGrade, setSignRecognizeGrade] = useState<number>(0);
     const [exitModalIsOpen, setExitModalIsOpen] = useState(false);
     const [countSkippedWords, setCountSkippedWords] = useState(0);
     const [isDoneTask, setIsDoneTask] = useState(false);
@@ -37,27 +39,25 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const [currentStep, setCurrentStep] = useState(-1);
     const [isNotStartModel, setIsNotStartModel] = useState(false);
 
-    const getTaskResult = () => 100 - Math.floor((countSkippedWords) / data.length * 100)
     const clearRecognizeText = () => setSignRecognizeText([])
-    const clearRecognizeResult = useCallback(() => setSignRecognizeResult(0),[setSignRecognizeResult])
+    const clearRecognizeGrade = useCallback(() => setSignRecognizeGrade(0), [setSignRecognizeGrade])
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
-    const toMainPage = useCallback(() => navigate("/home"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
 
     const skip = useCallback(() => {
         setCurrentStep(currentStep => currentStep + 1)
         setCountSkippedWords(count => count + 1);
-        clearRecognizeResult()
+        clearRecognizeGrade()
         clearRecognizeText()
-    }, [setCountSkippedWords, setCurrentStep, clearRecognizeResult]);
+    }, [setCountSkippedWords, setCurrentStep, clearRecognizeGrade]);
 
     const next = useCallback(() => {
         setCurrentStep(currentStep => currentStep + 1)
         setIsDoneTask(false);
-        clearRecognizeResult()
+        clearRecognizeGrade()
         clearRecognizeText()
-    }, [setCurrentStep, setIsDoneTask, clearRecognizeResult])
+    }, [setCurrentStep, setIsDoneTask, clearRecognizeGrade])
 
     useEffect(() => {
         if (currentStep === data.length && countSkippedWords !== data.length)
@@ -71,6 +71,13 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     }, []);
 
     const idle = useIdle(180000, {initialState: false});
+    const getTaskResult = useCallback(() => {
+        if (!data) {
+            return 0
+        }
+        return 100 - Math.floor((countSkippedWords) / data.length * 100)
+    }, [data, countSkippedWords])
+
 
     useEffect(() => {
         if (idle)
@@ -105,11 +112,18 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                         }
                     </div>
                 </div>
-                
+
                 <div className={styles.trainingTask__taskContainer}>
                     {
                         currentStep === -1 &&
-                        <StartTraining onStart={() => setCurrentStep(0)}/>
+                        <div className={styles.trainingTask__taskContainer__startContainer}>
+
+                            <div className={styles.trainingTask__taskContainer__startContainer__qr}>
+                                <QRCode type="sber"/>
+                                <QRCode type="sber"/>
+                            </div>
+                            <StartTraining onStart={() => setCurrentStep(0)}/>
+                        </div>
                     }
                     {
                         currentStep >= 0 && currentStep <= data.length - 1 && !isNotStartModel &&
@@ -120,8 +134,8 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                             setIntervalID={setIntervalID}
                             intervalID={intervalID}
 
-                            signRecognizeResult={signRecognizeResult}
-                            setSignRecognizeResult={setSignRecognizeResult}
+                            signRecognizeGrade={signRecognizeGrade}
+                            setSignRecognizeGrade={setSignRecognizeGrade}
 
                             signRecognizeText={signRecognizeText}
                             setSignRecognizeText={setSignRecognizeText}
@@ -137,16 +151,21 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                     {
                         currentStep === data.length &&
                         <div className={styles.trainingTask__result}>
+                            <img
+                                src={ResultImage}
+                                rel="preload"
+                                className={styles.trainingTask__result__image}
+                                alt="Иконка результата"
+                            />
                             <Typography variant="h2" className={styles.trainingTask__resultTitle}>
                                 Благодарим за участие!
                             </Typography>
-                            <div className={styles.trainingTask__result__container}>
-                                <BySberAI/>
-                            </div>
-                            <div className={styles.trainingTask__result__qrContainer}>
-                                <QRCode type="git"/>
-                                <QRCode type="habr"/>
-                            </div>
+                            <ResultCard
+                                title="Результат"
+                                iconUrl={Result}
+                                content={`${getTaskResult()}%`}
+                                className={styles.trainingTask__resultCard}
+                            />
                         </div>
                     }
                 </div>

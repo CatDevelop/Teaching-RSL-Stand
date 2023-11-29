@@ -54,7 +54,7 @@
 
 .recognitionBlock__recognizedWord {
     font-size: var(--font-size-l);
-    font-weight: var(--font-weight-s);
+    font-weight: var(--font-weight-m);
     line-height: var(--font-size-m);
 
     animation: show 0.4s ease-in;

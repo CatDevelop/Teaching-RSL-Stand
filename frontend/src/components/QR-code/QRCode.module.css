@@ -1,5 +1,6 @@
 .qrcode {
-    height: 300px;
+    height: 200px;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,8 +12,8 @@
 }
 
 .qrcode__description {
-    font-size: var(--font-size-xs);
-    line-height: var(--font-size-xs);
+    font-size: var(--font-size-s);
     font-weight: var(--font-weight-m);
     text-align: center;
+    white-space: pre-wrap;
 }

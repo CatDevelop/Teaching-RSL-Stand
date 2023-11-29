@@ -3,11 +3,12 @@ import * as THREE from 'three';
 import {Canvas, useFrame} from '@react-three/fiber';
 
 const colors = [
-    [0, 126, 167],
-    [58, 80, 107],
-    [91, 192, 190],
-    [0, 168, 232],
+    [11, 36, 71],
+    [25, 55, 109],
+    [87, 108, 188],
+    [66, 125, 157],
 ]
+
 const TextureMesh = () => {
     const mesh = useRef(null)
     useFrame(state => {

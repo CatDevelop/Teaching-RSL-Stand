@@ -38,7 +38,7 @@ export const StartThemeWords: Word[] = [
     {
         id: 4,
         text: "Тебя",
-        recognitionText: 'ты/тебя',
+        recognitionText: 'ты',
         // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
         gifSource: YouSignVideo,
     },

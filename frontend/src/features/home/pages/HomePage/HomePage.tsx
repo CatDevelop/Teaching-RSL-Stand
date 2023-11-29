@@ -16,7 +16,7 @@ export const HomePage: FC = typedMemo(function HomePage() {
 
     return (
         <div className={styles.homePage}>
-            <img src={Logo} alt={"Логотип сервиса \"Изучение русского жестового языка\""} width={400}/>
+            <img src={Logo} alt={"Логотип сервиса \"Изучение русского жестового языка\""} width={500}/>
             <div className={styles.homePage__links}>
                 <div onClick={toLearning}>
                     <Card className={styles.homePage__buttonContainer}>

@@ -1,5 +1,4 @@
-import React, {FC, useCallback, useMemo} from "react";
-import {Progress} from "@nextui-org/react";
+import React, {FC} from "react";
 import {typedMemo} from "../../core/utils/typedMemo";
 import {ComponentProps} from "../../core/models/ComponentProps";
 import {Card} from "../Card";
@@ -10,14 +9,14 @@ import styles from "./QRCode.module.css"
 import clsx from "clsx";
 
 type Props = ComponentProps & Readonly<{
-    type: "git" | "habr";
+    type: "sber" | "habr";
 }>;
 
 /** QR-код. */
 export const QRCode: FC<Props> = typedMemo(function QRCode(props){
     return <Card className={clsx(styles.qrcode, props.className)}>
         {
-            props.type === 'git' &&
+            props.type === 'sber' &&
             <img src={GIT} alt='QR' className={styles.qrcode__image}/>
         }
         {
@@ -29,8 +28,8 @@ export const QRCode: FC<Props> = typedMemo(function QRCode(props){
             className={styles.qrcode__description}
         >
             {
-                props.type === 'git' &&
-                "Репозиторий модели распознавания"
+                props.type === 'sber' &&
+                "Модель распознавания\nразработана командой Sber AI"
             }
             {
                 props.type === 'habr' &&
