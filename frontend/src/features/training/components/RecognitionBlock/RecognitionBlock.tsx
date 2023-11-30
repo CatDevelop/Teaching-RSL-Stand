@@ -41,6 +41,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
     }, [])
 
     const onReceiveText = useCallback((text: string) => {
+        console.log(text)
         let results: string[] = Object.values(JSON.parse(text))
         console.log(results)
 

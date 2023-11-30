@@ -119,8 +119,8 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                         <div className={styles.trainingTask__taskContainer__startContainer}>
 
                             <div className={styles.trainingTask__taskContainer__startContainer__qr}>
-                                <QRCode type="sber"/>
-                                <QRCode type="sber"/>
+                                <QRCode type="habr"/>
+                                <QRCode type="git"/>
                             </div>
                             <StartTraining onStart={() => setCurrentStep(0)}/>
                         </div>

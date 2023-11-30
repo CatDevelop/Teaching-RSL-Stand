@@ -1,6 +1,6 @@
 .qrcode {
     height: 200px;
-    width: fit-content;
+    width: 330px;
     display: flex;
     flex-direction: column;
     align-items: center;
