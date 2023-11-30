@@ -13,6 +13,7 @@ import {stopAllTracks} from "../../../../core/utils/stopAllTracks";
 import {socket} from "../../../../core/utils/connectToModal";
 import {RECOGNITION_MODE} from "../../../../core/config";
 
+
 type Props = ComponentProps & Readonly<{
     word: Word;
     onSuccess: () => void;
@@ -36,6 +37,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
 
     const onDisconnectFromModal = useCallback(() => {
         console.log("Disconnect");
+        socket.connect()
     }, [])
 
     const onReceiveText = useCallback((text: string) => {

@@ -3,6 +3,8 @@ import datetime
 import json
 import logging
 import os
+import time
+import gc
 
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor
@@ -108,6 +110,7 @@ def disconnect(sid):
     print("Client disconnected:", sid)
     users[sid][0].clear()
     users[sid][3] = True
+    gc.collect()
 
 
 # Socket.IO event handler: Received video frame data from the client

@@ -1,6 +1,7 @@
 import io from "socket.io-client";
 
 export const socket = io('ws://localhost:5000', {
+    autoConnect: false,
     'reconnection': true,
     'reconnectionDelay': 500,
     'reconnectionAttempts': 10,
