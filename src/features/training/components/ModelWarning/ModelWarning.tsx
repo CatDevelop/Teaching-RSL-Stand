@@ -18,7 +18,7 @@ export const ModelWarning: FC<ComponentProps> = typedMemo(function ModelWarning(
                 Распознавание работает только при запущенной на локальной машине модели распознавания.
                 Чтобы развернуть её, скачайте архив и запустите .exe файл:
                 <div className={styles.modelWarning__gitLink}>
-                    <a href={"https://drive.google.com/file/d/17o-jI42XvbdJuj8Ap_oINbbuQvxtwEEx/view?usp=sharing"} target={"_blank"} rel="noreferrer">
+                    <a href={"https://github.com/PINCODE-project/RSL-Recognition-API-exe"} target={"_blank"} rel="noreferrer">
                         Скачать архив
                     </a>
                 </div>
