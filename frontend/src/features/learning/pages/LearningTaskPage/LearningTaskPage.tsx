@@ -20,7 +20,7 @@ import {PracticeCards} from "../../components/PracticeCards/PracticeCards";
 import {StartLearning} from "../../components/StartLearning/StartLearning";
 import {generateTasks} from "../../../../core/utils/generateTasks";
 import {useIdle} from "@mantine/hooks";
-import ResultLearning from "../../../../assets/images/ResultLearning.png"
+import ResultLearning from "../../../../assets/images/ResultLearningImage.svg"
 
 // TODO написать нормальные типы
 type task = {

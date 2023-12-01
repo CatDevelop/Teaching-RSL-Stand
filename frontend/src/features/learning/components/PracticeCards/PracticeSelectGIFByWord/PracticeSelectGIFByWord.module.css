@@ -34,8 +34,8 @@
 
 .practiceSelectGif__title {
     font-family: var(--main-font);
-    font-weight: var(--font-weight-xl);
-    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-l);
+    font-size: var(--font-size-m);
     text-align: center;
 }
 
@@ -46,7 +46,7 @@
 .practiceSelectGif__gifsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(2, calc(100% - 25px - 15px - 50%));
+    grid-template-rows: repeat(2, calc(100% - 30px - 15px - 50%));
     justify-items: right;
     gap: var(--space-s);
     height: 100%;

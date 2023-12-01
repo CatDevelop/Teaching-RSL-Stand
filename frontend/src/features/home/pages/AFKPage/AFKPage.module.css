@@ -1,41 +1,55 @@
 .afkPage {
-    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 250px 80px;
+    grid-template-columns: calc(100vw - 2*var(--page-padding-m));
+    gap: calc(var(--space-xl)*1.1);
     color: #fff;
     background: #69BBEC;
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
+    z-index: 100;
+    padding: var(--page-padding-m);
 }
 
 .afkPage__gradient {
-    position: absolute;
+    position: absolute !important;
     top: 0;
     bottom: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
+    /*object-fit: cover;*/
     z-index: 0;
 }
 
 .afkPage__logo {
     z-index: 100;
+    width: 900px;
+}
+
+.afkPage__factsContainer {
+    position: relative;
+    width: 100vw;
+    height: 250px;
+}
+
+.afkPage__facts {
+    width: 100vw;
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
 }
 
 .afkPage__tap {
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-l);
+    height: auto;
+    line-height: 1.5;
+    color: var(--on-surface-color);
     font-size: 32px;
-    color: white;
     z-index: 100;
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
 }

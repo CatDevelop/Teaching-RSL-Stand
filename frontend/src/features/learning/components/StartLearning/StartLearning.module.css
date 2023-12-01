@@ -33,5 +33,5 @@
     font-size: var(--font-size-l);
     text-align: center;
     color: var(--disabled-button-color);
-    font-weight: var(--font-weight-s);
+    font-weight: var(--font-weight-m);
 }

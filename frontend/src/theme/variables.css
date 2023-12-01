@@ -18,12 +18,12 @@
 
 
     /* Font */
-    --main-font: Verdana, serif;
+    --main-font: VerdanaPro, serif;
 
-    --font-weight-xl: 400;
-    --font-weight-l: 400;
-    --font-weight-m: 500;
-    --font-weight-s: 400;
+    --font-weight-xl: 600;
+    --font-weight-l: 500;
+    --font-weight-m: 400;
+    --font-weight-s: 300;
 
     --font-size-m: 20px;
     --font-size-xs: calc(var(--font-size-m) * 0.6);

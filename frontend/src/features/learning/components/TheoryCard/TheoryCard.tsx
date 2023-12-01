@@ -27,19 +27,7 @@ export const TheoryCard: FC<Props> = typedMemo(function TheoryCard(props) {
                             src={props.wordObject.gifSource}
                             className={styles.theoryCard__gif}
                         />
-
-                        {
-                            //props.wordObject.imageSource &&
-                            //<img
-                                //rel="preload"
-                                //src={props.wordObject.imageSource}
-                                //alt={"Изображение для жеста"}
-                                //className={styles.theoryCard__image}
-                            ///>
-                        }
                     </div>
-
-
                 </div>
             </LearningBlock>
         </div>

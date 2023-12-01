@@ -99,6 +99,21 @@
     align-items: center;
 }
 
+.trainingTask__taskContainer__startContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+}
+
+.trainingTask__taskContainer__startContainer__qr {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-m);
+    align-items: center;
+    justify-content: center;
+    animation: showUp 0.5s ease-in;
+}
+
 .trainingTask__buttonsContainer {
     grid-area: buttons;
     display: flex;
@@ -184,34 +199,22 @@
     gap: var(--space-s);
 }
 
-.trainingTask__result__qrContainer {
-    display: flex;
-    gap: var(--space-m);
-    height: 250px;
-}
 
 .trainingTask__result__image {
     width: 100%;
-    height: calc(100% - 265px);
+    height: calc(100% - 155px);
     object-fit: contain;
 }
 
 .trainingTask__resultTitle {
-    color: var(--primary-color) !important;
-    font-size: var(--font-size-xxl) !important;
-    text-align: center;
-    font-weight: var(--font-weight-xl);
+    color: var(--primary-color);
+    font-size: var(--font-size-xl) !important;
 }
 
 .trainingTask__resultDescription {
-    font-family: var(--main-font) !important;
-    font-size: var(--font-size-l) !important;
+    font-family: var(--main-font);
+    font-size: var(--font-size-m);
     text-align: center;
-}
-
-.trainingTask__result__container {
-    display: flex;
-    gap: var(--space-s)
 }
 
 .trainingTask__resultImage {
