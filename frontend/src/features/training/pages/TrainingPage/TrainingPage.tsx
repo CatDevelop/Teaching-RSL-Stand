@@ -18,7 +18,6 @@ import {TimeoutId} from "@reduxjs/toolkit/dist/query/core/buildMiddleware/types"
 import {StartTraining} from "../../components/StartTraining/StartTraining";
 import {ModelWarning} from "../../components/ModelWarning/ModelWarning";
 import {socket} from "../../../../core/utils/connectToModal";
-import {BySberAI} from "../../../../components/BySberAI";
 import {useIdle} from "@mantine/hooks";
 import {QRCode} from "../../../../components/QR-code";
 import ResultImage from "../../../../assets/images/ResultTrainingImage.svg";
