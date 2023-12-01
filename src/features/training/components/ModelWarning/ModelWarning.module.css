@@ -1,7 +1,7 @@
 .modelWarning__container {
     outline: 3px var(--danger-color) solid;
     height: 200px;
-    width: 580px;
+    width: 600px;
     z-index: var(--bottom-modal-container-index);
     animation: showFade 1s ease-in;
     display: flex;
