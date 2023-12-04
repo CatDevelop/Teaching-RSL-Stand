@@ -5,6 +5,7 @@ import {clsx} from "clsx";
 import styles from "./StartTraining.module.css";
 import {Typography} from "../../../../components/Typography";
 import {Button} from "../../../../components/Button";
+import RightClicker from "../../../../assets/images/RightClicker.svg";
 
 type Props = {
     onStart: any
@@ -27,7 +28,7 @@ export const StartTraining: FC<Props> = typedMemo(function StartTraining(props) 
                 onClick={props.onStart}
                 size={"lg"}
             >
-                Начать прохождение
+                <img className={styles.startTraining__tap__clicker} src={RightClicker} alt={"Правый кликер"}/> Начать
             </Button>
         </Card>
     )

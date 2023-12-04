@@ -35,3 +35,19 @@
     color: var(--disabled-button-color);
     font-weight: var(--font-weight-m);
 }
+
+.startLearning__tap {
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-l);
+    height: auto;
+    line-height: 1.5;
+    color: var(--primary-color);
+    font-size: var(--font-size-xl);
+    z-index: 100;
+    display: flex;
+}
+
+.startLearning__tap__clicker {
+    width: 32px !important;
+    height: 32px !important;
+}

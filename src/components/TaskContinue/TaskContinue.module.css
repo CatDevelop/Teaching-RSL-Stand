@@ -32,3 +32,8 @@
 .taskContinue_incorrectly .taskContinue__textBlock{
     color: var(--danger-color);
 }
+
+.taskContinue__rightClicker {
+    width: 28px !important;
+    height: 28px !important;
+}

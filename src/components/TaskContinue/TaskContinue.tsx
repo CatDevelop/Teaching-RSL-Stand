@@ -7,6 +7,7 @@ import styles from "./TaskContinue.module.css";
 import { Button } from "../Button";
 import { Typography } from "../Typography";
 import { ComponentProps } from "../../core/models/ComponentProps";
+import RightClicker from "../../assets/images/RightClicker.svg";
 
 type Props = ComponentProps & Readonly<{
     next: () => void;
@@ -33,7 +34,9 @@ export const TaskContinue: FC<Props> = typedMemo(function TaskContinue(props){
                             Вы отлично справились!
                         </Typography>
                     </div>
-                    <Button color="primary" onClick={props.next}>Далее</Button>
+                    <Button color="primary" onClick={props.next}>
+                        <img className={styles.taskContinue__rightClicker} src={RightClicker} alt={"Правый кликер"}/> Далее
+                    </Button>
                 </> :
                 <>
                     <div className={styles.taskContinue__result}>

@@ -81,7 +81,7 @@
 .trainingTask__progressBarContainer {
     width: 100%;
     max-width: var(--max-theory-card-width);
-    animation: showUp 0.5s ease-in;
+    /*animation: showUp 0.5s ease-in;*/
 }
 
 .trainingTask__exitButtonContainer {
@@ -123,6 +123,11 @@
     align-items: center;
     gap: var(--space-m);
     z-index: var(--bottom-buttons-index);
+}
+
+.trainingTask__rightClicker {
+    width: 28px !important;
+    height: 28px !important;
 }
 
 .trainingTask__startCard {

@@ -17,7 +17,7 @@ export const ExitConfirmation: FC<Props> = typedMemo(function ExitConfirmation(p
     const navigate = useNavigate()
 
     const closeModal = useCallback(() => props.setIsOpen(false), [props.setIsOpen])
-    const toMainPage = useCallback(() => navigate("/home"), [navigate])
+    const toMainPage = useCallback(() => navigate("/"), [navigate])
 
     if (!props.isOpen)
         return;

@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from "react";
+import React, {FC, useCallback, useEffect} from "react";
 import styles from "./AFKPage.module.css";
 import {useNavigate} from "react-router-dom";
 import {Typography} from "../../../../components/Typography";
@@ -6,22 +6,28 @@ import {typedMemo} from "../../../../core/utils/typedMemo";
 import LogoStand from '../../../../assets/images/LogoStandMonochrome.svg'
 import {Facts} from "../../components/facts";
 import {Gradient} from "../../../../components/Gradient/Gradient";
+import RightClicker from "../../../../assets/images/RightClicker.svg";
 
 export const AFKPage: FC = typedMemo(function AFKFactsPage() {
     const navigate = useNavigate();
 
-    const toHome = useCallback(() => navigate("/home"), [navigate])
+    const toLearning = useCallback(() => navigate("/learning"), [navigate])
+
+    const handleKeydown = useCallback((event: KeyboardEvent) => {
+        if (event.key === "ArrowRight") {
+            event.preventDefault();
+            toLearning()
+        }
+    }, [])
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeydown)
+        return () => document.removeEventListener('keydown', handleKeydown)
+    }, []);
 
     return (
-        <div className={styles.afkPage} onClick={toHome}>
+        <div className={styles.afkPage} onClick={toLearning}>
             <Gradient className={styles.afkPage__gradient}/>
-            {/*<video*/}
-            {/*    className={styles.afkPage__gradient}*/}
-            {/*    src={Gradien2}*/}
-            {/*    autoPlay*/}
-            {/*    loop*/}
-            {/*    muted*/}
-            {/*/>*/}
 
             <img className={styles.afkPage__logo} src={LogoStand} alt="Логотип"/>
             <div className={styles.afkPage__factsContainer}>
@@ -32,7 +38,7 @@ export const AFKPage: FC = typedMemo(function AFKFactsPage() {
                 variant="p"
                 className={styles.afkPage__tap}
             >
-                Нажмите на экран, чтобы продолжить
+                Нажмите на <img className={styles.afkPage__tap__clicker} src={RightClicker} alt={"Правый кликер"}/>, чтобы продолжить
             </Typography>
         </div>
     )

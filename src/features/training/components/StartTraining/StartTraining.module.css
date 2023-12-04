@@ -35,3 +35,8 @@
     color: var(--disabled-button-color);
     font-weight: var(--font-weight-m);
 }
+
+.startTraining__tap__clicker {
+    width: 32px !important;
+    height: 32px !important;
+}

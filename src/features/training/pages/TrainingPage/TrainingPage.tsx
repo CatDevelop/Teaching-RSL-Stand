@@ -23,6 +23,8 @@ import {QRCode} from "../../../../components/QR-code";
 import ResultImage from "../../../../assets/images/ResultTrainingImage.svg";
 import Result from "../../../../assets/images/Result.svg";
 import {ResultCard} from "../../components/ResultCard";
+import RightClicker from "../../../../assets/images/RightClicker.svg";
+import RightClickerPrimary from "../../../../assets/images/RightClickerPrimary.svg";
 
 export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const navigate = useNavigate()
@@ -71,6 +73,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const idle = useIdle(180000, {initialState: false});
     const getTaskResult = useCallback(() => {
+        console.log(data, countSkippedWords)
         if (!data) {
             return 0
         }
@@ -83,12 +86,32 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
             toAFK()
     }, [idle, toAFK]);
 
+    const handleKeydown = useCallback((event: KeyboardEvent) => {
+        if (event.key === "ArrowRight") {
+            event.preventDefault();
+            if(currentStep === data.length)
+                toAFK();
+
+            if(currentStep === -1) {
+                setCurrentStep(0)
+                return;
+            }
+
+            isDoneTask ? next() : skip();
+        }
+    }, [next, skip, isDoneTask, currentStep, data, countSkippedWords])
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeydown)
+        return () => document.removeEventListener('keydown', handleKeydown)
+    }, [handleKeydown]);
+
     return (
         <Page>
             <ExitConfirmation isOpen={exitModalIsOpen} setIsOpen={setExitModalIsOpen}/>
             <PageContent className={styles.trainingTask}>
                 <div className={styles.trainingTask__header}>
-                    <div className={styles.trainingTask__logoContainer} onClick={openExitModal}>
+                    <div className={styles.trainingTask__logoContainer} onClick={toAFK}>
                         <img src={Logo} rel="preload" alt={"Логотип"} width={300}/>
                     </div>
                     {
@@ -97,19 +120,6 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                             <ProgressBar currentStep={currentStep - 1} stepCount={data.length}/>
                         </div>
                     }
-                    <div className={styles.trainingTask__exitButtonContainer}>
-                        {
-                            currentStep !== data.length &&
-                            <Button
-                                variant={"faded"}
-                                color={"default"}
-                                size={"lg"}
-                                onClick={openExitModal}
-                            >
-                                В главное меню
-                            </Button>
-                        }
-                    </div>
                 </div>
 
                 <div className={styles.trainingTask__taskContainer}>
@@ -177,7 +187,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                             variant="faded"
                             onClick={skip}
                         >
-                            Пропустить
+                            <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/> Пропустить
                         </Button>
                     }
                 </div>
@@ -195,7 +205,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                                 color="primary"
                                 onClick={toAFK}
                             >
-                                В главное меню
+                                <img className={styles.trainingTask__rightClicker} src={RightClicker} alt={"Правый кликер"}/> В главное меню
                             </Button>
                         </div>
                     }
