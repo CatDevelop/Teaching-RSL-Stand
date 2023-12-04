@@ -1,5 +1,5 @@
 import {typedMemo} from "../../../../core/utils/typedMemo";
-import React, {FC, useCallback, useEffect, useState} from "react";
+import React, {FC, useCallback, useEffect, useMemo, useState} from "react";
 import styles from "./TrainingPage.module.css";
 import {Page} from "../../../../components/Page";
 import Logo from "../../../../assets/images/LogoStand.svg"
@@ -39,16 +39,19 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const [intervalID, setIntervalID] = useState<TimeoutId>();
     const [currentStep, setCurrentStep] = useState(-1);
     const [isNotStartModel, setIsNotStartModel] = useState(false);
+    let correctWords: Set<string> = useMemo(() => new Set(), []);
 
     const clearRecognizeText = () => setSignRecognizeText([])
     const clearRecognizeGrade = useCallback(() => setSignRecognizeGrade(0), [setSignRecognizeGrade])
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
     const toAFK = useCallback(() => navigate("/"), [navigate])
+    const toLearning = useCallback(() => navigate("/learning"), [navigate])
 
     const skip = useCallback(() => {
         setCurrentStep(currentStep => currentStep + 1)
         setCountSkippedWords(count => count + 1);
+        setIsDoneTask(false);
         clearRecognizeGrade()
         clearRecognizeText()
     }, [setCountSkippedWords, setCurrentStep, clearRecognizeGrade]);
@@ -58,7 +61,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
         setIsDoneTask(false);
         clearRecognizeGrade()
         clearRecognizeText()
-    }, [setCurrentStep, setIsDoneTask, clearRecognizeGrade])
+    }, [setCurrentStep, setIsDoneTask, clearRecognizeGrade, data, currentStep])
 
     useEffect(() => {
         if (currentStep === data.length && countSkippedWords !== data.length)
@@ -73,12 +76,12 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const idle = useIdle(180000, {initialState: false});
     const getTaskResult = useCallback(() => {
-        console.log(data, countSkippedWords)
+        console.log(data, countSkippedWords, correctWords)
         if (!data) {
             return 0
         }
-        return 100 - Math.floor((countSkippedWords) / data.length * 100)
-    }, [data, countSkippedWords])
+        return Math.floor((correctWords.size) / data.length * 100)
+    }, [data, countSkippedWords, correctWords])
 
 
     useEffect(() => {
@@ -99,7 +102,19 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
             isDoneTask ? next() : skip();
         }
-    }, [next, skip, isDoneTask, currentStep, data, countSkippedWords])
+
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            if(currentStep === -1)
+                toLearning()
+            else {
+                setIsDoneTask(false);
+                clearRecognizeGrade()
+                clearRecognizeText()
+                setCurrentStep(currentStep - 1)
+            }
+        }
+    }, [setCurrentStep, currentStep, isDoneTask])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)
@@ -142,6 +157,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                             onSuccess={() => setIsDoneTask(true)}
                             setIntervalID={setIntervalID}
                             intervalID={intervalID}
+                            correctWords={correctWords}
 
                             signRecognizeGrade={signRecognizeGrade}
                             setSignRecognizeGrade={setSignRecognizeGrade}

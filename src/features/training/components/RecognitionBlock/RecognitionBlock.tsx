@@ -23,6 +23,7 @@ type Props = ComponentProps & Readonly<{
     setSignRecognizeGrade: Dispatch<SetStateAction<number>>
     signRecognizeText: string[]
     setSignRecognizeText: Dispatch<SetStateAction<string[]>>
+    correctWords: Set<string>
 }>
 
 export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(props) {
@@ -50,13 +51,19 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                 return;
             if(results[1].toLowerCase() === props.word.recognitionText.toLowerCase())
                 props.setSignRecognizeGrade(2)
-            else if(results[0].toLowerCase() === props.word.recognitionText.toLowerCase())
+            else if(results[0].toLowerCase() === props.word.recognitionText.toLowerCase()) {
                 props.setSignRecognizeGrade(1)
+                props.correctWords.add(props.word.recognitionText.toLowerCase())
+            }
             else
                 props.setSignRecognizeGrade(3)
         } else {
-            if(props.signRecognizeText.at(-1) !== results[0].toLowerCase())
+            if(props.signRecognizeText.at(-1) !== results[0].toLowerCase()) {
                 props.setSignRecognizeText([...props.signRecognizeText, results[0].toLowerCase()])
+                if(props.word.recognitionText.toLowerCase() === results[0].toLowerCase())
+                    props.correctWords.add(results[0].toLowerCase())
+            }
+
         }
     }, [props])
 

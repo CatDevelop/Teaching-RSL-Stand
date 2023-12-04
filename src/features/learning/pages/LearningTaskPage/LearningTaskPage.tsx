@@ -102,7 +102,18 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
             nextStep()
             console.log("Далее", currentStep)
         }
-    }, [nextStep])
+
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            if(currentStep === -1)
+                toAFK()
+            else {
+                setTaskCompleted(false);
+                setTaskChecked(false)
+                setCurrentStep(currentStep - 1)
+            }
+        }
+    }, [nextStep, currentStep])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)
