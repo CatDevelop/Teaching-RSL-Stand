@@ -10,11 +10,18 @@ import {Gradient} from "../../../../components/Gradient/Gradient";
 export const AFKPage: FC = typedMemo(function AFKFactsPage() {
     const navigate = useNavigate();
 
-    const toHome = useCallback(() => navigate("/learning"), [navigate])
+    const toHome = useCallback(() => navigate("/home"), [navigate])
 
     return (
         <div className={styles.afkPage} onClick={toHome}>
             <Gradient className={styles.afkPage__gradient}/>
+            {/*<video*/}
+            {/*    className={styles.afkPage__gradient}*/}
+            {/*    src={Gradien2}*/}
+            {/*    autoPlay*/}
+            {/*    loop*/}
+            {/*    muted*/}
+            {/*/>*/}
 
             <img className={styles.afkPage__logo} src={LogoStand} alt="Логотип"/>
             <div className={styles.afkPage__factsContainer}>
