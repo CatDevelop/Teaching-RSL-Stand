@@ -70,7 +70,7 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     }, [currentStep, setCurrentStep])
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
-    const toMainPage = useCallback(() => navigate("/home"), [navigate])
+    const toMainPage = useCallback(() => navigate("/"), [navigate])
     const toTrainingPage = useCallback(() => navigate("/training"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
 
