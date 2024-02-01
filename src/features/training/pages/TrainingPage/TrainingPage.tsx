@@ -4,7 +4,6 @@ import styles from "./TrainingPage.module.css";
 import {Page} from "../../../../components/Page";
 import Logo from "../../../../assets/images/LogoStand.svg"
 import {Button} from "../../../../components/Button";
-import {Typography} from "../../../../components/Typography";
 import {useNavigate} from "react-router-dom";
 import {TaskContinue} from "../../../../components/TaskContinue";
 import {ProgressBar} from "../../../../components/ProgressBar";
@@ -15,7 +14,6 @@ import {ExitConfirmation} from "../../../../components/ExitConfirmation";
 import {Words} from "../../../../core/data";
 import {shuffleArray} from "../../../../core/utils/shuffleArray";
 import {TimeoutId} from "@reduxjs/toolkit/dist/query/core/buildMiddleware/types";
-import {StartTraining} from "../../components/StartTraining/StartTraining";
 import {ModelWarning} from "../../components/ModelWarning/ModelWarning";
 import {getSocket} from "../../../../core/utils/connectToModal";
 import {BySberAI} from "../../../../components/BySberAI";
@@ -48,7 +46,6 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const clearRecognizeResult = useCallback(() => setSignRecognizeResult(0), [setSignRecognizeResult])
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
-    const toMainPage = useCallback(() => navigate("/home"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
 
     const skip = useCallback(() => {
@@ -87,6 +84,30 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
         if (idle)
             toAFK()
     }, [idle, toAFK]);
+
+    const handleKeydown = useCallback((event: KeyboardEvent) => {
+        if (settings.general.clickerMode && event.key === "ArrowRight") {
+            event.preventDefault();
+            isDoneTask ? next() : skip();
+        }
+
+        if (settings.general.clickerMode && event.key === "ArrowLeft") {
+            event.preventDefault();
+            if(currentStep === 0)
+                navigate("/training/start")
+            else {
+                setIsDoneTask(false);
+                clearRecognizeResult()
+                clearRecognizeText()
+                setCurrentStep(currentStep - 1)
+            }
+        }
+    }, [setCurrentStep, currentStep, isDoneTask, settings])
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeydown)
+        return () => document.removeEventListener('keydown', handleKeydown)
+    }, [handleKeydown]);
 
     return (
         <Page>

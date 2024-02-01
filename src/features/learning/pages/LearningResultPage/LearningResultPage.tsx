@@ -33,7 +33,8 @@ export const LearningResultPage: FC = typedMemo(function LearningResultPage() {
     const [exitModalIsOpen, setExitModalIsOpen] = useState(false)
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
-    const toLearningPage = useCallback(() => navigate("/learning"), [navigate])
+    const toTrainingPage = useCallback(() => navigate("/training/start"), [navigate])
+    const toHomePage = useCallback(() => navigate("/"), [navigate])
 
     const handleKeydown = useCallback((event: KeyboardEvent) => {
         if (settings.general.clickerMode && event.key === "ArrowRight") {
@@ -54,7 +55,7 @@ export const LearningResultPage: FC = typedMemo(function LearningResultPage() {
 
     return (
         <Page>
-            <ExitConfirmation isOpen={exitModalIsOpen} setIsOpen={setExitModalIsOpen} onExit={toLearningPage}/>
+            <ExitConfirmation isOpen={exitModalIsOpen} setIsOpen={setExitModalIsOpen} onExit={toHomePage}/>
             <PageContent className={styles.learningResult}>
                 <div className={styles.learningResult__logoContainer} onClick={openExitModal}>
                     <img src={Logo} rel="preload" alt="Логотип" width={300}/>
@@ -71,8 +72,8 @@ export const LearningResultPage: FC = typedMemo(function LearningResultPage() {
                                 Теперь можно перейти к следующему этапу<br/>
                                 и попробовать их на практике.
                             </Typography>
-                            <Button variant={"solid"} color={"primary"} onClick={toLearningPage}>
-                                В меню
+                            <Button variant={"solid"} color={"primary"} onClick={toTrainingPage}>
+                                Перейти к практике
                             </Button>
                         </div>
                     </div>

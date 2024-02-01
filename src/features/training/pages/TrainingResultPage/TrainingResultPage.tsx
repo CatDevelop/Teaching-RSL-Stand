@@ -35,9 +35,22 @@ export const TrainingResultPage: FC = typedMemo(function TrainingResultPage() {
         fireworks()
     }, [fireworks]);
 
-    const getTaskResult = useCallback((countAllWords: number, countSkippedWords: number) => {
-        return 100 - Math.floor((countSkippedWords) / countSkippedWords * 100)
-    }, [])
+    const handleKeydown = useCallback((event: KeyboardEvent) => {
+        if (settings.general.clickerMode && event.key === "ArrowRight") {
+            event.preventDefault();
+            toMainMenu()
+        }
+
+        if (settings.general.clickerMode && event.key === "ArrowLeft") {
+            event.preventDefault();
+            navigate("/training")
+        }
+    }, [settings])
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeydown)
+        return () => document.removeEventListener('keydown', handleKeydown)
+    }, [handleKeydown]);
 
     return (
         <Page>
