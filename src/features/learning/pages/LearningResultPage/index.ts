@@ -1,0 +1,1 @@
+export { LearningResultPage } from "./LearningResultPage";

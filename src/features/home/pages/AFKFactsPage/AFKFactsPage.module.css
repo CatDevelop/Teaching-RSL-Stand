@@ -50,6 +50,8 @@
     height: auto;
     line-height: 1.5;
     color: var(--on-surface-color);
-    font-size: 32px;
+    font-size: var(--font-size-xl);
     z-index: 100;
+    display: flex;
+    gap: var(--space-s);
 }

@@ -39,3 +39,22 @@ p {
     padding: 0;
     margin: 0;
 }
+
+.Toastify__toast {
+    border-radius: var(--border-radius-m) !important;
+    padding: var(--space-s) !important;
+}
+
+.Toastify__toast-body {
+    font-family: var(--main-font);
+    color: var(--text-color);
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-m);
+}
+
+.mainSpinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

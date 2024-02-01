@@ -1,0 +1,33 @@
+.constructor__content {
+    overflow: scroll;
+}
+
+.constructor__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.constructor__accordion {
+    padding: 0;
+}
+
+.constructor__accordionItem__title  {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-xl) !important;
+    font: var(--main-font);
+    font-size: var(--font-size-m);
+}
+
+.constructor__accordionItem__icon path {
+    stroke: var(--primary-color);
+}
+
+.constructor__buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: var(--space-m)
+}

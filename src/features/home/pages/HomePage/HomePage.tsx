@@ -14,7 +14,7 @@ export const HomePage: FC = typedMemo(function HomePage() {
 
     const toLearning = useCallback(() => navigate("/learning"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
-    const toTraining = useCallback(() => navigate("/training"), [navigate])
+    const toTraining = useCallback(() => navigate("/training/start"), [navigate])
 
     const idle = useIdle(120000, {initialState: false});
 

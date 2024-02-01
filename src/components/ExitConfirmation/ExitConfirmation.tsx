@@ -10,14 +10,17 @@ import {Typography} from "../Typography";
 type Props = ComponentProps & Readonly<{
     isOpen: boolean;
     setIsOpen: Dispatch<SetStateAction<boolean>>
+    onExit: () => void
 }>
 
-/** Подтверждение выхода из задания. */
+/**
+ * Подтверждение выхода из задания
+ */
 export const ExitConfirmation: FC<Props> = typedMemo(function ExitConfirmation(props) {
     const navigate = useNavigate()
 
     const closeModal = useCallback(() => props.setIsOpen(false), [props.setIsOpen])
-    const toMainPage = useCallback(() => navigate("/home"), [navigate])
+    const toMainPage = useCallback(() => navigate("/profile"), [navigate])
 
     if (!props.isOpen)
         return;
@@ -44,7 +47,7 @@ export const ExitConfirmation: FC<Props> = typedMemo(function ExitConfirmation(p
                         <Button
                             size="lg"
                             color="primary"
-                            onClick={toMainPage}
+                            onClick={props.onExit}
                         >
                             Выйти
                         </Button>

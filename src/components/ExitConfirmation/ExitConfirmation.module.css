@@ -41,7 +41,7 @@
 
 .exitConfirmation__description {
     font-family: var(--main-font);
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
 }
 
 .exitConfirmation__buttons {

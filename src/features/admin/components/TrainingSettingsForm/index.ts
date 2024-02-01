@@ -1,0 +1,1 @@
+export { TrainingSettingsForm } from "./TrainingSettingsForm";

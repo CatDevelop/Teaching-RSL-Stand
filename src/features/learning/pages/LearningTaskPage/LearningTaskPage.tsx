@@ -4,7 +4,7 @@ import styles from "./LearningTaskPage.module.css";
 import {Page} from "../../../../components/Page";
 import Logo from "../../../../assets/images/LogoStand.svg"
 import {shuffleArray} from "../../../../core/utils/shuffleArray";
-import {StartThemeTasks, StartThemeWords} from "../../../../core/data";
+import {StartThemeTasks, Words} from "../../../../core/data";
 import {Button} from "../../../../components/Button";
 import {TheoryCard} from "../../components/TheoryCard";
 import {Typography} from "../../../../components/Typography";
@@ -21,6 +21,8 @@ import {StartLearning} from "../../components/StartLearning/StartLearning";
 import {generateTasks} from "../../../../core/utils/generateTasks";
 import {useIdle} from "@mantine/hooks";
 import ResultLearning from "../../../../assets/images/ResultLearning.png"
+import {initialSettings, Settings} from "../../../admin/pages/ConstructorPage/ConstructorPage";
+import {LocalStorageService} from "../../../../api/services/localStorageService";
 
 // TODO написать нормальные типы
 type task = {
@@ -31,9 +33,9 @@ type task = {
 
 export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     const navigate = useNavigate()
-    const fireworks = getFireworks(3000)
-    const theoryCount = 5;
-    const practiceCount = 3;
+    const settings: Settings = LocalStorageService.get('Teaching-RSL-Settings') || initialSettings;
+    const theoryCount = Words.filter(word => `${word.id}` in settings.general.wordsList).length;
+    const practiceCount = settings.learning.practices ? 3 : 0;
 
     // -1 - стартовая плашка
     // 0-(theoryCount-1) - теория
@@ -45,33 +47,34 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     const [taskChecked, setTaskChecked] = useState<boolean>(false)
     const [exitModalIsOpen, setExitModalIsOpen] = useState(false)
 
-    const [tasks] = useState<task[]>([
-        ...shuffleArray(StartThemeWords).map((wordObject, index) => ({
+    const initialTasks = [
+        ...shuffleArray(Words.filter(word => `${word.id}` in settings.general.wordsList)).map((wordObject, index) => ({
             id: index,
             task: {
                 wordObject
             },
             type: "theory"
-        })),
-        ...shuffleArray(generateTasks(StartThemeWords, StartThemeTasks)).map((task, index) => ({
-            id: index + 5,
+        }))
+    ]
+
+    if (settings.learning.practices)
+        initialTasks.push(...shuffleArray(generateTasks(Words.filter(word => `${word.id}` in settings.general.wordsList), StartThemeTasks)).map((task, index) => ({
+            id: index + theoryCount,
             task,
             type: "practice"
-        }))
-    ])
+        })))
 
-    useEffect(() => {
-        if (currentStep === theoryCount + practiceCount)
-            fireworks()
-    }, [currentStep, fireworks]);
+    const [tasks] = useState<task[]>(initialTasks)
 
     const nextStep = useCallback(() => {
+        if (currentStep + 1 === theoryCount + practiceCount)
+            navigate("result/?count=" + theoryCount)
         setCurrentStep(currentStep + 1)
-    }, [currentStep, setCurrentStep])
+    }, [currentStep, setCurrentStep, theoryCount, practiceCount])
 
     const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
     const toMainPage = useCallback(() => navigate("/home"), [navigate])
-    const toTrainingPage = useCallback(() => navigate("/training"), [navigate])
+    const toTrainingPage = useCallback(() => navigate("/training/start"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
 
     const retry = useCallback(() => {
@@ -83,13 +86,37 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     const idle = useIdle(120000, {initialState: false});
 
     useEffect(() => {
-        if(idle)
+        if (idle)
             toAFK()
     }, [idle, toAFK]);
 
+    const handleKeydown = useCallback((event: KeyboardEvent) => {
+        if (settings.general.clickerMode && event.key === "ArrowRight") {
+            event.preventDefault();
+            nextStep()
+        }
+
+        if (settings.general.clickerMode && event.key === "ArrowLeft") {
+            event.preventDefault();
+            if(currentStep === -1)
+                toAFK()
+            else {
+                setTaskCompleted(false);
+                setTaskChecked(false)
+                setCurrentStep(currentStep - 1)
+            }
+        }
+    }, [nextStep, currentStep, settings])
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeydown)
+        return () => document.removeEventListener('keydown', handleKeydown)
+    }, [handleKeydown]);
+
+
     return (
         <Page>
-            <ExitConfirmation isOpen={exitModalIsOpen} setIsOpen={setExitModalIsOpen}/>
+            <ExitConfirmation isOpen={exitModalIsOpen} setIsOpen={setExitModalIsOpen} onExit={toAFK}/>
             <PageContent className={styles.learningTask}>
                 <div className={styles.learningTaskPage__header}>
                     <div className={styles.learningTask__logoContainer} onClick={openExitModal}>
@@ -104,16 +131,12 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                     }
 
                     <div className={styles.learningTask__exitButtonContainer}>
-                        {
-                            currentStep !== theoryCount + practiceCount &&
                             <Button
                                 variant="faded"
-                                color="default"
                                 onClick={openExitModal}
                             >
                                 В главное меню
                             </Button>
-                        }
                     </div>
                 </div>
 
@@ -144,7 +167,8 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                     {
                         currentStep === theoryCount + practiceCount &&
                         <div className={styles.learningTask__result}>
-                            <img src={ResultLearning} alt={"Конец обучения!"} className={styles.learningTask__result__image}/>
+                            <img src={ResultLearning} alt={"Конец обучения!"}
+                                 className={styles.learningTask__result__image}/>
                             {/*<Typography variant="h2" className={styles.learningTask__resultTitle}>*/}
                             {/*    Конец обучения!*/}
                             {/*</Typography>*/}
@@ -161,7 +185,6 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                         currentStep >= 0 && currentStep <= theoryCount - 2 &&
                         <Button
                             size="lg"
-                            variant="faded"
                             color="primary"
                             onClick={nextStep}
                         >
@@ -187,8 +210,8 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                         tasks[currentStep].task.type !== "MatchWordAndGIF" &&
                         <Button
                             disabled={!taskCompleted}
-                            color={taskCompleted ? "primary" : "default"}
-                            variant={taskCompleted ? "faded" : 'solid'}
+                            color="primary"
+                            variant='solid'
                             size="lg"
                             onClick={() => {
                                 setTaskChecked(true)
@@ -232,7 +255,7 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                     {
                         currentStep === theoryCount + practiceCount &&
                         <div className={styles.learningTask__toPractice}>
-                            <Button variant="faded" onClick={toMainPage}>
+                            <Button variant="faded" color="primary" onClick={toMainPage}>
                                 В меню
                             </Button>
                             <Button color="primary" onClick={toTrainingPage}>

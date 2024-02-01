@@ -1,0 +1,62 @@
+.learningResult {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas:
+            "logo content a"
+            "b content c";
+    align-items: center;
+    justify-items: center;
+    gap: var(--space-m);
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.learningResult__logoContainer {
+    cursor: pointer;
+    grid-area: logo;
+}
+
+.learningResult__contentContainer {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: start;
+    gap: var(--space-l);
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+.learningResult__card {
+    height: 100%;
+    max-width: var(--learning-center-block-width);
+    grid-area: content;
+}
+
+.learningResult__result {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-m);
+}
+
+.learningResult__resultTitle {
+    color: var(--primary-color);
+}
+
+.learningResult__resultDescription {
+    font-family: var(--main-font);
+    font-size: var(--font-size-m);
+    text-align: center;
+}
+
+.learningResult__resultImage {
+    height: calc(100% - 93px - 48px - var(--space-m)*2);
+    max-width: 100%;
+    animation: showDown 0.5s ease-in;
+}

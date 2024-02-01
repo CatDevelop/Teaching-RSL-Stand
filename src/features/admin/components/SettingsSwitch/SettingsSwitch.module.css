@@ -1,0 +1,31 @@
+.switch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs)
+}
+
+.switch__label {
+    font-size: var(--font-size-m);
+}
+
+.switch__hintContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 48px;
+    height: 18px;
+}
+
+.switch__hint__icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch__hint__title {
+    font-size: var(--font-size-s);
+    line-height: 1;
+    height: 18px;
+}

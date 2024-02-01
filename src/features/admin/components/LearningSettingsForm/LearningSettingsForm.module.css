@@ -1,0 +1,17 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    margin-bottom: 20px;
+    padding: 0 43px;
+}
+
+.select {
+    width: 500px;
+    align-items: center;
+}
+
+.select__label {
+    width: 200px;
+    height: 23px;
+}

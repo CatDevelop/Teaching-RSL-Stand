@@ -1,0 +1,1 @@
+export { SettingsSwitch } from "./SettingsSwitch";

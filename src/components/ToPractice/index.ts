@@ -1,1 +1,0 @@
-export { ToPractice } from "./ToPractice";

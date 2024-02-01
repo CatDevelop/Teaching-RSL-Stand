@@ -40,11 +40,12 @@ export const TaskContinue: FC<Props> = typedMemo(function TaskContinue(props){
                         <img src={CloseCircle} rel="preload" alt="Иконка крестика" className={styles.taskContinue__icon} />
                         <Typography
                             variant="h3"
-                            className={styles.taskContinue__textBlock}>
+                            className={styles.taskContinue__textBlock}
+                        >
                             Неверный ответ
                         </Typography>
                     </div>
-                    <Button variant="faded" onClick={props.retry}>Повторить</Button>
+                    <Button variant="faded" color="primary" onClick={props.retry}>Повторить</Button>
                     <Button color="danger" onClick={props.next}>Пропустить</Button>
                 </>
         }
