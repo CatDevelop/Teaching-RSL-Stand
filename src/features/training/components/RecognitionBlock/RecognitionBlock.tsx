@@ -39,12 +39,12 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
 
     const onConnectToModal = useCallback(() => {
         console.log("Connected to server");
-    }, [])
+    }, [socket])
 
     const onDisconnectFromModal = useCallback(() => {
         console.log("Disconnect");
         socket.connect()
-    }, [])
+    }, [socket])
 
     const onReceiveText = useCallback((text: string) => {
         console.log(text)
@@ -81,14 +81,14 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                         props.setSignRecognizeText([...props.signRecognizeText, props.word.recognitionText])
             }
         }
-    }, [props])
+    }, [settings, props])
 
     useEffect(() => {
         socket.on("send_not_normalize_text", onReceiveText);
         return () => {
             socket.off("send_not_normalize_text", onReceiveText)
         }
-    }, [onReceiveText]);
+    }, [socket, onReceiveText]);
 
     const startWebcam = useCallback(async (addFrameSender: () => void) => {
         try {
