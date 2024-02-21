@@ -27,10 +27,11 @@ type Props = ComponentProps & Readonly<{
     setSignRecognizeText: Dispatch<SetStateAction<string[]>>
 }>
 
+
 export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(props) {
     const [loading, setLoading] = useState(1)
-    const settings: Settings = LocalStorageService.get('Teaching-RSL-Settings') || initialSettings;
 
+    const settings: Settings = LocalStorageService.get('Teaching-RSL-Settings') || initialSettings;
     const socket = getSocket(settings.training.recognitionSource)
 
     let videoElement: any;
@@ -39,7 +40,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
 
     const onConnectToModal = useCallback(() => {
         console.log("Connected to server");
-    }, [socket])
+    }, [])
 
     const onDisconnectFromModal = useCallback(() => {
         console.log("Disconnect");
@@ -112,14 +113,11 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
             const originalHeight = videoElement.videoHeight;
             const aspectRatio = originalWidth / originalHeight;
             let newWidth = 224;
-            let newHeight = newWidth / aspectRatio;
+            // let newHeight = newWidth / aspectRatio;
+            let newHeight = 224;
 
             canvas.width = 224;
             canvas.height = 224;
-
-            if (context)
-                context.fillStyle = 'rgb(114, 114, 114)';
-            context?.fillRect(0, 0, canvas.width, canvas.width);
 
             context?.drawImage(videoElement, 0, (224 - newHeight) / 2, newWidth, newHeight);
             const image = canvas.toDataURL('image/jpeg');
