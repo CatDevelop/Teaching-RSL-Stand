@@ -89,11 +89,14 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
             const originalHeight = videoElement.videoHeight;
             const aspectRatio = originalWidth / originalHeight;
             let newWidth = 224;
-            // let newHeight = newWidth / aspectRatio;
-            let newHeight = 224;
+            let newHeight = newWidth / aspectRatio;
 
             canvas.width = 224;
             canvas.height = 224;
+
+            if (context)
+                context.fillStyle = 'rgb(114, 114, 114)';
+            context?.fillRect(0, 0, canvas.width, canvas.width);
 
             context?.drawImage(videoElement, 0, (224 - newHeight) / 2, newWidth, newHeight);
             const image = canvas.toDataURL('image/jpeg');
