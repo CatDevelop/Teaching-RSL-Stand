@@ -64,7 +64,7 @@
 }
 
 .trainingResult__result {
-    height: calc(100% - 100px);
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -97,7 +97,7 @@
 .trainingResult__resultImage {
     max-height: 100%;
     max-width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 200px);
 }
 
 .trainingResult__resultCard {
