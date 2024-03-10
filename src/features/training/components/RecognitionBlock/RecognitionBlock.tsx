@@ -255,7 +255,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                         </Typography>
                     }
                     {
-                        RECOGNITION_MODE === "word" && props.signRecognizeText.slice(-6).map(word => {
+                        RECOGNITION_MODE === "word" && props.signRecognizeText.slice(-3).map(word => {
                             return (
                                 <Typography
                                     variant="span"
