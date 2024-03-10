@@ -194,6 +194,7 @@
     animation: showFade 0.3s ease-in;
 }
 
+
 .trainingTask__result {
     height: 100%;
     width: 100%;
@@ -207,24 +208,26 @@
 
 .trainingTask__result__image {
     width: 100%;
-    height: calc(100% - 155px);
+    height: calc(100% - 265px);
     object-fit: contain;
 }
 
 .trainingTask__resultTitle {
-    color: var(--primary-color);
-    font-size: var(--font-size-xl) !important;
+    color: var(--primary-color) !important;
+    font-size: var(--font-size-xxl) !important;
+    text-align: center;
+    font-weight: var(--font-weight-l);
 }
 
 .trainingTask__resultDescription {
-    font-family: var(--main-font);
-    font-size: var(--font-size-m);
+    font-family: var(--main-font) !important;
+    font-size: var(--font-size-l) !important;
     text-align: center;
 }
 
-.trainingTask__resultImage {
-    max-height: 100%;
-    max-width: 100%;
+.trainingTask__result__container {
+    display: flex;
+    gap: var(--space-s)
 }
 
 .trainingTask__resultCard {

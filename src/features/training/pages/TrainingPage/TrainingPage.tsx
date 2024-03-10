@@ -25,6 +25,9 @@ import Result from "../../../../assets/images/Result.svg";
 import {ResultCard} from "../../components/ResultCard";
 import RightClicker from "../../../../assets/images/RightClicker.svg";
 import RightClickerPrimary from "../../../../assets/images/RightClickerPrimary.svg";
+import {BySberAI} from "../../../../components/BySberAI";
+import {Card} from "../../../../components/Card";
+import {normalizeCountForm} from "../../../../core/utils/normalizeCountForm";
 
 export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const navigate = useNavigate()
@@ -39,8 +42,9 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const [intervalID, setIntervalID] = useState<TimeoutId>();
     const [currentStep, setCurrentStep] = useState(-1);
     const [isNotStartModel, setIsNotStartModel] = useState(false);
-    let correctWords: Set<string> = useMemo(() => new Set(), []);
+    let correctWords: Set<string> = useMemo(() => new Set(JSON.parse(localStorage.getItem("Teaching-RSL-correct-words") || "[]")), []);
 
+    console.log(correctWords)
     const clearRecognizeText = () => setSignRecognizeText([])
     const clearRecognizeGrade = useCallback(() => setSignRecognizeGrade(0), [setSignRecognizeGrade])
 
@@ -49,19 +53,27 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const toLearning = useCallback(() => navigate("/learning"), [navigate])
 
     const skip = useCallback(() => {
+        if (currentStep + 1 === data.length) {
+            navigate("result/?skiped=" + (countSkippedWords + 1) + "&all=" + data.length)
+        }
+
         setCurrentStep(currentStep => currentStep + 1)
         setCountSkippedWords(count => count + 1);
         setIsDoneTask(false);
         clearRecognizeGrade()
         clearRecognizeText()
-    }, [setCountSkippedWords, setCurrentStep, clearRecognizeGrade]);
+    }, [currentStep, data.length, clearRecognizeGrade, navigate, countSkippedWords]);
 
     const next = useCallback(() => {
+        if (currentStep + 1 === data.length) {
+            navigate("result/?skiped=" + countSkippedWords + "&all=" + data.length)
+        }
+
         setCurrentStep(currentStep => currentStep + 1)
         setIsDoneTask(false);
         clearRecognizeGrade()
         clearRecognizeText()
-    }, [setCurrentStep, setIsDoneTask, clearRecognizeGrade, data, currentStep])
+    }, [currentStep, data.length, clearRecognizeGrade, navigate, countSkippedWords])
 
     useEffect(() => {
         if (currentStep === data.length && countSkippedWords !== data.length)
@@ -89,6 +101,8 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
             toAFK()
     }, [idle, toAFK]);
 
+    const toTrainingPage = () => navigate("/")
+
     const handleKeydown = useCallback((event: KeyboardEvent) => {
         if (event.key === "ArrowRight") {
             event.preventDefault();
@@ -96,6 +110,8 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                 toAFK();
 
             if(currentStep === -1) {
+                correctWords.clear()
+                localStorage.setItem("Teaching-RSL-correct-words", "[]")
                 setCurrentStep(0)
                 return;
             }
@@ -108,6 +124,8 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
             if(currentStep === -1)
                 toLearning()
             else {
+                correctWords.delete(data[currentStep]?.recognitionText)
+                localStorage.setItem("Teaching-RSL-correct-words", JSON.stringify(Array.from(correctWords)))
                 setIsDoneTask(false);
                 clearRecognizeGrade()
                 clearRecognizeText()
@@ -141,11 +159,6 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                     {
                         currentStep === -1 &&
                         <div className={styles.trainingTask__taskContainer__startContainer}>
-
-                            <div className={styles.trainingTask__taskContainer__startContainer__qr}>
-                                <QRCode type="habr"/>
-                                <QRCode type="git"/>
-                            </div>
                             <StartTraining onStart={() => setCurrentStep(0)}/>
                         </div>
                     }
@@ -175,23 +188,44 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                     }
                     {
                         currentStep === data.length &&
-                        <div className={styles.trainingTask__result}>
-                            <img
-                                src={ResultImage}
-                                rel="preload"
-                                className={styles.trainingTask__result__image}
-                                alt="Иконка результата"
-                            />
-                            <Typography variant="h2" className={styles.trainingTask__resultTitle}>
-                                Благодарим за участие!
-                            </Typography>
-                            <ResultCard
-                                title="Результат"
-                                iconUrl={Result}
-                                content={`${getTaskResult()}%`}
-                                className={styles.trainingTask__resultCard}
-                            />
-                        </div>
+                        <Card className={styles.trainingResult__contentContainer}>
+                            <div className={styles.trainingResult__result}>
+                                {/*<ResultImage className={styles.trainingResult__resultImage}/>*/}
+                                <Typography variant="h2" className={styles.trainingResult__resultTitle}>
+                                    Конец тренировки
+                                </Typography>
+                                <Typography variant="p" className={styles.trainingResult__resultTitle}>
+                                    Ваш результат {correctWords.size} из {data.length} {normalizeCountForm(data.length, ["жеста", 'жестов', 'жестов'])}
+                                </Typography>
+
+                            </div>
+
+                            <Button
+                                size={'lg'}
+                                color="primary"
+                                onClick={toTrainingPage}
+                            >
+                                В меню
+                            </Button>
+
+                            <div className={styles.trainingResult__result__container}>
+                                <BySberAI/>
+                            </div>
+                        </Card>
+                        // <div className={styles.trainingTask__result}>
+                        //     <Typography variant="h2" className={styles.trainingTask__resultTitle}>
+                        //         Благодарим за участие!
+                        //     </Typography>
+                        //     <ResultCard
+                        //         title="Результат"
+                        //         iconUrl={Result}
+                        //         content={`${getTaskResult()}%`}
+                        //         className={styles.trainingTask__resultCard}
+                        //     />
+                        //     <div className={styles.trainingTask__result__container}>
+                        //         <BySberAI/>
+                        //     </div>
+                        // </div>
                     }
                 </div>
 

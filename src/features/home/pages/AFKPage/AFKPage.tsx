@@ -5,11 +5,12 @@ import {Typography} from "../../../../components/Typography";
 import {typedMemo} from "../../../../core/utils/typedMemo";
 import LogoStand from '../../../../assets/images/LogoStandMonochrome.svg'
 import {Facts} from "../../components/facts";
-import {Gradient} from "../../../../components/Gradient/Gradient";
 import RightClicker from "../../../../assets/images/RightClicker.svg";
+import Gradient from '../../../../assets/video/gradient2.mp4'
 
 export const AFKPage: FC = typedMemo(function AFKFactsPage() {
     const navigate = useNavigate();
+    localStorage.setItem("Teaching-RSL-correct-words", "[]")
 
     const toLearning = useCallback(() => navigate("/learning"), [navigate])
 
@@ -18,16 +19,22 @@ export const AFKPage: FC = typedMemo(function AFKFactsPage() {
             event.preventDefault();
             toLearning()
         }
-    }, [])
+    }, [toLearning])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)
         return () => document.removeEventListener('keydown', handleKeydown)
-    }, []);
+    }, [handleKeydown]);
 
     return (
         <div className={styles.afkPage} onClick={toLearning}>
-            <Gradient className={styles.afkPage__gradient}/>
+            <video
+                className={styles.afkPage__gradient}
+                src={Gradient}
+                autoPlay
+                loop
+                muted
+            />
 
             <img className={styles.afkPage__logo} src={LogoStand} alt="Логотип"/>
             <div className={styles.afkPage__factsContainer}>

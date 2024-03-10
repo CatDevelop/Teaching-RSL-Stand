@@ -18,7 +18,7 @@ export const StartLearning: FC<Props> = typedMemo(function StartLearning(props) 
                 variant="p"
                 className={styles.startLearning__description}
             >
-                Сначала вы ознакомитесь с теорией. Изучите 5 базовых жестов, запомните их, а потом проверьте свои умения<br/> с нашей моделью распознавания!
+                Сначала вы ознакомитесь с теорией. Изучите базовые жесты, запомните их, а потом проверьте свои умения<br/> с нашей моделью распознавания!
             </Typography>
 
             <Button

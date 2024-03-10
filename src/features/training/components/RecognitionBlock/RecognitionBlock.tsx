@@ -54,15 +54,30 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
             else if(results[0].toLowerCase() === props.word.recognitionText.toLowerCase()) {
                 props.setSignRecognizeGrade(1)
                 props.correctWords.add(props.word.recognitionText.toLowerCase())
+                localStorage.setItem("Teaching-RSL-correct-words", JSON.stringify(Array.from(props.correctWords)))
             }
             else
                 props.setSignRecognizeGrade(3)
         } else {
-            if(props.signRecognizeText.at(-1) !== results[0].toLowerCase()) {
-                props.setSignRecognizeText([...props.signRecognizeText, results[0].toLowerCase()])
-                if(props.word.recognitionText.toLowerCase() === results[0].toLowerCase())
-                    props.correctWords.add(results[0].toLowerCase())
+            if(results.includes(props.word.recognitionText)) {
+                if(props.signRecognizeText.at(-1) !== props.word.recognitionText.toLowerCase()) {
+                    props.setSignRecognizeText([...props.signRecognizeText, props.word.recognitionText.toLowerCase()])
+                    props.correctWords.add(props.word.recognitionText.toLowerCase())
+                    localStorage.setItem("Teaching-RSL-correct-words", JSON.stringify(Array.from(props.correctWords)))
+                }
+            } else {
+                if(props.signRecognizeText.at(-1) !== results[0].toLowerCase()) {
+                    props.setSignRecognizeText([...props.signRecognizeText, results[0].toLowerCase()])
+                }
             }
+
+            // if(props.signRecognizeText.at(-1) !== results[0].toLowerCase()) {
+            //     props.setSignRecognizeText([...props.signRecognizeText, results[0].toLowerCase()])
+            //     if(props.word.recognitionText.toLowerCase() === results[0].toLowerCase()) {
+            //         props.correctWords.add(results[0].toLowerCase())
+            //         localStorage.setItem("Teaching-RSL-correct-words", JSON.stringify(Array.from(props.correctWords)))
+            //     }
+            // }
 
         }
     }, [props])

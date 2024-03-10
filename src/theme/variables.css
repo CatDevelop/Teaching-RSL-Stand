@@ -60,6 +60,7 @@
     --select-entity-number-index: 100;
 
     --max-theory-card-width: 800px;
+    --learning-center-block-width: 1074px;
 }
 
 @media(max-width: 1300px){

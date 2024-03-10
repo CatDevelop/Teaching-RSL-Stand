@@ -34,7 +34,7 @@ type task = {
 export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     const navigate = useNavigate()
     const fireworks = getFireworks(3000)
-    const theoryCount = 5;
+    const theoryCount = StartThemeWords.length;
     const practiceCount = 3;
 
 
@@ -135,19 +135,6 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                             <ProgressBar currentStep={currentStep - 1} stepCount={tasks.length -1}/>
                         </div>
                     }
-
-                    {/*<div className={styles.learningTask__exitButtonContainer}>*/}
-                    {/*    {*/}
-                    {/*        currentStep !== theoryCount + practiceCount &&*/}
-                    {/*        <Button*/}
-                    {/*            variant="faded"*/}
-                    {/*            color="default"*/}
-                    {/*            onClick={openExitModal}*/}
-                    {/*        >*/}
-                    {/*            <img className={styles.learningTask__exitTap__clicker} src={LeftClicker} alt={"Правый кликер"}/> Выйти*/}
-                    {/*        </Button>*/}
-                    {/*    }*/}
-                    {/*</div>*/}
                 </div>
 
                 <div className={styles.learningTask__taskContainer}>

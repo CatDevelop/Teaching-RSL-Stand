@@ -4,6 +4,13 @@ import FriendSignVideo from "../assets/video/ExhibitionStand/Друг.mp4"
 import ISignVideo from "../assets/video/ExhibitionStand/Я.mp4"
 import LoveSignVideo from "../assets/video/ExhibitionStand/Люблю.mp4"
 import YouSignVideo from "../assets/video/ExhibitionStand/Тебя.mp4"
+import WantSignVideo from "../assets/video/ExhibitionStand/Хочу.mp4"
+import WorkSignVideo from "../assets/video/ExhibitionStand/Работаю.mp4"
+import InSignVideo from "../assets/video/ExhibitionStand/В.mp4"
+import AllSignVideo from "../assets/video/ExhibitionStand/Всех.mp4"
+import ForSignVideo from "../assets/video/ExhibitionStand/Для.mp4"
+import EduSignVideo from "../assets/video/ExhibitionStand/Образование.mp4"
+import DoSignVideo from "../assets/video/ExhibitionStand/Сделать.mp4"
 
 export type taskType = "SelectWord" | "SelectGIFByWord" | "MatchWordAndGIF"
 export const StartThemeWords: Word[] = [
@@ -41,6 +48,56 @@ export const StartThemeWords: Word[] = [
         recognitionText: 'ты',
         // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
         gifSource: YouSignVideo,
+    },
+
+    {
+        id: 5,
+        text: "Хочу",
+        recognitionText: 'хотеть',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
+        gifSource: WantSignVideo,
+    },
+    {
+        id: 6,
+        text: "Сделать",
+        recognitionText: 'делать',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
+        gifSource: DoSignVideo,
+    },
+    {
+        id: 7,
+        text: "Образование",
+        recognitionText: 'образовать',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
+        gifSource: EduSignVideo,
+    },
+    {
+        id: 8,
+        text: "Для",
+        recognitionText: 'для',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
+        gifSource: ForSignVideo,
+    },
+    {
+        id: 9,
+        text: "Всех",
+        recognitionText: 'всё',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
+        gifSource: AllSignVideo,
+    },
+    {
+        id: 10,
+        text: "Работаю",
+        recognitionText: 'работать',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
+        gifSource: WorkSignVideo,
+    },
+    {
+        id: 11,
+        text: "В",
+        recognitionText: 'в',
+        // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
+        gifSource: InSignVideo,
     },
 ]
 
