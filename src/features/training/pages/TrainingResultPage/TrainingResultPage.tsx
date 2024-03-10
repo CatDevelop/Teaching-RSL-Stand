@@ -76,15 +76,14 @@ export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
                             Ваш результат {allWordsCount - skipWordsCount} из {allWordsCount} {normalizeCountForm(allWordsCount, ["жеста", 'жестов', 'жестов'])}
                         </Typography>
 
+                        <Button
+                            size={'lg'}
+                            color="primary"
+                            onClick={toAFK}
+                        >
+                            <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/> В меню
+                        </Button>
                     </div>
-
-                    <Button
-                        size={'lg'}
-                        color="primary"
-                        onClick={toAFK}
-                    >
-                        <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/> В меню
-                    </Button>
 
                     <div className={styles.trainingResult__result__container}>
                         <BySberAI/>
