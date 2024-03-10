@@ -60,8 +60,8 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                 props.setSignRecognizeGrade(3)
         } else {
             if(results.includes(props.word.recognitionText)) {
-                if(props.signRecognizeText.at(-1) !== props.word.recognitionText.toLowerCase()) {
-                    props.setSignRecognizeText([...props.signRecognizeText, props.word.recognitionText.toLowerCase()])
+                if(props.signRecognizeText.at(-1) !== props.word.text.toLowerCase()) {
+                    props.setSignRecognizeText([...props.signRecognizeText, props.word.text.toLowerCase()])
                     props.correctWords.add(props.word.recognitionText.toLowerCase())
                     localStorage.setItem("Teaching-RSL-correct-words", JSON.stringify(Array.from(props.correctWords)))
                 }
@@ -111,11 +111,15 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
             const originalHeight = videoElement.videoHeight;
             const aspectRatio = originalWidth / originalHeight;
             let newWidth = 224;
-            // let newHeight = newWidth / aspectRatio;
-            let newHeight = 224;
+            let newHeight = newWidth / aspectRatio;
+            // let newHeight = 224;
 
             canvas.width = 224;
             canvas.height = 224;
+
+            if (context)
+                context.fillStyle = 'rgb(114, 114, 114)';
+            context?.fillRect(0, 0, canvas.width, canvas.width);
 
             context?.drawImage(videoElement, 0, (224 - newHeight) / 2, newWidth, newHeight);
             const image = canvas.toDataURL('image/jpeg');
@@ -149,7 +153,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
 
     useEffect(() => {
         if (RECOGNITION_MODE === "word") {
-            if (props.signRecognizeText.includes(props.word.recognitionText?.toLowerCase() ?? ''))
+            if (props.signRecognizeText.includes(props.word.text?.toLowerCase() ?? ''))
                 props.onSuccess()
         } else {
             if (props.signRecognizeGrade === 1)
@@ -257,7 +261,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                                     variant="span"
                                     className={clsx(
                                         styles.recognitionBlock__recognizedWord,
-                                        word.toLowerCase() === props.word.recognitionText.toLowerCase() && styles.recognitionBlock__rightWord
+                                        word.toLowerCase() === props.word.text.toLowerCase() && styles.recognitionBlock__rightWord
                                     )}
                                 >
                                     {word}
