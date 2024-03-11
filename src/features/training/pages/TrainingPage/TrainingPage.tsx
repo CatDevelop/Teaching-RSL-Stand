@@ -66,7 +66,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const next = useCallback(() => {
         if (currentStep + 1 === data.length) {
-            navigate("result/?skiped=" + countSkippedWords + "&all=" + data.length)
+            navigate("result")
         }
 
         setCurrentStep(currentStep => currentStep + 1)
