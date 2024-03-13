@@ -1,0 +1,1 @@
+export { TrainingSentencePage } from "./TrainingSentencePage";

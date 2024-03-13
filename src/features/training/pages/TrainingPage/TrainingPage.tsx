@@ -28,6 +28,7 @@ import RightClickerPrimary from "../../../../assets/images/RightClickerPrimary.s
 import {BySberAI} from "../../../../components/BySberAI";
 import {Card} from "../../../../components/Card";
 import {normalizeCountForm} from "../../../../core/utils/normalizeCountForm";
+import {RECOGNITION_MODE} from "../../../../core/config";
 
 export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const navigate = useNavigate()
@@ -54,7 +55,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const skip = useCallback(() => {
         if (currentStep + 1 === data.length) {
-            navigate("result/?skiped=" + (countSkippedWords + 1) + "&all=" + data.length)
+            navigate("/training/sentence/start")
         }
 
         setCurrentStep(currentStep => currentStep + 1)
@@ -66,7 +67,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
     const next = useCallback(() => {
         if (currentStep + 1 === data.length) {
-            navigate("result")
+            navigate("/training/sentence/start")
         }
 
         setCurrentStep(currentStep => currentStep + 1)
@@ -177,6 +178,8 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
 
                             signRecognizeText={signRecognizeText}
                             setSignRecognizeText={setSignRecognizeText}
+
+                            recognitionMode={RECOGNITION_MODE}
                         />
                     }
                     {

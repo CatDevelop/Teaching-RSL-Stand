@@ -8,9 +8,8 @@ import {Typography} from "../../../../components/Typography";
 import {useNavigate} from "react-router-dom";
 import {PageContent} from "../../../../components/PageContent";
 import {getFireworks} from "../../../../core/utils/explodeFireworks";
-import {ExitConfirmation} from "../../../../components/ExitConfirmation";
 import {BySberAI} from "../../../../components/BySberAI";
-import ResultImage from "../../../../assets/images/ResultTraining.png"
+import ResultImage from "../../../../assets/images/End.png"
 import {Card} from "../../../../components/Card";
 import {normalizeCountForm} from "../../../../core/utils/normalizeCountForm";
 import RightClickerPrimary from "../../../../assets/images/RightClickerPrimary.svg";

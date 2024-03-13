@@ -1,0 +1,23 @@
+.camera {
+    position: relative;
+    height: 100%;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.indicator {
+    position: absolute;
+    top: 5px;
+    right: 60px;
+    display: flex;
+    gap:5px;
+    align-items: center;
+    justify-content: start !important;
+    width: 105px !important;
+}
+

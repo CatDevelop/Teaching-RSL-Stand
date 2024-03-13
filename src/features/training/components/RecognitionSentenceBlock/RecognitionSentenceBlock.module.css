@@ -1,0 +1,81 @@
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.recognitionBlock {
+    --recognition-block-height: calc(100vh - var(--page-padding-m)*2 - 102px - var(--space-l));
+
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    position: relative;
+    height: var(--recognition-block-height)
+}
+
+.title {
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-l);
+    font-size: var(--font-size-m);
+    line-height: calc(var(--font-size-m) * 1.2);
+}
+
+.recognitionCamera {
+    max-height: calc(var(--recognition-block-height) - var(--space-l) * 2 - var(--space-m) * 2 - 24px - 50px);
+}
+
+.sentenceContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sentenceContainer__title {
+    line-height: var(--font-size-m);
+    font-size: var(--font-size-l);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    min-height: 50px;
+    align-items: start;
+}
+
+.recognizedWords {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.recognizedWord {
+    color: transparent;
+    background-image: linear-gradient(90deg, var(--success-color) 50%, var(--thirdly-text-color) 50%);
+    background-position: 100%;
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: calc(var(--font-size-m) * 1.4);
+    font-weight: var(--font-weight-xl);
+    transition: background-position 0.5s ease;
+}
+
+.recognitionBlock__rightWordFill {
+    background-position: 0;
+}
+
+.taskContinue {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 var(--border-radius-m) var(--border-radius-m);
+}

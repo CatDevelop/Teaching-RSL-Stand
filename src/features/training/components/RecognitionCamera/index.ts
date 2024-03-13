@@ -1,0 +1,1 @@
+export { RecognitionCamera } from "./RecognitionCamera";

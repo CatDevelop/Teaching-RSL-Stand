@@ -1,11 +1,12 @@
 .button {
     font-family: var(--main-font);
-    font-weight: var(--font-weight-l);
-    padding: calc(var(--space-m) * 0.75) var(--space-xl);
+    font-weight: var(--font-weight-xl);
+    padding: var(--space-s) calc(var(--space-l) * 1.5);
     height: auto;
     line-height: 1.5;
     font-size: var(--font-size-s);
     --icon-size: 16px;
+    min-height: 48px;
 }
 
 .button img {
@@ -15,6 +16,11 @@
 
 .button_solid {
     color: var( --on-surface-color)
+}
+
+.button__light {
+    color: var(--thirdly-text-color);
+    text-decoration: underline;
 }
 
 .button_filled {
@@ -30,11 +36,23 @@
 .button_primary_faded {
     background-color: var(--on-surface-color);
     color: var(--primary-color);
-    border-color:var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.button_primary_solid_disabled {
+    background-color: var(--disabled-primary-color);
+    color: var(--on-surface-color);
+    border-color: var(--disabled-primary-color);
 }
 
 .button_link {
-    height: auto;
+    min-height: auto;
     font-weight: var(--font-weight-m);
     padding: 0 var(--space-xs);
+    color: var(--thirdly-text-color);
 }
+
+.button_primary_link {
+    color: var(--primary-color)
+}
+

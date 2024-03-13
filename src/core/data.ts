@@ -13,6 +13,13 @@ import EduSignVideo from "../assets/video/ExhibitionStand/Образование
 import DoSignVideo from "../assets/video/ExhibitionStand/Сделать.mp4"
 
 export type taskType = "SelectWord" | "SelectGIFByWord" | "MatchWordAndGIF"
+
+export type Sentence = {
+    id: number,
+    words: number[],
+    text: string
+}
+
 export const StartThemeWords: Word[] = [
     {
         id: 0,
@@ -105,4 +112,22 @@ export const StartThemeTasks: taskType[] = [
     "SelectWord",
     "SelectGIFByWord",
     "MatchWordAndGIF"
+]
+
+export const StartThemeSentence: Sentence[] = [
+    {
+        id: 0,
+        words: [2, 3, 4],
+        text: "Я люблю тебя."
+    },
+    {
+        id: 1,
+        words: [2, 5, 6, 7, 8, 9],
+        text: "Я хочу сделать образование для всех."
+    },
+    {
+        id: 2,
+        words: [2, 10, 11, 7],
+        text: "Я работаю в образовании."
+    }
 ]

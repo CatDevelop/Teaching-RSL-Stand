@@ -5,12 +5,12 @@
 
 .taskContinue {
     width: 100%;
-    height: 100px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--space-l);
-    gap: var(--space-m);
+    gap: var(--space-l);
     background-color: var(--light-primary-color);
     animation: showFade 0.3s ease-in;
 }
@@ -27,6 +27,8 @@
 
 .taskContinue__textBlock {
     color: var(--primary-color);
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-l);
 }
 
 .taskContinue_incorrectly .taskContinue__textBlock{

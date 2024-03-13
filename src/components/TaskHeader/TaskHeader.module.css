@@ -1,0 +1,29 @@
+.taskHeader {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    height: min-content;
+    max-width: var(--learning-center-block-width);
+    position: relative;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.name {
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-l);
+    font-size: var(--font-size-s);
+    line-height: var(--font-size-s);
+}
+
+.type {
+    color: var(--thirdly-text-color);
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-l);
+    font-size: var(--font-size-s);
+    line-height: var(--font-size-s);
+}

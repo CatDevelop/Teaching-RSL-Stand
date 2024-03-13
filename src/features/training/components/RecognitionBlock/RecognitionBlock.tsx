@@ -11,7 +11,6 @@ import {Word} from "../../../../core/models/Word";
 import {TimeoutId} from "@reduxjs/toolkit/dist/query/core/buildMiddleware/types";
 import {stopAllTracks} from "../../../../core/utils/stopAllTracks";
 import {socket} from "../../../../core/utils/connectToModal";
-import {RECOGNITION_MODE} from "../../../../core/config";
 
 
 type Props = ComponentProps & Readonly<{
@@ -24,6 +23,8 @@ type Props = ComponentProps & Readonly<{
     signRecognizeText: string[]
     setSignRecognizeText: Dispatch<SetStateAction<string[]>>
     correctWords: Set<string>
+
+    recognitionMode: "word" | "grade" | "sentence"
 }>
 
 export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(props) {
@@ -46,7 +47,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
         let results: string[] = Object.values(JSON.parse(text))
         console.log(results)
 
-        if (RECOGNITION_MODE === "grade") {
+        if (props.recognitionMode === "grade") {
             if (props.signRecognizeGrade === 1)
                 return;
             if(results[1].toLowerCase() === props.word.recognitionText.toLowerCase())
@@ -152,7 +153,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
     }, [props.intervalID])
 
     useEffect(() => {
-        if (RECOGNITION_MODE === "word") {
+        if (props.recognitionMode === "word") {
             if (props.signRecognizeText.includes(props.word.text?.toLowerCase() ?? ''))
                 props.onSuccess()
         } else {
@@ -200,13 +201,14 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
             <div className={styles.recognitionBlock__recognizedContainer}>
                 <Typography variant="h3" className={styles.recognitionBlock__recognized}>
                     {
-                        RECOGNITION_MODE === "word" ? "Распознанные слова" : "Ваш результат" }
+                        props.recognitionMode === "word" ? "Распознанные слова" : "Ваш результат"
+                    }
                 </Typography>
                 <div className={clsx(styles.recognitionBlock__recognizedWords)}>
                     {
                         (
-                            (RECOGNITION_MODE === "word" && props.signRecognizeText.length === 0)
-                            || (RECOGNITION_MODE === "grade" && props.signRecognizeGrade === 0)
+                            (props.recognitionMode === "word" && props.signRecognizeText.length === 0)
+                            || (props.recognitionMode === "grade" && props.signRecognizeGrade === 0)
                         ) &&
                         <Typography
                             variant="span"
@@ -217,7 +219,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                     }
 
                     {
-                        RECOGNITION_MODE === "grade" && props.signRecognizeGrade === 1 &&
+                        props.recognitionMode === "grade" && props.signRecognizeGrade === 1 &&
                         <Typography
                             variant="span"
                             className={clsx(
@@ -230,7 +232,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                     }
 
                     {
-                        RECOGNITION_MODE === "grade" && props.signRecognizeGrade === 2 &&
+                        props.recognitionMode === "grade" && props.signRecognizeGrade === 2 &&
                         <Typography
                             variant="span"
                             className={clsx(
@@ -243,7 +245,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                     }
 
                     {
-                        RECOGNITION_MODE === "grade" && props.signRecognizeGrade > 2 &&
+                        props.recognitionMode === "grade" && props.signRecognizeGrade > 2 &&
                         <Typography
                             variant="span"
                             className={clsx(
@@ -255,7 +257,7 @@ export const RecognitionBlock: FC<Props> = typedMemo(function RecognitionBlock(p
                         </Typography>
                     }
                     {
-                        RECOGNITION_MODE === "word" && props.signRecognizeText.slice(-3).map(word => {
+                        props.recognitionMode === "word" && props.signRecognizeText.slice(-3).map(word => {
                             return (
                                 <Typography
                                     variant="span"

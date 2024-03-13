@@ -1,6 +1,10 @@
 import io from "socket.io-client";
 
-export const socket = io('wss://pincode-dev.ru', {
+const serverSource = {
+    LOCAL: "ws://localhost:5000",
+    SERVER: 'wss://pincode-dev.ru'
+}
+export const socket = io(serverSource.LOCAL, {
     autoConnect: false,
     'reconnection': true,
     'reconnectionDelay': 500,

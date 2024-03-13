@@ -6,5 +6,5 @@
     background-color: var(--on-surface-color);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius-m);
-    padding: calc(2 * var(--space-m));
+    padding: var(--space-l);
 }
