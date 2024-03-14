@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {PageContent} from "../../../../components/PageContent";
 import {useIdle} from "@mantine/hooks";
 import {Card} from "../../../../components/Card";
-import StartSentenceTraining from "../../../../assets/images/StartTraining.png"
+import StartSentenceTraining from "../../../../assets/images/StartTrainingSentence.png"
 import {StartTrainingSentence} from "../../components/StartTrainingSentence/StartTrainingSentence";
 
 

@@ -5,6 +5,7 @@ import styles from "./StartLearning.module.css";
 import {Typography} from "../../../../components/Typography";
 import {Button} from "../../../../components/Button";
 import RightClicker from "../../../../assets/images/RightClicker.svg";
+import StartLearningImage from "../../../../assets/images/StartLearning.png";
 
 type Props = {
     onStart: () => void
@@ -13,6 +14,7 @@ type Props = {
 export const StartLearning: FC<Props> = typedMemo(function StartLearning(props) {
     return (
         <Card className={styles.startLearning}>
+            <img src={StartLearningImage} height={300}  alt=""/>
             <Typography variant="h2" className={styles.startLearning__title}>Начало обучения</Typography>
             <Typography
                 variant="p"

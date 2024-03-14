@@ -40,3 +40,11 @@
     font-display: fallback;
 }
 
+@font-face {
+    font-family: Montserrat;
+    src: url('assets/fonts/Montserrat.ttf');
+    font-display: swap;
+}
+
+
+

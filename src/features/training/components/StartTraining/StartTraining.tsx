@@ -6,6 +6,7 @@ import styles from "./StartTraining.module.css";
 import {Typography} from "../../../../components/Typography";
 import {Button} from "../../../../components/Button";
 import RightClicker from "../../../../assets/images/RightClicker.svg";
+import StartTrainingImage from "../../../../assets/images/StartTraining.png";
 
 type Props = {
     onStart: any
@@ -14,6 +15,7 @@ type Props = {
 export const StartTraining: FC<Props> = typedMemo(function StartTraining(props) {
     return (
         <Card className={styles.startTraining}>
+            <img src={StartTrainingImage}  alt=""/>
             <Typography variant={"h2"} className={styles.startTraining__title}>
                 Начало тренировки
             </Typography>

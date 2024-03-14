@@ -6,7 +6,7 @@ import styles from "./StartTrainingSentence.module.css";
 import {Typography} from "../../../../components/Typography";
 import {Button} from "../../../../components/Button";
 import RightClicker from "../../../../assets/images/RightClicker.svg";
-import StartSentenceTraining from "../../../../assets/images/StartTraining.png";
+import StartTrainingSentenceImage from "../../../../assets/images/StartTrainingSentence.png";
 import {useNavigate} from "react-router-dom";
 
 
@@ -15,7 +15,7 @@ export const StartTrainingSentence: FC = typedMemo(function StartTrainingSentenc
 
     return (
         <Card className={styles.startTraining}>
-            <img src={StartSentenceTraining}  alt=""/>
+            <img src={StartTrainingSentenceImage}  alt=""/>
             <Typography variant={"h2"} className={styles.startTraining__title}>
                 Начало практики
             </Typography>

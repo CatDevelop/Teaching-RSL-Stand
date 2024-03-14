@@ -74,9 +74,6 @@ export const RecognitionSentenceBlock: FC<Props> = typedMemo(function Recognitio
                                           className={clsx(styles.recognizedWord, props.signRecognizeText.includes(word?.recognitionText || "") && styles.recognitionBlock__rightWordFill)}>
                                     {sentenceWord}
                                 </p>
-                                // return <p className={clsx(!props.signRecognizeText.includes(word?.recognitionText || "") && styles.recognitionBlock__rightWordFill)}><p className={clsx(styles.recognizedWord)}>
-                                //     {sentenceWord}
-                                // </p></p>
                             })
                         }
                     </div>

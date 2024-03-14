@@ -27,6 +27,7 @@
 }
 
 .recognitionCamera {
+    margin: auto;
     max-height: calc(var(--recognition-block-height) - var(--space-l) * 2 - var(--space-m) * 2 - 24px - 50px);
 }
 
@@ -46,7 +47,7 @@
     display: flex;
     justify-content: space-between;
     min-height: 50px;
-    align-items: start;
+    align-items: end;
 }
 
 .recognizedWords {
