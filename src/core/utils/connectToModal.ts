@@ -4,7 +4,7 @@ const serverSource = {
     LOCAL: "ws://localhost:5000",
     SERVER: 'wss://pincode-dev.ru'
 }
-export const socket = io(serverSource.SERVER, {
+export const socket = io(serverSource.LOCAL, {
     autoConnect: false,
     'reconnection': true,
     'reconnectionDelay': 500,
