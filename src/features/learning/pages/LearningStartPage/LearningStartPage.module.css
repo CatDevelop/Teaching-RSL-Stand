@@ -58,21 +58,3 @@
     height: 100%;
     max-width: var(--learning-center-block-width);
 }
-
-.card {
-    display: flex;
-    flex-direction: column;
-    height: min-content;
-}
-
-.card img {
-    object-fit: contain;
-}
-
-.card p {
-    font-family: var(--main-font);
-    font-size: var(--font-size-l);
-    text-align: center;
-    color: var(--disabled-button-color);
-    font-weight: var(--font-weight-m);
-}

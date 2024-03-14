@@ -52,9 +52,17 @@ export const RecognitionSentenceBlock: FC<Props> = typedMemo(function Recognitio
 
     return (
         <Card className={styles.recognitionBlock}>
-            <Typography variant="span" className={styles.title}>
-                Составьте из жестов предложение
-            </Typography>
+            <div className={styles.recognizedWords}>
+                {
+                    props.sentence.text.split(" ").map((sentenceWord, index) => {
+                        const word = StartThemeWords.find(word => word.id === props.sentence.words[index])
+                        return <p key={`sentenceWord${props.sentence.id}i${index}`}
+                                  className={clsx(styles.recognizedWord, props.signRecognizeText.includes(word?.recognitionText || "") && styles.recognitionBlock__rightWordFill)}>
+                            {sentenceWord}
+                        </p>
+                    })
+                }
+            </div>
 
             <RecognitionCamera
                 intervalID={intervalID}
@@ -66,17 +74,7 @@ export const RecognitionSentenceBlock: FC<Props> = typedMemo(function Recognitio
             {
                 !props.isDoneTask &&
                 <div className={styles.footer}>
-                    <div className={styles.recognizedWords}>
-                        {
-                            props.sentence.text.split(" ").map((sentenceWord, index) => {
-                                const word = StartThemeWords.find(word => word.id === props.sentence.words[index])
-                                return <p key={`sentenceWord${props.sentence.id}i${index}`}
-                                          className={clsx(styles.recognizedWord, props.signRecognizeText.includes(word?.recognitionText || "") && styles.recognitionBlock__rightWordFill)}>
-                                    {sentenceWord}
-                                </p>
-                            })
-                        }
-                    </div>
+
                     <Button variant={"bordered"} size={"lg"}>Пропустить</Button>
                 </div>
             }

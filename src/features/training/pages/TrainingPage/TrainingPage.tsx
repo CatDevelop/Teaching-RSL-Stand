@@ -226,7 +226,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
                         //         className={styles.trainingTask__resultCard}
                         //     />
                         //     <div className={styles.trainingTask__result__container}>
-                        //         <BySberAI/>
+                        //         <ByPinCode/>
                         //     </div>
                         // </div>
                     }

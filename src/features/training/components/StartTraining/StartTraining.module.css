@@ -27,18 +27,20 @@
 }
 
 .startTraining__title {
-    font-family: var(--main-font);
-    font-size: var(--font-size-xl);
+    font-family: var(--main-font) !important;
+    font-size: var(--font-size-xl) !important;
     text-align: center;
-    line-height: var(--font-size-xl);
+    line-height: var(--font-size-xl) !important;
+    font-weight: var(--font-weight-xxl) !important;
+    color: var(--text-color)
 }
 
 .startTraining__description {
-    font-family: var(--main-font);
-    font-size: var(--font-size-l);
-    text-align: center;
-    color: var(--disabled-button-color);
-    font-weight: var(--font-weight-m);
+    font-family: var(--main-font) !important;
+    font-size: var(--font-size-l) !important;
+    text-align: center !important;
+    color: var(--disabled-button-color) !important;
+    font-weight: var(--font-weight-m) !important;
 }
 
 .startTraining__tap__clicker {

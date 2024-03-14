@@ -1,7 +1,7 @@
 import React from 'react';
 import {RouteObject} from "react-router-dom";
 import {LearningStartPage} from "./pages/LearningStartPage";
-import {LearningPage} from "./pages/LearningPage";
+import {LearningTaskPage} from "./pages/LearningTaskPage";
 
 export const learningRoutes: RouteObject[] = [
     {
@@ -9,7 +9,7 @@ export const learningRoutes: RouteObject[] = [
         children:[
             {
                 path: '',
-                element: <LearningPage />,
+                element: <LearningTaskPage />,
             },
             {
                 path: 'start',

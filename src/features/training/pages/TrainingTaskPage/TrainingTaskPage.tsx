@@ -40,7 +40,7 @@ export const TrainingTaskPage: FC = typedMemo(function TrainingSentencePage() {
     const clearRecognizeText = () => setSignRecognizeText([])
 
     const toAFK = useCallback(() => navigate("/"), [navigate])
-    const toTrainingSentenceStart = useCallback(() => navigate("/training/sentence/start"), [navigate])
+    const toTrainingStart = useCallback(() => navigate("/training/start"), [navigate])
 
     const skip = useCallback(() => {
         if (currentStep + 1 === data.length) {
@@ -99,15 +99,14 @@ export const TrainingTaskPage: FC = typedMemo(function TrainingSentencePage() {
         if (event.key === "ArrowLeft") {
             event.preventDefault();
             if (currentStep === 0)
-                toTrainingSentenceStart()
+                toTrainingStart()
             else {
-                // correctWords.delete(data[currentStep]?.recognitionText)
                 setIsDoneTask(false);
                 clearRecognizeText()
                 setCurrentStep(currentStep - 1)
             }
         }
-    }, [setCurrentStep, currentStep, isDoneTask, toTrainingSentenceStart])
+    }, [setCurrentStep, currentStep, isDoneTask, toTrainingStart])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)
@@ -139,7 +138,8 @@ export const TrainingTaskPage: FC = typedMemo(function TrainingSentencePage() {
                 <div className={styles.content}>
                     <TaskHeader
                         type={"Тренировка"}
-                        name={`${currentStep + 1} из ${data.length} жестов`}
+                        task={"Покажите жест в камеру"}
+                        name={`${currentStep + 1} / ${data.length}`}
                         currentStep={currentStep}
                         stepCount={data.length}
                     />
@@ -153,72 +153,6 @@ export const TrainingTaskPage: FC = typedMemo(function TrainingSentencePage() {
                         next={next}
                     />
                 </div>
-
-
-
-
-
-                {/*<div className={styles.trainingTask__contentContainer}>*/}
-                {/*    {*/}
-                {/*        currentStep !== -1 && currentStep !== data.length && !isNotStartModel &&*/}
-                {/*        <Card className={styles.progressContainer}>*/}
-                {/*            <ProgressBar currentStep={currentStep - 1} stepCount={data.length}/>*/}
-                {/*        </Card>*/}
-                {/*        // <div className={styles.trainingTask__progressBarContainer}>*/}
-                {/*        //*/}
-                {/*        // </div>*/}
-                {/*    }*/}
-                {/*    {*/}
-                {/*        !isNotStartModel &&*/}
-                {/*        <RecognitionSentenceBlock*/}
-                {/*            sentence={data[currentStep]}*/}
-                {/*            signRecognizeText={signRecognizeText}*/}
-                {/*            setSignRecognizeText={setSignRecognizeText}*/}
-                {/*        />*/}
-                {/*    }*/}
-                {/*    {*/}
-                {/*        isNotStartModel &&*/}
-                {/*        <div className={styles.trainingPage__warningContainer}>*/}
-                {/*            <ModelWarning/>*/}
-                {/*        </div>*/}
-                {/*    }*/}
-                {/*</div>*/}
-
-                {/*<div className={styles.trainingTask__buttonsContainer}>*/}
-                {/*    {*/}
-                {/*        currentStep >= 0 && currentStep <= data.length - 1 && !isDoneTask && !isNotStartModel &&*/}
-                {/*        <Button*/}
-                {/*            size={"lg"}*/}
-                {/*            variant="faded"*/}
-                {/*            onClick={skip}*/}
-                {/*        >*/}
-                {/*            <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/> Пропустить*/}
-                {/*        </Button>*/}
-                {/*    }*/}
-                {/*</div>*/}
-
-                {/*<div className={styles.trainingTask__taskContinueContainer}>*/}
-                {/*    {*/}
-                {/*        isDoneTask &&*/}
-                {/*        <TaskContinue next={next} isRightAnswer={true}/>*/}
-                {/*    }*/}
-                {/*    {*/}
-                {/*        currentStep === data.length &&*/}
-                {/*        <div className={styles.trainingTask__toHome}>*/}
-                {/*            <Button*/}
-                {/*                size={'lg'}*/}
-                {/*                color="primary"*/}
-                {/*                onClick={toAFK}*/}
-                {/*            >*/}
-                {/*                <img className={styles.trainingTask__rightClicker} src={RightClicker} alt={"Правый кликер"}/> В главное меню*/}
-                {/*            </Button>*/}
-                {/*        </div>*/}
-                {/*    }*/}
-                {/*</div>*/}
-                {/*{*/}
-                {/*    currentStep === -1 && isNotStartModel &&*/}
-                {/*    <ModelWarning className={styles.trainingPage__warning}/>*/}
-                {/*}*/}
             </PageContent>
         </Page>
     )

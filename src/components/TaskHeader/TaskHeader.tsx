@@ -10,7 +10,8 @@ type Props = Readonly<{
     type: string;
     name: string;
     currentStep: number;
-    stepCount: number
+    stepCount: number;
+    task: string
 }>
 
 /**
@@ -22,6 +23,9 @@ export const TaskHeader: FC<Props> = typedMemo(function TaskHeader(props: Props)
             <div className={styles.info}>
                 <Typography variant="h3" className={styles.name}>
                     {props.name}
+                </Typography>
+                <Typography variant="h2" className={styles.task}>
+                    {props.task}
                 </Typography>
                 <Typography variant="p" className={styles.type}>
                     {props.type}

@@ -20,9 +20,9 @@ export const StartTraining: FC<Props> = typedMemo(function StartTraining(props) 
                 Начало тренировки
             </Typography>
             <Typography variant={"p"} className={styles.startTraining__description}>
-                Вам будут предложены слова, которые вы должны показать в камеру.
-                Система распознает ваш жест<br/> и отобразит слово зелёным цветом.
-                После успешного выполнения перейдите к следующему слову.
+                Вам нужно показать изученные жесты в камеру.<br/>
+                Система распознает их и отметит правильные зелёным.<br/>
+                После успешного выполнения перейдите к следующему.
             </Typography>
             <Button
                 variant={"solid"}

@@ -20,9 +20,9 @@ export const StartTrainingSentence: FC = typedMemo(function StartTrainingSentenc
                 Начало практики
             </Typography>
             <Typography variant={"p"} className={styles.startTraining__description}>
-                Вам будут предложены предложения, которые вы должны показать,
-                используя изученные жесты. Система распознает их и закрасит зелёным цветом.
-                После успешного выполнения перейдите к следующему предложению.
+                Вам нужно показать предложение изученными жестами.
+                Система распознает их и отметит правильные зелёным.<br/>
+                После успешного выполнения перейдите к следующему.
             </Typography>
             <Button
                 variant={"solid"}

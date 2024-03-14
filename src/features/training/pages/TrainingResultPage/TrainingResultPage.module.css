@@ -80,6 +80,9 @@
 .trainingResult__resultTitle {
     color: var(--text-color);
     text-align: center;
+    font-family: var(--main-font);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-xxl);
 }
 
 .trainingResult__resultDescription {
@@ -91,6 +94,12 @@
 .trainingResult__result__container {
     position: absolute;
     right: 0;
+    top: 0;
+}
+
+.trainingResult__result__container__pincode {
+    position: absolute;
+    left: 0;
     top: 0;
 }
 

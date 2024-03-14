@@ -138,7 +138,8 @@ export const TrainingSentencePage: FC = typedMemo(function TrainingSentencePage(
                 <div className={styles.content}>
                     <TaskHeader
                         type={"Практика"}
-                        name={`${currentStep + 1} из ${data.length} предложение`}
+                        task={"Покажите предложение жестами"}
+                        name={`${currentStep + 1} / ${data.length}`}
                         currentStep={currentStep}
                         stepCount={data.length}
                     />

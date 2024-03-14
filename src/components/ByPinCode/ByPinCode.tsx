@@ -3,20 +3,20 @@ import {typedMemo} from "../../core/utils/typedMemo";
 import {ComponentProps} from "../../core/models/ComponentProps";
 import {Card} from "../Card";
 import {Typography} from "../Typography";
-import styles from "./BySberAI.module.css"
-import SberAI from '../../assets/images/SberAI.png'
+import styles from "./ByPinCode.module.css"
+import PinCode from '../../assets/images/PinCode.svg'
 import clsx from "clsx";
 
 type Props = PropsWithChildren & ComponentProps;
 
 /** Модель разработана SberAI. */
-export const BySberAI: FC<Props> = typedMemo(function BySberAI(props){
+export const ByPinCode: FC<Props> = typedMemo(function ByPinCode(props){
     return (
         <div className={clsx(styles.bySberAI, props.className)}>
             <Typography className={styles.bySberAI__title}>
-                Модель распознавания русского жестового языка разработана командой
+                Сервис изучения русского жестового языка разработан студенческой командой
             </Typography>
-            <img src={SberAI} alt={"Логотип"} className={styles.bySberAI__logo}/>
+            <img src={PinCode} alt={"Логотип"} className={styles.bySberAI__logo}/>
         </div>
     );
 });

@@ -19,8 +19,8 @@ type Props = ComponentProps & Readonly<{
 export const TheoryCard: FC<Props> = typedMemo(function TheoryCard(props) {
     return (
         <Card className={styles.theoryCard}>
-            <Typography variant="span" className={styles.title}>
-                Посмотрите и запомните жест
+            <Typography variant="h1" className={styles.title}>
+                {props.wordObject.text}
             </Typography>
 
             <SignVideo
@@ -29,9 +29,6 @@ export const TheoryCard: FC<Props> = typedMemo(function TheoryCard(props) {
             />
 
             <div className={styles.footer}>
-                <Typography variant="h1" className={styles.theoryCard__word}>
-                    {props.wordObject.text}
-                </Typography>
                 <Button variant={"solid"} color="primary" size={'lg'} onClick={props.next}>
                     <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/>
                     Далее

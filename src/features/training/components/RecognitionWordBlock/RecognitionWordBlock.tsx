@@ -34,13 +34,13 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
         let results: string[] = Object.values(JSON.parse(text))
         console.log(results)
 
-        if(results.includes(props.word.recognitionText)) {
-            if(props.signRecognizeText.at(-1) !== props.word.text.toLowerCase()) {
+        if (results.includes(props.word.recognitionText)) {
+            if (props.signRecognizeText.at(-1) !== props.word.text.toLowerCase()) {
                 props.setSignRecognizeText([...props.signRecognizeText, props.word.text.toLowerCase()])
 
             }
         } else {
-            if(props.signRecognizeText.at(-1) !== results[0].toLowerCase()) {
+            if (props.signRecognizeText.at(-1) !== results[0].toLowerCase()) {
                 props.setSignRecognizeText([...props.signRecognizeText, results[0].toLowerCase()])
             }
         }
@@ -48,14 +48,9 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
 
     return (
         <Card className={styles.recognitionBlock}>
-            <div className={styles.header}>
-                <Typography variant="h2" className={styles.word}>
-                    {props.word.text}
-                </Typography>
-                <Typography variant="span" className={styles.task}>
-                    Покажите жест в камеру
-                </Typography>
-            </div>
+            <Typography variant="h2" className={styles.word}>
+                {props.word.text}
+            </Typography>
 
 
             <RecognitionCamera
@@ -69,33 +64,36 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
                 !props.isDoneTask &&
                 <div>
                     <Typography variant="h3">Распознанные жесты</Typography>
-                <div className={styles.footer}>
-                    <div className={styles.recognizedWords}>
-                        {
-                           props.signRecognizeText.slice(-3).map(word => {
-                                return (
-                                    <Typography
-                                        variant="span"
-                                        className={clsx(
-                                            styles.recognizedWord,
-                                            word.toLowerCase() === props.word.text.toLowerCase() && styles.recognitionBlock__rightWord
-                                        )}
-                                    >
-                                        {word}
-                                    </Typography>
-                                )
-                            })
-                        }
+                    <div className={styles.footer}>
+                        <div className={styles.recognizedWords}>
+                            {
+                                props.signRecognizeText.slice(-3).map(word => {
+                                    return (
+                                        <Typography
+                                            variant="span"
+                                            className={clsx(
+                                                styles.recognizedWord,
+                                                word.toLowerCase() === props.word.text.toLowerCase() && styles.recognitionBlock__rightWord
+                                            )}
+                                        >
+                                            {word}
+                                        </Typography>
+                                    )
+                                })
+                            }
+                        </div>
+                        <Button variant={"bordered"} size={"lg"} onClick={props.next}>Пропустить</Button>
                     </div>
-                    <Button variant={"bordered"} size={"lg"}>Пропустить</Button>
-                </div>
                 </div>
             }
 
             {
                 props.isDoneTask &&
-                <div className={styles.footer}>
-                    <TaskContinue next={props.next} isRightAnswer={true} className={styles.taskContinue}/>
+                <div className={styles.footerContainer}>
+
+                    <div className={styles.footer}>
+                        <TaskContinue next={props.next} isRightAnswer={true} className={styles.taskContinue}/>
+                    </div>
                 </div>
             }
 

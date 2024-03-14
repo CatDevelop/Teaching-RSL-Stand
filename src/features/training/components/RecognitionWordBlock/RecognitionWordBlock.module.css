@@ -16,21 +16,16 @@
     flex-direction: column;
     gap: var(--space-m);
     position: relative;
-    height: var(--recognition-block-height)
-}
-
-.header {
-    display: flex;
-    gap: var(--space-m);
-    align-items: center;
+    height: var(--recognition-block-height);
 }
 
 .word {
     color: var(--text-color);
     line-height: var(--font-size-l);
+    text-align: center;
     font-family: var(--main-font);
     font-weight: var(--font-weight-xxl);
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-xl);
 }
 
 .task {
@@ -39,8 +34,11 @@
 }
 
 .recognitionCamera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
-    max-height: calc(var(--recognition-block-height) - var(--space-l) * 2 - var(--space-m) * 2 - 24px - 50px - 32px);
+    max-height: calc(var(--recognition-block-height) - var(--space-l) * 2 - var(--space-m) * 2 - 24px - 50px - 32px - 20px);
 }
 
 .sentenceContainer {
@@ -53,6 +51,10 @@
 .sentenceContainer__title {
     line-height: var(--font-size-m);
     font-size: var(--font-size-l);
+}
+
+.footerContainer {
+    height: 81px;
 }
 
 .footer {
@@ -90,5 +92,5 @@
     bottom: 0;
     left: 0;
     right: 0;
-    border-radius: 0 0 var(--border-radius-m) var(--border-radius-m);
+    border-radius: 0 0 calc(var(--border-radius-m) * 2) calc(var(--border-radius-m) * 2);
 }

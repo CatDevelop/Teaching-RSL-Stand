@@ -9,11 +9,12 @@ import {useNavigate} from "react-router-dom";
 import {PageContent} from "../../../../components/PageContent";
 import {getFireworks} from "../../../../core/utils/explodeFireworks";
 import {BySberAI} from "../../../../components/BySberAI";
-import ResultImage from "../../../../assets/images/End.png"
+import ResultImage from "../../../../assets/images/End2.png"
 import {Card} from "../../../../components/Card";
 import {normalizeCountForm} from "../../../../core/utils/normalizeCountForm";
 import RightClickerPrimary from "../../../../assets/images/RightClickerPrimary.svg";
 import {StartThemeWords} from "../../../../core/data";
+import {ByPinCode} from "../../../../components/ByPinCode";
 
 export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
     const queryParams = new URLSearchParams(window.location.search)
@@ -69,10 +70,10 @@ export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
                         <img alt="" src={ResultImage} className={styles.trainingResult__resultImage}/>
                         {/*<ResultImage className={styles.trainingResult__resultImage}/>*/}
                         <Typography variant="h2" className={styles.trainingResult__resultTitle}>
-                            Конец тренировки
+                            Спасибо за участие
                         </Typography>
-                        <Typography variant="p" className={styles.trainingResult__resultTitle}>
-                            Ваш результат {allWordsCount - skipWordsCount} из {allWordsCount} {normalizeCountForm(allWordsCount, ["жеста", 'жестов', 'жестов'])}
+                        <Typography variant="p" className={styles.trainingResult__resultDescription}>
+                            Вы успешно выучили <b>{StartThemeWords.length}</b> жестов, поздравляем!
                         </Typography>
 
                         <Button
@@ -86,6 +87,10 @@ export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
 
                     <div className={styles.trainingResult__result__container}>
                         <BySberAI/>
+                    </div>
+
+                    <div className={styles.trainingResult__result__container__pincode}>
+                        <ByPinCode/>
                     </div>
                 </Card>
 

@@ -8,22 +8,32 @@
 }
 
 .info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    align-items: end;
+    grid-template-columns: 1fr 3fr 1fr;
 }
 
 .name {
     font-family: var(--main-font);
     font-weight: var(--font-weight-l);
-    font-size: var(--font-size-s);
-    line-height: var(--font-size-s);
+    font-size: var(--font-size-m);
+    line-height: var(--font-size-m);
 }
 
 .type {
     color: var(--thirdly-text-color);
     font-family: var(--main-font);
     font-weight: var(--font-weight-l);
-    font-size: var(--font-size-s);
-    line-height: var(--font-size-s);
+    font-size: var(--font-size-m);
+    line-height: var(--font-size-m);
+    text-align: end;
+
+}
+
+.task {
+    color: var(--text-color);
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-l);
+    font-size: var(--font-size-l);
+    text-align: center;
 }

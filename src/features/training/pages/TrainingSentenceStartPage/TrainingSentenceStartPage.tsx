@@ -15,7 +15,7 @@ export const TrainingSentenceStartPage: FC = typedMemo(function TrainingSentence
     const idle = useIdle(180000, {initialState: false});
 
     const toAFK = useCallback(() => navigate("/"), [])
-    const toTraining = useCallback(() => navigate("/training"), [])
+    const toTrainingStart = useCallback(() => navigate("/training/start"), [])
     const toTrainingSentence = useCallback(() => navigate("/training/sentence"), [])
 
     useEffect(() => {
@@ -32,9 +32,9 @@ export const TrainingSentenceStartPage: FC = typedMemo(function TrainingSentence
 
         if (event.key === "ArrowLeft") {
             event.preventDefault();
-            toTraining()
+            toTrainingStart()
         }
-    }, [toTraining, toTrainingSentence])
+    }, [toTrainingStart, toTrainingSentence])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)

@@ -27,6 +27,9 @@
 }
 
 .recognitionCamera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto;
     max-height: calc(var(--recognition-block-height) - var(--space-l) * 2 - var(--space-m) * 2 - 24px - 50px);
 }
@@ -45,7 +48,7 @@
 
 .footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     min-height: 50px;
     align-items: start;
 }
@@ -53,6 +56,7 @@
 .recognizedWords {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px
 }
@@ -64,9 +68,11 @@
     background-size: 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
-    font-size: calc(var(--font-size-m) * 1.4);
-    font-weight: var(--font-weight-xl);
+
     transition: background-position 0.5s ease;
+    font-family: var(--main-font);
+    font-weight: var(--font-weight-xxl);
+    font-size: var(--font-size-xl);
 }
 
 .recognitionBlock__rightWordFill {
@@ -78,5 +84,5 @@
     bottom: 0;
     left: 0;
     right: 0;
-    border-radius: 0 0 var(--border-radius-m) var(--border-radius-m);
+    border-radius: 0 0 calc(var(--border-radius-m ) * 2) calc(var(--border-radius-m) * 2);
 }
