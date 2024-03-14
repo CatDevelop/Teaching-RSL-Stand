@@ -1,0 +1,1 @@
+export { RecognitionWordBlock } from "./RecognitionWordBlock";

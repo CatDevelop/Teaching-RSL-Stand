@@ -4,6 +4,8 @@ import {TrainingPage} from "./pages/TrainingPage";
 import {TrainingResultPage} from "./pages/TrainingResultPage";
 import {TrainingSentencePage} from "./pages/TrainingSentencePage";
 import {TrainingSentenceStartPage} from "./pages/TrainingSentenceStartPage";
+import {TrainingStartPage} from "./pages/TrainingStartPage";
+import {TrainingTaskPage} from "./pages/TrainingTaskPage";
 
 export const trainingRoutes: RouteObject[] = [
     {
@@ -11,7 +13,11 @@ export const trainingRoutes: RouteObject[] = [
         children:[
             {
                 path: '',
-                element: <TrainingPage />,
+                element: <TrainingTaskPage />,
+            },
+            {
+                path: 'start',
+                element: <TrainingStartPage />,
             },
             {
                 path: 'sentence',

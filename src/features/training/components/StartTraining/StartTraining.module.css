@@ -21,6 +21,11 @@
     animation: showDown 0.5s ease-in;
 }
 
+.image {
+    height: 100% !important;
+    flex-shrink: 1;
+}
+
 .startTraining__title {
     font-family: var(--main-font);
     font-size: var(--font-size-xl);

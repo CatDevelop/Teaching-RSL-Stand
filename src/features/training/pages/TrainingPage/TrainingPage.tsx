@@ -41,7 +41,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
     const [countSkippedWords, setCountSkippedWords] = useState(0);
     const [isDoneTask, setIsDoneTask] = useState(false);
     const [intervalID, setIntervalID] = useState<TimeoutId>();
-    const [currentStep, setCurrentStep] = useState(-1);
+    const [currentStep, setCurrentStep] = useState(0);
     const [isNotStartModel, setIsNotStartModel] = useState(false);
     let correctWords: Set<string> = useMemo(() => new Set(JSON.parse(localStorage.getItem("Teaching-RSL-correct-words") || "[]")), []);
 
@@ -110,7 +110,7 @@ export const TrainingPage: FC = typedMemo(function TrainingPage() {
             if(currentStep === data.length)
                 toAFK();
 
-            if(currentStep === -1) {
+            if(currentStep === 0) {
                 correctWords.clear()
                 localStorage.setItem("Teaching-RSL-correct-words", "[]")
                 setCurrentStep(0)

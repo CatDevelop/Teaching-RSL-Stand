@@ -21,6 +21,7 @@
     /* Font */
     --main-font: Montserrat, serif;
 
+    --font-weight-xxl: 700;
     --font-weight-xl: 600;
     --font-weight-l: 500;
     --font-weight-m: 400;

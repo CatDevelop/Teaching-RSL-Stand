@@ -1,0 +1,1 @@
+export { TrainingTaskPage } from "./TrainingTaskPage";

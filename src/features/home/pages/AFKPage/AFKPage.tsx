@@ -12,14 +12,14 @@ export const AFKPage: FC = typedMemo(function AFKFactsPage() {
     const navigate = useNavigate();
     localStorage.setItem("Teaching-RSL-correct-words", "[]")
 
-    const toLearning = useCallback(() => navigate("/learning"), [navigate])
+    const toLearningStart = useCallback(() => navigate("/learning/start"), [navigate])
 
     const handleKeydown = useCallback((event: KeyboardEvent) => {
         if (event.key === "ArrowRight") {
             event.preventDefault();
-            toLearning()
+            toLearningStart()
         }
-    }, [toLearning])
+    }, [toLearningStart])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)
@@ -27,7 +27,7 @@ export const AFKPage: FC = typedMemo(function AFKFactsPage() {
     }, [handleKeydown]);
 
     return (
-        <div className={styles.afkPage} onClick={toLearning}>
+        <div className={styles.afkPage} onClick={toLearningStart}>
             <video
                 className={styles.afkPage__gradient}
                 src={Gradient}

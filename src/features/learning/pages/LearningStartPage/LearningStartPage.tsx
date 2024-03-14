@@ -1,22 +1,20 @@
 import {typedMemo} from "../../../../core/utils/typedMemo";
 import React, {FC, useCallback, useEffect} from "react";
-import styles from "./TrainingSentenceStartPage.module.css";
+import styles from "./LearningStartPage.module.css";
 import {Page} from "../../../../components/Page";
 import Logo from "../../../../assets/images/LogoStand.svg"
 import {useNavigate} from "react-router-dom";
 import {PageContent} from "../../../../components/PageContent";
 import {useIdle} from "@mantine/hooks";
-import {StartTrainingSentence} from "../../components/StartTrainingSentence/StartTrainingSentence";
+import {StartLearning} from "../../components/StartLearning/StartLearning";
 
 
-export const TrainingSentenceStartPage: FC = typedMemo(function TrainingSentenceStartPage() {
+export const LearningStartPage: FC = typedMemo(function TrainingSentenceStartPage() {
     const navigate = useNavigate()
-
     const idle = useIdle(180000, {initialState: false});
 
-    const toAFK = useCallback(() => navigate("/"), [])
-    const toTraining = useCallback(() => navigate("/training"), [])
-    const toTrainingSentence = useCallback(() => navigate("/training/sentence"), [])
+    const toAFK = useCallback(() => navigate("/"), [navigate])
+    const toLearning = useCallback(() => navigate("/learning"), [navigate])
 
     useEffect(() => {
         if (idle)
@@ -27,30 +25,29 @@ export const TrainingSentenceStartPage: FC = typedMemo(function TrainingSentence
     const handleKeydown = useCallback((event: KeyboardEvent) => {
         if (event.key === "ArrowRight") {
             event.preventDefault();
-            toTrainingSentence()
+            toLearning()
         }
 
         if (event.key === "ArrowLeft") {
             event.preventDefault();
-            toTraining()
+            toAFK()
         }
-    }, [toTraining, toTrainingSentence])
+    }, [toAFK, toLearning])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)
         return () => document.removeEventListener('keydown', handleKeydown)
     }, [handleKeydown]);
 
-
     return (
         <Page>
-            <PageContent className={styles.trainingSentenceStartPage}>
+            <PageContent className={styles.learningStartPage}>
                 <div className={styles.logo} onClick={toAFK}>
                     <img src={Logo} rel="preload" alt={"Логотип"} width={300}/>
                 </div>
 
                 <div className={styles.content}>
-                    <StartTrainingSentence/>
+                    <StartLearning onStart={toLearning}/>
                 </div>
             </PageContent>
         </Page>

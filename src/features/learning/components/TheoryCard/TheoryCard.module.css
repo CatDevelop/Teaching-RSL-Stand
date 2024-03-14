@@ -1,43 +1,67 @@
 .theoryCard {
+    --theory-card-height: calc(100vh - var(--page-padding-m)*2 - 102px - var(--space-l));
+
     width: 100%;
     max-width: var(--max-theory-card-width);
-    height: 100%;
+    height: var(--theory-card-height);
     box-sizing: border-box;
-}
-
-.theoryCard__contentContainer {
     display: flex;
     flex-direction: column;
-    gap: var(--space-s);
-    height: 100%;
-    box-sizing: border-box;
-}
-
-.theoryCard__images {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: var(--space-m);
-    height: calc(100vh - 155px - var(--space-s) - var(--page-padding-m)*2*2 - var(--space-m)*2*2);
 }
 
-.theoryCard__gif video,
-.theoryCard__gif {
-    grid-area: gif;
-    width: 100%;
-    height: 100%;
-}
-
-.theoryCard__word {
-    grid-area: word;
+.title {
     font-family: var(--main-font);
-    font-size: var(--font-size-xl);
-    text-align: center;
-    line-height: var(--font-size-xl);
+    font-weight: var(--font-weight-l);
+    font-size: var(--font-size-m);
+    line-height: calc(var(--font-size-m) * 1.2);
 }
 
-@media(max-width: 1300px){
-    .theoryCard__images {
-        height: calc(100vh - 180px - var(--space-s) - var(--page-padding-m)*2*2 - var(--space-m)*2*2);
-    }
+.gif {
+    height: calc(var(--theory-card-height) - var(--space-l) * 2 - var(--space-m) * 2 - 24px - 50px) !important;
 }
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    min-height: 50px;
+    align-items: end;
+}
+
+/*.theoryCard__contentContainer {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: var(--space-s);*/
+/*    height: 100%;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/*.theoryCard__images {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    gap: var(--space-m);*/
+/*    height: calc(100vh - 155px - var(--space-s) - var(--page-padding-m)*2*2 - var(--space-m)*2*2);*/
+/*}*/
+
+/*.theoryCard__gif video,*/
+/*.theoryCard__gif {*/
+/*    grid-area: gif;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+
+/*.theoryCard__word {*/
+/*    grid-area: word;*/
+/*    font-family: var(--main-font);*/
+/*    font-size: var(--font-size-xl);*/
+/*    !*text-align: center;*!*/
+/*    line-height: var(--font-size-xl);*/
+/*}*/
+
+/*@media(max-width: 1300px){*/
+/*    .theoryCard__images {*/
+/*        height: calc(100vh - 180px - var(--space-s) - var(--page-padding-m)*2*2 - var(--space-m)*2*2);*/
+/*    }*/
+/*}*/

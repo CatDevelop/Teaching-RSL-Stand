@@ -15,7 +15,7 @@ export const StartTrainingSentence: FC = typedMemo(function StartTrainingSentenc
 
     return (
         <Card className={styles.startTraining}>
-            <img src={StartTrainingSentenceImage}  alt=""/>
+            <img src={StartTrainingSentenceImage} className={styles.image} alt=""/>
             <Typography variant={"h2"} className={styles.startTraining__title}>
                 Начало практики
             </Typography>

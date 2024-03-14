@@ -4,7 +4,7 @@ import styles from "./LearningTaskPage.module.css";
 import {Page} from "../../../../components/Page";
 import Logo from "../../../../assets/images/LogoStand.svg"
 import {shuffleArray} from "../../../../core/utils/shuffleArray";
-import {StartThemeTasks, StartThemeWords} from "../../../../core/data";
+import {StartThemeWords} from "../../../../core/data";
 import {Button} from "../../../../components/Button";
 import {TheoryCard} from "../../components/TheoryCard";
 import {Typography} from "../../../../components/Typography";
@@ -18,11 +18,9 @@ import {getFireworks} from "../../../../core/utils/explodeFireworks";
 import {ExitConfirmation} from "../../../../components/ExitConfirmation";
 import {PracticeCards} from "../../components/PracticeCards/PracticeCards";
 import {StartLearning} from "../../components/StartLearning/StartLearning";
-import {generateTasks} from "../../../../core/utils/generateTasks";
 import {useIdle} from "@mantine/hooks";
 import ResultLearning from "../../../../assets/images/ResultLearningImage.svg"
 import RightClicker from "../../../../assets/images/RightClicker.svg";
-import LeftClicker from "../../../../assets/images/LeftClicker.svg";
 
 // TODO написать нормальные типы
 type task = {
@@ -42,7 +40,7 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     // -1 - стартовая плашка
     // 0-(theoryCount-1) - теория
     // (theoryCount)-(theoryCount+practiceCount-1) - практика
-    const [currentStep, setCurrentStep] = useState(-1)
+    const [currentStep, setCurrentStep] = useState(0)
     const [currentStepStatus, setCurrentStepStatus] = useState<StepStatus>({status: "default"})
 
     const [taskCompleted, setTaskCompleted] = useState<boolean>(false)
@@ -73,6 +71,7 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
     const toMainPage = useCallback(() => navigate("/"), [navigate])
     const toTrainingPage = useCallback(() => navigate("/training"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
+    const toLearningStart = useCallback(() => navigate("/learning/start"), [navigate])
 
     const retry = useCallback(() => {
         setCurrentStepStatus({status: "default"})
@@ -105,15 +104,15 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
 
         if (event.key === "ArrowLeft") {
             event.preventDefault();
-            if(currentStep === -1)
-                toAFK()
+            if(currentStep === 0)
+                toLearningStart()
             else {
                 setTaskCompleted(false);
                 setTaskChecked(false)
                 setCurrentStep(currentStep - 1)
             }
         }
-    }, [nextStep, currentStep])
+    }, [nextStep, currentStep, toLearningStart])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)
@@ -146,7 +145,7 @@ export const LearningTaskPage: FC = typedMemo(function LearningTaskPage() {
                         currentStep >= 0 && currentStep <= theoryCount - 1 &&
                         (
                             <div className={clsx(styles.learningTask__theory, styles.learningTask__startAnimation)}>
-                                <TheoryCard wordObject={tasks[currentStep].task?.wordObject}/>
+                                <TheoryCard wordObject={tasks[currentStep].task?.wordObject} next={nextStep}/>
                             </div>
                         )
                     }

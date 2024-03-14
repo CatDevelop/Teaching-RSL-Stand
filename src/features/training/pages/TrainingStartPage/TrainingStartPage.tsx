@@ -1,22 +1,23 @@
 import {typedMemo} from "../../../../core/utils/typedMemo";
 import React, {FC, useCallback, useEffect} from "react";
-import styles from "./TrainingSentenceStartPage.module.css";
+import styles from "./TrainingStartPage.module.css";
 import {Page} from "../../../../components/Page";
 import Logo from "../../../../assets/images/LogoStand.svg"
 import {useNavigate} from "react-router-dom";
 import {PageContent} from "../../../../components/PageContent";
 import {useIdle} from "@mantine/hooks";
 import {StartTrainingSentence} from "../../components/StartTrainingSentence/StartTrainingSentence";
+import {StartTraining} from "../../components/StartTraining/StartTraining";
 
 
-export const TrainingSentenceStartPage: FC = typedMemo(function TrainingSentenceStartPage() {
+export const TrainingStartPage: FC = typedMemo(function TrainingSentenceStartPage() {
     const navigate = useNavigate()
 
     const idle = useIdle(180000, {initialState: false});
 
     const toAFK = useCallback(() => navigate("/"), [])
     const toTraining = useCallback(() => navigate("/training"), [])
-    const toTrainingSentence = useCallback(() => navigate("/training/sentence"), [])
+    const toLearningStart = useCallback(() => navigate("/learning/start"), [])
 
     useEffect(() => {
         if (idle)
@@ -27,14 +28,14 @@ export const TrainingSentenceStartPage: FC = typedMemo(function TrainingSentence
     const handleKeydown = useCallback((event: KeyboardEvent) => {
         if (event.key === "ArrowRight") {
             event.preventDefault();
-            toTrainingSentence()
+            toTraining()
         }
 
         if (event.key === "ArrowLeft") {
             event.preventDefault();
-            toTraining()
+            toLearningStart()
         }
-    }, [toTraining, toTrainingSentence])
+    }, [toTraining, toLearningStart])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeydown)
@@ -50,7 +51,7 @@ export const TrainingSentenceStartPage: FC = typedMemo(function TrainingSentence
                 </div>
 
                 <div className={styles.content}>
-                    <StartTrainingSentence/>
+                    <StartTraining onStart={toTraining}/>
                 </div>
             </PageContent>
         </Page>

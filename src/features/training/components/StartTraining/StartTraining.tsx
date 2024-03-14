@@ -15,7 +15,7 @@ type Props = {
 export const StartTraining: FC<Props> = typedMemo(function StartTraining(props) {
     return (
         <Card className={styles.startTraining}>
-            <img src={StartTrainingImage}  alt=""/>
+            <img src={StartTrainingImage} className={styles.image}  alt=""/>
             <Typography variant={"h2"} className={styles.startTraining__title}>
                 Начало тренировки
             </Typography>
