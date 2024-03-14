@@ -44,7 +44,7 @@ export const TrainingTaskPage: FC = typedMemo(function TrainingSentencePage() {
 
     const skip = useCallback(() => {
         if (currentStep + 1 === data.length) {
-            navigate("/training/result")
+            navigate("/training/sentence/start")
         }
 
         setCurrentStep(currentStep => currentStep + 1)
@@ -55,7 +55,7 @@ export const TrainingTaskPage: FC = typedMemo(function TrainingSentencePage() {
 
     const next = useCallback(() => {
         if (currentStep + 1 === data.length) {
-            navigate("/training/result")
+            navigate("/training/sentence/start")
         }
 
         setCurrentStep(currentStep => currentStep + 1)
