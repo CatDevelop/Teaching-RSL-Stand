@@ -75,7 +75,7 @@ export const RecognitionSentenceBlock: FC<Props> = typedMemo(function Recognitio
                 !props.isDoneTask &&
                 <div className={styles.footer}>
 
-                    <Button variant={"bordered"} size={"lg"}>Пропустить</Button>
+                    <Button variant={"bordered"} size={"lg"} onClick={props.next}>Пропустить</Button>
                 </div>
             }
 
