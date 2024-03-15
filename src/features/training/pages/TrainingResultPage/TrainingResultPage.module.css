@@ -107,6 +107,7 @@
     max-height: 100%;
     max-width: 100%;
     height: calc(100% - 200px);
+    object-fit: cover;
 }
 
 .trainingResult__resultCard {
