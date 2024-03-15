@@ -59,13 +59,13 @@
 }
 
 .footerContainer {
-    height: 81px;
+    height: 87px;
 }
 
 .footer {
     display: flex;
     justify-content: space-between;
-    min-height: 50px;
+    min-height: 87px;
     align-items: center;
 }
 
