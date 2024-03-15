@@ -15,6 +15,7 @@ import {RecognitionCamera} from "../RecognitionCamera";
 import {Sentence, StartThemeWords} from "../../../../core/data";
 import {Button} from "../../../../components/Button";
 import {TaskContinue} from "../../../../components/TaskContinue";
+import RightClickerPrimary from "../../../../assets/images/RightClickerPrimary.svg";
 
 
 type Props = ComponentProps & Readonly<{
@@ -74,8 +75,10 @@ export const RecognitionSentenceBlock: FC<Props> = typedMemo(function Recognitio
             {
                 !props.isDoneTask &&
                 <div className={styles.footer}>
-
-                    <Button variant={"bordered"} size={"lg"} onClick={props.next}>Пропустить</Button>
+                    <Button variant={"bordered"} size={"lg"} onClick={props.next}>
+                        <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/>
+                        Пропустить
+                    </Button>
                 </div>
             }
 

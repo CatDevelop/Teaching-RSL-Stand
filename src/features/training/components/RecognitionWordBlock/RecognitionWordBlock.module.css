@@ -19,13 +19,18 @@
     height: var(--recognition-block-height);
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+}
+
 .word {
     color: var(--text-color);
-    line-height: var(--font-size-l);
-    text-align: center;
-    font-family: var(--main-font);
-    font-weight: var(--font-weight-xxl);
-    font-size: var(--font-size-xl);
+    text-align: center !important;
+    font-family: var(--main-font) !important;
+    font-weight: var(--font-weight-xxl) !important;
+    font-size: var(--font-size-xl) !important;
+    line-height: 40px !important;
 }
 
 .task {
@@ -38,7 +43,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    max-height: calc(var(--recognition-block-height) - var(--space-l) * 2 - var(--space-m) * 2 - 24px - 50px - 32px - 20px);
+    max-height: calc(var(--recognition-block-height) - var(--space-l) * 2 - var(--space-m) * 2 - 24px - 50px - 40px - 20px);
 }
 
 .sentenceContainer {
@@ -80,7 +85,13 @@
 }
 
 .recognitionBlock__rightWord {
-    color: var(--success-color)
+    color: white;
+    padding: 8px 10px;
+    background-color: var(--success-color);
+    border-radius: 10px;
+    width: min-content;
+    line-height: var(--font-size-l) !important;
+    transition: all 0.3s ease-in;
 }
 
 .recognitionBlock__rightWordFill {
@@ -93,4 +104,9 @@
     left: 0;
     right: 0;
     border-radius: 0 0 calc(var(--border-radius-m) * 2) calc(var(--border-radius-m) * 2);
+}
+
+.trainingTask__rightClicker {
+    width: 32px !important;
+    height: 32px !important;
 }

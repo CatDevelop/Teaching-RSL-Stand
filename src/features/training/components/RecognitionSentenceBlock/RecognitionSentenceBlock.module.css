@@ -62,21 +62,22 @@
 }
 
 .recognizedWord {
-    color: transparent;
-    background-image: linear-gradient(90deg, var(--success-color) 50%, var(--thirdly-text-color) 50%);
-    background-position: 100%;
-    background-size: 200% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-
-    transition: background-position 0.5s ease;
-    font-family: var(--main-font);
-    font-weight: var(--font-weight-xxl);
-    font-size: var(--font-size-xl);
+    color: var(--thirdly-text-color);
+    text-align: center !important;
+    font-family: var(--main-font) !important;
+    font-weight: var(--font-weight-xxl) !important;
+    font-size: var(--font-size-xl) !important;
+    line-height: 40px !important;
 }
 
 .recognitionBlock__rightWordFill {
-    background-position: 0;
+    color: white;
+    padding: 8px 10px;
+    background-color: var(--success-color);
+    border-radius: 10px;
+    width: min-content;
+    line-height: var(--font-size-l) !important;
+    transition: all 0.3s ease-in;
 }
 
 .taskContinue {
@@ -85,4 +86,9 @@
     left: 0;
     right: 0;
     border-radius: 0 0 calc(var(--border-radius-m ) * 2) calc(var(--border-radius-m) * 2);
+}
+
+.trainingTask__rightClicker {
+    width: 32px !important;
+    height: 32px !important;
 }

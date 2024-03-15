@@ -10,6 +10,8 @@ import {TimeoutId} from "@reduxjs/toolkit/dist/query/core/buildMiddleware/types"
 import {RecognitionCamera} from "../RecognitionCamera";
 import {Button} from "../../../../components/Button";
 import {TaskContinue} from "../../../../components/TaskContinue";
+import RightClickerPrimary from "../../../../assets/images/RightClickerPrimary.svg";
+import classNames from "classnames";
 
 
 type Props = ComponentProps & Readonly<{
@@ -48,9 +50,12 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
 
     return (
         <Card className={styles.recognitionBlock}>
-            <Typography variant="h2" className={styles.word}>
-                {props.word.text}
-            </Typography>
+            <div className={styles.header}>
+                <Typography variant="h2" className={classNames(styles.word, props.signRecognizeText.includes(props.word.text.toLowerCase()) && styles.recognitionBlock__rightWord)}>
+                    {props.word.text}
+                </Typography>
+            </div>
+
 
 
             <RecognitionCamera
@@ -82,7 +87,10 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
                                 })
                             }
                         </div>
-                        <Button variant={"bordered"} size={"lg"} onClick={props.next}>Пропустить</Button>
+                        <Button variant={"bordered"} size={"lg"} onClick={props.next}>
+                            <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/>
+                            Пропустить
+                        </Button>
                     </div>
                 </div>
             }

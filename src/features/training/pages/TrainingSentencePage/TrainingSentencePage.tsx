@@ -24,16 +24,11 @@ interface IData {
 export const TrainingSentencePage: FC = typedMemo(function TrainingSentencePage() {
     const navigate = useNavigate()
 
-
-    const [data] = useState<IData[]>(shuffleArray(StartThemeSentence));
+    const [data] = useState<IData[]>(StartThemeSentence);
     const [signRecognizeText, setSignRecognizeText] = useState<string[]>([]);
-
     const [countSkippedWords, setCountSkippedWords] = useState(0);
     const [isDoneTask, setIsDoneTask] = useState(false);
-
     const [currentStep, setCurrentStep] = useState(0);
-
-
     const [isNotStartModel, setIsNotStartModel] = useState(false);
 
     const clearRecognizeText = () => setSignRecognizeText([])
