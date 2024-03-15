@@ -10,7 +10,7 @@
 }
 
 .recognitionBlock {
-    --recognition-block-height: calc(100vh - var(--page-padding-m)*2 - 102px - var(--space-l));
+    --recognition-block-height: calc(100vh - var(--page-padding-m)*2 - 124px - var(--space-l));
 
     display: inline-flex;
     flex-direction: column;
@@ -65,7 +65,7 @@
 .footer {
     display: flex;
     justify-content: space-between;
-    min-height: 87px;
+    min-height: 50px;
     align-items: center;
 }
 
