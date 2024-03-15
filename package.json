@@ -22,6 +22,7 @@
     "cross-env": "^7.0.3",
     "embla-carousel-autoplay": "^8.0.0-rc14",
     "framer-motion": "^10.16.4",
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",

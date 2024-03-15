@@ -29,7 +29,7 @@ export const TheoryCard: FC<Props> = typedMemo(function TheoryCard(props) {
             />
 
             <div className={styles.footer}>
-                <Button variant={"solid"} color="primary" size={'lg'} onClick={props.next}>
+                <Button variant={"solid"} color="primary" size={'lg'} onClick={props.next} className={styles.button}>
                     <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/>
                     Далее
                 </Button>

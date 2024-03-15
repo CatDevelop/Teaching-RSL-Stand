@@ -20,6 +20,17 @@
     }
 }
 
+@keyframes showScale {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(100%);
+    }
+}
+
 @keyframes showFade {
     from {
         opacity: 0
@@ -83,12 +94,14 @@
     font-family: var(--main-font);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-xxl);
+    animation: showUp 1s;
 }
 
 .trainingResult__resultDescription {
     font-family: var(--main-font);
     font-size: var(--font-size-m);
     text-align: center;
+    animation: showUp 1.3s forwards;
 }
 
 .trainingResult__result__container {
@@ -113,4 +126,25 @@
 .trainingResult__resultCard {
     background-color: var(--accent-color);
     color: var(--accent-color);
+}
+
+.lottieContainer {
+    max-height: 100%;
+    max-width: 100%;
+    height: calc(100% - 200px);
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.lottie__image {
+    z-index: 2;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.button {
+    animation: showScale 1s;
 }

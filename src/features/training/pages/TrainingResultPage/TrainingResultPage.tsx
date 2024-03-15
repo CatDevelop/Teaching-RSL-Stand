@@ -1,5 +1,5 @@
 import {typedMemo} from "../../../../core/utils/typedMemo";
-import React, {FC, useCallback, useEffect, useState} from "react";
+import React, {FC, useCallback, useEffect} from "react";
 import styles from "./TrainingResultPage.module.css";
 import {Page} from "../../../../components/Page";
 import Logo from "../../../../assets/images/LogoStand.svg"
@@ -9,36 +9,36 @@ import {useNavigate} from "react-router-dom";
 import {PageContent} from "../../../../components/PageContent";
 import {getFireworks} from "../../../../core/utils/explodeFireworks";
 import {BySberAI} from "../../../../components/BySberAI";
-import ResultImage from "../../../../assets/images/End2.png"
 import {Card} from "../../../../components/Card";
-import {normalizeCountForm} from "../../../../core/utils/normalizeCountForm";
 import RightClickerPrimary from "../../../../assets/images/RightClickerPrimary.svg";
 import {StartThemeWords} from "../../../../core/data";
 import {ByPinCode} from "../../../../components/ByPinCode";
+import {useLottie} from "lottie-react";
+import leavesAnimation from "../../../../assets/images/leaves.json"
+import PersonImage from "../../../../assets/images/Person.png"
 
 export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
-    const queryParams = new URLSearchParams(window.location.search)
-    // const skipWordsCount = parseInt(queryParams.get("skiped") || "0")
-    // const allWordsCount = parseInt(queryParams.get("all") || "0")
+    const { View, play } = useLottie({
+        animationData: leavesAnimation,
+        loop: false,
+        autoplay: false,
+    }, {
+        position: "absolute",
+        top: '20%',
+        left: 0,
+        right: 0,
+        zIndex: '1',
+        height: '50%'
+    });
 
-    const allWordsCount = StartThemeWords.length
-    const skipWordsCount = allWordsCount - JSON.parse(localStorage.getItem("Teaching-RSL-correct-words") || "[]").length
     const navigate = useNavigate()
     const fireworks = getFireworks(3000)
-
-    const [exitModalIsOpen, setExitModalIsOpen] = useState(false)
-
-    const openExitModal = useCallback(() => setExitModalIsOpen(true), [setExitModalIsOpen])
-    const toTrainingPage = useCallback(() => navigate("/training"), [navigate])
     const toAFK = useCallback(() => navigate("/"), [navigate])
 
     useEffect(() => {
         fireworks()
     }, [fireworks]);
 
-    const getTaskResult = useCallback((countAllWords: number, countSkippedWords: number) => {
-        return 100 - Math.floor((countSkippedWords) / countSkippedWords * 100)
-    }, [])
 
 
     const handleKeydown = useCallback((event: KeyboardEvent) => {
@@ -58,6 +58,10 @@ export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
         return () => document.removeEventListener('keydown', handleKeydown)
     }, [handleKeydown]);
 
+    setTimeout(() => {
+        play()
+    }, 500)
+
     return (
         <Page>
             {/*<ExitConfirmation isOpen={exitModalIsOpen} setIsOpen={setExitModalIsOpen} onExit={toTrainingPage}/>*/}
@@ -67,7 +71,12 @@ export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
                 </div>
                 <Card className={styles.trainingResult__contentContainer}>
                     <div className={styles.trainingResult__result}>
-                        <img alt="" src={ResultImage} className={styles.trainingResult__resultImage}/>
+                        {/*<img alt="" src={ResultImage} className={styles.trainingResult__resultImage}/>*/}
+                        <div className={styles.lottieContainer}>
+                            {View}
+                            <img alt="" src={PersonImage} className={styles.lottie__image}/>
+                        </div>
+
                         {/*<ResultImage className={styles.trainingResult__resultImage}/>*/}
                         <Typography variant="h2" className={styles.trainingResult__resultTitle}>
                             Спасибо за участие
@@ -80,6 +89,7 @@ export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
                             size={'lg'}
                             color="primary"
                             onClick={toAFK}
+                            className={styles.button}
                         >
                             <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/> В меню
                         </Button>
@@ -93,7 +103,6 @@ export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
                         <ByPinCode/>
                     </div>
                 </Card>
-
             </PageContent>
         </Page>
     )

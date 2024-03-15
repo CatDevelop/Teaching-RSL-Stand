@@ -5,6 +5,8 @@
     align-items: center;
     max-width: 400px;
     padding: var(--space-m);
+    z-index: 2;
+    position: relative;
 }
 
 .bySberAI__title {

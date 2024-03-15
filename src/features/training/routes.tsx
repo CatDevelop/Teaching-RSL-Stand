@@ -1,6 +1,5 @@
 import React from "react";
 import {RouteObject} from "react-router-dom";
-import {TrainingPage} from "./pages/TrainingPage";
 import {TrainingResultPage} from "./pages/TrainingResultPage";
 import {TrainingSentencePage} from "./pages/TrainingSentencePage";
 import {TrainingSentenceStartPage} from "./pages/TrainingSentenceStartPage";
