@@ -50,8 +50,10 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
 
     const handleMouseClick = (e: MouseEvent) => {
         e.preventDefault()
-        if (props.signRecognizeText.at(-1) !== props.word.text.toLowerCase()) {
-            props.setSignRecognizeText([...props.signRecognizeText, props.word.text.toLowerCase()])
+        if (e.button === 1) {
+            if (props.signRecognizeText.at(-1) !== props.word.text.toLowerCase()) {
+                props.setSignRecognizeText([...props.signRecognizeText, props.word.text.toLowerCase()])
+            }
         }
     }
 
@@ -65,11 +67,11 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
     return (
         <Card className={styles.recognitionBlock}>
             <div className={styles.header}>
-                <Typography variant="h2" className={classNames(styles.word, props.signRecognizeText.includes(props.word.text.toLowerCase()) && styles.recognitionBlock__rightWord)}>
+                <Typography variant="h2"
+                            className={classNames(styles.word, props.signRecognizeText.includes(props.word.text.toLowerCase()) && styles.recognitionBlock__rightWord)}>
                     {props.word.text}
                 </Typography>
             </div>
-
 
 
             <RecognitionCamera
@@ -102,7 +104,8 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
                             }
                         </div>
                         <Button variant={"bordered"} size={"lg"} onClick={props.next} className={styles.button}>
-                            <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary} alt={"Правый кликер"}/>
+                            <img className={styles.trainingTask__rightClicker} src={RightClickerPrimary}
+                                 alt={"Правый кликер"}/>
                             Пропустить
                         </Button>
                     </div>

@@ -53,8 +53,10 @@ export const RecognitionSentenceBlock: FC<Props> = typedMemo(function Recognitio
 
     const handleMouseClick = (e: MouseEvent) => {
         e.preventDefault()
-        const findWord = StartThemeWords.find(word => word.id === props.sentence.words[props.signRecognizeText.length])
-        props.setSignRecognizeText([...props.signRecognizeText, findWord?.recognitionText.toLowerCase() || ""])
+        if(e.button === 1) {
+            const findWord = StartThemeWords.find(word => word.id === props.sentence.words[props.signRecognizeText.length])
+            props.setSignRecognizeText([...props.signRecognizeText, findWord?.recognitionText.toLowerCase() || ""])
+        }
     }
 
     useEffect(() => {
