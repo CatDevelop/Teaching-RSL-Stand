@@ -1,6 +1,6 @@
 import {Card} from "../../../../components/Card";
 import {typedMemo} from "../../../../core/utils/typedMemo";
-import React, {Dispatch, FC, SetStateAction, useCallback, useState} from "react";
+import React, {Dispatch, FC, SetStateAction, useCallback, useEffect, useState} from "react";
 import styles from "./RecognitionWordBlock.module.css";
 import {Typography} from "../../../../components/Typography";
 import {ComponentProps} from "../../../../core/models/ComponentProps";
@@ -47,6 +47,20 @@ export const RecognitionWordBlock: FC<Props> = typedMemo(function RecognitionWor
             }
         }
     }, [props])
+
+    const handleMouseClick = (e: MouseEvent) => {
+        e.preventDefault()
+        if (props.signRecognizeText.at(-1) !== props.word.text.toLowerCase()) {
+            props.setSignRecognizeText([...props.signRecognizeText, props.word.text.toLowerCase()])
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleMouseClick);
+        return () => {
+            document.removeEventListener('mousedown', handleMouseClick);
+        }
+    }, [props]);
 
     return (
         <Card className={styles.recognitionBlock}>

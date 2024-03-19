@@ -51,6 +51,19 @@ export const RecognitionSentenceBlock: FC<Props> = typedMemo(function Recognitio
 
     }, [props])
 
+    const handleMouseClick = (e: MouseEvent) => {
+        e.preventDefault()
+        const findWord = StartThemeWords.find(word => word.id === props.sentence.words[props.signRecognizeText.length])
+        props.setSignRecognizeText([...props.signRecognizeText, findWord?.recognitionText.toLowerCase() || ""])
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleMouseClick);
+        return () => {
+            document.removeEventListener('mousedown', handleMouseClick);
+        }
+    }, [props]);
+
     return (
         <Card className={styles.recognitionBlock}>
             <div className={styles.recognizedWords}>
