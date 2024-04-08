@@ -13,12 +13,6 @@ import {useIdle} from "@mantine/hooks";
 import {TaskHeader} from "../../../../components/TaskHeader";
 import {RecognitionWordBlock} from "../../components/RecognitionWordBlock";
 
-interface IData {
-    id: number,
-    words: number[],
-    text: string
-}
-
 export const TrainingTaskPage: FC = typedMemo(function TrainingSentencePage() {
     const navigate = useNavigate()
 
