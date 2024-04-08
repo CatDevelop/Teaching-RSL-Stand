@@ -6,7 +6,7 @@ import styles from "./StartTrainingSentence.module.css";
 import {Typography} from "../../../../components/Typography";
 import {Button} from "../../../../components/Button";
 import RightClicker from "../../../../assets/images/RightClicker.svg";
-import StartTrainingSentenceImage from "../../../../assets/images/StartTrainingSentence.png";
+import StartTrainingSentenceImage from "../../../../assets/images/StartTrainingSentence.svg";
 import {useNavigate} from "react-router-dom";
 
 
