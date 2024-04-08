@@ -3,10 +3,10 @@ import * as THREE from 'three';
 import {Canvas, useFrame} from '@react-three/fiber';
 
 const colors = [
-    [119, 193, 238],
-    [170, 237, 225],
-    [126, 83, 169],
-    [105, 194, 224],
+    [11, 36, 71],
+    [25, 55, 109],
+    [87, 108, 188],
+    [66, 125, 157],
 ]
 
 const TextureMesh = () => {

@@ -4,15 +4,12 @@ import styles from "./TrainingTaskPage.module.css";
 import {Page} from "../../../../components/Page";
 import Logo from "../../../../assets/images/LogoStand.svg"
 import {useNavigate} from "react-router-dom";
-import {ProgressBar} from "../../../../components/ProgressBar";
 import {PageContent} from "../../../../components/PageContent";
-import {StartThemeSentence, StartThemeWords} from "../../../../core/data";
+import {StartThemeWords} from "../../../../core/data";
 import {shuffleArray} from "../../../../core/utils/shuffleArray";
 import {ModelWarning} from "../../components/ModelWarning/ModelWarning";
 import {socket} from "../../../../core/utils/connectToModal";
 import {useIdle} from "@mantine/hooks";
-import {RecognitionSentenceBlock} from "../../components/RecognitionSentenceBlock";
-import {Card} from "../../../../components/Card";
 import {TaskHeader} from "../../../../components/TaskHeader";
 import {RecognitionWordBlock} from "../../components/RecognitionWordBlock";
 

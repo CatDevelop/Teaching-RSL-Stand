@@ -15,7 +15,7 @@ import {StartThemeWords} from "../../../../core/data";
 import {ByPinCode} from "../../../../components/ByPinCode";
 import {useLottie} from "lottie-react";
 import leavesAnimation from "../../../../assets/images/leaves.json"
-import PersonImage from "../../../../assets/images/Person.png"
+import PersonImage from "../../../../assets/images/Persona.svg"
 
 export const TrainingResultPage: FC = typedMemo(function TrainingPage() {
     const { View, play } = useLottie({

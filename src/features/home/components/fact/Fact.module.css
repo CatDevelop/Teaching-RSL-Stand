@@ -37,29 +37,33 @@
     white-space: pre-line;
 }
 
+
 .fact__blue {
-    background: rgba(0, 177, 255, 0.6);
+    background: #BFDBFE;
 }
 
 .fact__blue .fact__title,
-.fact__blue .fact__description {
-    color: white;
+.fact__blue .fact__description,
+.fact__blue .fact__source {
+    color: #1E3A8A;
 }
 
 .fact__grape {
-    background: rgba(145, 82, 173, 0.6);
+    background: #EDE9FE;
 }
 
 .fact__grape .fact__title,
-.fact__grape .fact__description {
-    color: white;
+.fact__grape .fact__description,
+.fact__grape .fact__source {
+    color: #581C87;
 }
 
 .fact__green {
-    background: rgba(0, 236, 200, 0.4);
+    background: #CCFBF1;
 }
 
 .fact__green .fact__title,
-.fact__green .fact__description {
-    color: white;
+.fact__green .fact__description,
+.fact__green .fact__source {
+    color: #115E59;
 }

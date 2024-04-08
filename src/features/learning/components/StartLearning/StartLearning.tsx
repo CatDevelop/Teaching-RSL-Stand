@@ -1,11 +1,11 @@
-import React, {FC, useCallback, useEffect} from "react";
+import React, {FC} from "react";
 import {typedMemo} from "../../../../core/utils/typedMemo";
 import {Card} from "../../../../components/Card";
 import styles from "./StartLearning.module.css";
 import {Typography} from "../../../../components/Typography";
 import {Button} from "../../../../components/Button";
 import RightClicker from "../../../../assets/images/RightClicker.svg";
-import StartLearningImage from "../../../../assets/images/StartLearning.png";
+import StartLearningImage from "../../../../assets/images/StartLearning.svg";
 
 type Props = {
     onStart: () => void
