@@ -46,7 +46,7 @@
 
 .afkPage__tap {
     font-family: var(--main-font);
-    font-weight: var(--font-weight-l);
+    font-weight: var(--font-weight-xl);
     height: auto;
     line-height: 1.5;
     color: var(--on-surface-color);
