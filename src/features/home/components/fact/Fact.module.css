@@ -22,19 +22,22 @@
 .fact__source {
     width: 100%;
     font-size: calc(var(--font-size-s)*0.69);
-    font-weight: var(--font-weight-l);
+    font-weight: var(--font-weight-xl);
     color: var(--on-surface-opacity-color);
+    font-family: var(--main-font);
 }
 
 .fact__title {
     text-align: center;
     font-size: calc(var(--font-size-xl) * 1.1);
+    font-weight: var(--font-weight-xxl);
 }
 
 .fact__description {
     text-align: center;
     font-size: var(--font-size-m);
     white-space: pre-line;
+    font-weight: var(--font-weight-l);
 }
 
 
