@@ -45,7 +45,7 @@ export const StartThemeWords: Word[] = [
         recognitionText: 'до свидание',
         gifSource: "https://storage.yandexcloud.net/akhidov-ivr/bye.mp4",
         // gifSource: "https://ren-design.ru/api/teaching-rsl/1.0/video/You.mp4",
-        gifSource: YouSignVideo,
+        // gifSource: YouSignVideo,
     },
 ]
 
